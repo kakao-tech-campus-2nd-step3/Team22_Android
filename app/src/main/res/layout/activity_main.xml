@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.MainActivity">
+
+    <ImageView
+        android:layout_width="800dp"
+        android:layout_height="400dp"
+        android:src="@drawable/main_background"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="800dp"
+        android:layout_height="400dp"
+        android:src="@drawable/main_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/sort_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawableEnd="@drawable/main_expand"
+        android:text="춘식이"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@id/main_progressBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/main_progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:progress="50"
+        android:progressTint="@color/yellow_500"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/current_imageView"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:background="@drawable/ic_launcher_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <ImageView
+        android:id="@+id/next_imageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/main_music_cover"
+        android:rotation="20"
+        app:layout_constraintBottom_toBottomOf="@id/current_imageView"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/current_imageView" />
+
+    <ImageView
+        android:id="@+id/prev_imageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/main_music_cover"
+        android:rotation="160"
+        app:layout_constraintBottom_toBottomOf="@id/current_imageView"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/current_imageView" />
+
+    <TextView
+        android:id="@+id/message_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이거듣고 눈물흘림"
+        android:textSize="16dp"
+        android:background="@drawable/main_message_bubble"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/friend_pic_imageView"
+        android:layout_marginBottom="8dp"/>
+
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/main_message_bubble_tail"
+        app:layout_constraintTop_toBottomOf="@+id/message_textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/friend_pic_imageView"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintBottom_toTopOf="@id/control_imageView"
+        app:layout_constraintEnd_toStartOf="@id/friend_name_textView" />
+
+    <TextView
+        android:id="@+id/friend_name_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:text="춘식이"
+        app:layout_constraintBottom_toBottomOf="@id/friend_pic_imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/friend_pic_imageView" />
+
+    <TextView
+        android:id="@+id/day_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clipToOutline="true"
+        android:text="3일"
+        android:textColor="@color/gray_500"
+        app:layout_constraintBottom_toBottomOf="@id/friend_pic_imageView"
+        app:layout_constraintStart_toEndOf="@+id/friend_name_textView"
+        app:layout_constraintTop_toTopOf="@id/friend_pic_imageView" />
+
+    <ImageView
+        android:id="@+id/control_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="84dp"
+        android:src="@drawable/main_music_info"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/like_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/main_like_background"
+        app:layout_constraintTop_toTopOf="@id/control_imageView"
+        app:layout_constraintBottom_toBottomOf="@id/control_imageView"
+        app:layout_constraintVertical_bias="0.65"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@null"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_circle_shape"
+        android:src="@drawable/main_share_icon"
+        android:padding="12dp"
+        android:layout_marginEnd="38dp"
+        app:layout_constraintTop_toTopOf="@id/like_button"
+        app:layout_constraintBottom_toBottomOf="@id/like_button"
+        app:layout_constraintEnd_toStartOf="@id/like_button"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/main_share_icon"
+        android:background="@drawable/main_circle_shape"
+        android:padding="12dp"
+        android:layout_marginStart="38dp"
+        app:layout_constraintTop_toTopOf="@id/like_button"
+        app:layout_constraintBottom_toBottomOf="@id/like_button"
+        app:layout_constraintStart_toEndOf="@id/like_button"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_not_enough_listen"
+        android:textColor="@color/gray_500"
+        app:layout_constraintBottom_toBottomOf="@id/control_imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="12dp"/>
+
+
+    <TextView
+        android:id="@+id/music_name_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="스토커"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@id/control_imageView"
+        app:layout_constraintTop_toTopOf="@id/control_imageView" />
+
+    <TextView
+        android:id="@+id/singer_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10cm"
+        app:layout_constraintStart_toStartOf="@id/music_name_textView"
+        app:layout_constraintTop_toBottomOf="@id/music_name_textView" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/yellow_500"
+        android:gravity="center"
+        android:text="네비게이션바"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
