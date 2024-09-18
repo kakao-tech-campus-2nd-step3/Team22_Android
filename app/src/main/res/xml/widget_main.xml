@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_200">
+
+    <!-- 원형 이미지 -->
+    <ImageView
+        android:id="@+id/widget_imageview"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/widget_profile_image"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="10dp"/>
+
+    <!-- 텍스트 레이블 (콘) -->
+    <TextView
+        android:id="@+id/widget_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/widget_imageview"
+        android:layout_centerHorizontal="true"
+        android:text="@string/widget_label_text"
+        android:textColor="@color/black"
+        android:textSize="16sp"/>
+
+    <!-- 알림용 빨간 점 -->
+    <View
+        android:id="@+id/widget_notification_dot"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_alignTop="@id/widget_imageview"
+        android:layout_alignEnd="@id/widget_imageview"
+        android:background="@color/red"/>
+</RelativeLayout>
