@@ -29,10 +29,10 @@
         android:id="@+id/sort_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/top_margin_double"
         android:drawableEnd="@drawable/main_expand"
         android:text="춘식이"
-        android:textSize="18dp"
+        android:textSize="@dimen/sort_text_size"
         app:layout_constraintBottom_toTopOf="@id/main_progressBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,17 +43,17 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
         android:progress="50"
         android:progressTint="@color/yellow_500"
+        android:layout_marginTop="@dimen/top_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/sort_textView" />
 
     <ImageView
         android:id="@+id/current_imageView"
-        android:layout_width="280dp"
-        android:layout_height="280dp"
+        android:layout_width="@dimen/music_cover_size"
+        android:layout_height="@dimen/music_cover_size"
         android:background="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,8 +63,8 @@
 
     <ImageView
         android:id="@+id/next_imageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="@dimen/music_cover_size"
+        android:layout_height="@dimen/music_cover_size"
         android:layout_marginTop="110dp"
         android:background="@drawable/main_music_cover"
         android:rotation="20"
@@ -74,8 +74,8 @@
 
     <ImageView
         android:id="@+id/prev_imageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="@dimen/music_cover_size"
+        android:layout_height="@dimen/music_cover_size"
         android:layout_marginTop="110dp"
         android:background="@drawable/main_music_cover"
         android:rotation="160"
@@ -88,14 +88,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="이거듣고 눈물흘림"
-        android:textSize="16dp"
+        android:textSize="@dimen/message_text_size"
         android:background="@drawable/main_message_bubble"
-        android:paddingVertical="8dp"
-        android:paddingHorizontal="36dp"
+        android:paddingVertical="@dimen/message_padding_vertical"
+        android:paddingHorizontal="@dimen/message_padding_horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/friend_pic_imageView"
-        android:layout_marginBottom="8dp"/>
+        app:layout_constraintTop_toBottomOf="@id/current_imageView"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="@dimen/bottom_margin"/>
 
     <ImageView
         android:layout_width="16dp"
@@ -108,11 +109,12 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/friend_pic_imageView"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="12dp"
+        android:layout_width="@dimen/friend_pic_size"
+        android:layout_height="@dimen/friend_pic_size"
+        android:layout_marginBottom="@dimen/bottom_margin"
         android:src="@drawable/ic_launcher_background"
-        app:layout_constraintBottom_toTopOf="@id/control_imageView"
+        android:layout_marginTop="@dimen/top_margin_half"
+        app:layout_constraintTop_toBottomOf="@+id/message_textView"
         app:layout_constraintEnd_toStartOf="@id/friend_name_textView" />
 
     <TextView
@@ -141,10 +143,10 @@
         android:id="@+id/control_imageView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginHorizontal="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/top_margin"
         android:src="@drawable/main_music_info"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/friend_pic_imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -165,8 +167,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/main_circle_shape"
         android:src="@drawable/main_share_icon"
-        android:padding="12dp"
-        android:layout_marginEnd="38dp"
+        android:padding="@dimen/icons_padding"
+        android:layout_marginEnd="@dimen/icons_margin"
         app:layout_constraintTop_toTopOf="@id/like_button"
         app:layout_constraintBottom_toBottomOf="@id/like_button"
         app:layout_constraintEnd_toStartOf="@id/like_button"/>
@@ -176,8 +178,8 @@
         android:layout_height="wrap_content"
         android:src="@drawable/main_share_icon"
         android:background="@drawable/main_circle_shape"
-        android:padding="12dp"
-        android:layout_marginStart="38dp"
+        android:padding="@dimen/icons_padding"
+        android:layout_marginStart="@dimen/icons_margin"
         app:layout_constraintTop_toTopOf="@id/like_button"
         app:layout_constraintBottom_toBottomOf="@id/like_button"
         app:layout_constraintStart_toEndOf="@id/like_button"/>
@@ -190,7 +192,7 @@
         app:layout_constraintBottom_toBottomOf="@id/control_imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="@dimen/bottom_margin"/>
 
 
     <TextView
@@ -200,7 +202,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="스토커"
-        android:textSize="20dp"
+        android:textSize="@dimen/song_text_size"
         app:layout_constraintStart_toStartOf="@id/control_imageView"
         app:layout_constraintTop_toTopOf="@id/control_imageView" />
 
