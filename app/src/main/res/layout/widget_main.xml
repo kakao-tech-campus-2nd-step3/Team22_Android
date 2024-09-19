@@ -22,7 +22,7 @@
         android:layout_below="@id/widget_imageview"
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
-        android:textSize="16sp"/>
+        android:textSize="@dimen/text_size_medium"/>
 
     <!-- 알림용 빨간 점 -->
     <View

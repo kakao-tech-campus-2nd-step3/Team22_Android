@@ -21,7 +21,7 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:layout_gravity="center"
-            android:paddingBottom="16dp"/>
+            android:paddingBottom="@dimen/padding_medium"/>
 
         <!-- 앱의 고유 아이디 입력 필드 -->
         <TextView
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:text="@string/signup_nick_intro_info"
             android:textColor="@color/black"
-            android:textSize="14sp"/>
+            android:textSize="@dimen/text_size_small"/>
 
         <EditText
             android:id="@+id/signup_edittext_email"
@@ -41,7 +41,7 @@
             android:textColor="@color/black"
             android:textColorHint="@color/gray_200"
             android:importantForAccessibility="yes"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="@dimen/margin_medium"/>
 
         <!-- 닉네임 입력 필드 -->
         <TextView
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:text="@string/mypage_nickname"
             android:textColor="@color/black"
-            android:textSize="14sp"/>
+            android:textSize="@dimen/text_size_small"/>
 
         <EditText
             android:id="@+id/signup_edittext_nickname"
@@ -61,7 +61,7 @@
             android:textColor="@color/black"
             android:textColorHint="@color/gray_200"
             android:importantForAccessibility="yes"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="@dimen/margin_medium"/>
 
         <!-- 카테고리 설정 타이틀 -->
         <TextView
@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/signup_category_title"
-            android:textSize="14sp"
+            android:textSize="@dimen/text_size_small"
             android:textColor="@color/black"/>
 
         <!-- 카테고리 선택 버튼들 -->
@@ -77,8 +77,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:columnCount="4"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp">
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_medium">
 
             <ToggleButton
                 android:id="@+id/signup_togglebutton_category_hiphop"

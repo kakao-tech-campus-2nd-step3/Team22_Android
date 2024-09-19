@@ -20,16 +20,16 @@
             android:layout_height="wrap_content"
             android:text="@string/signup_pick_profile_imageview"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:paddingBottom="8dp"/>
+            android:textSize="@dimen/text_size_medium"
+            android:paddingBottom="@dimen/padding_small"/>
 
         <!-- 상단 프로필 이미지 -->
         <ImageView
             android:id="@+id/signup_imageview_profileimage"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_medium"
             android:scaleType="centerCrop"
             android:src="@drawable/all_profile_placeholder"/>
 
@@ -40,8 +40,8 @@
             android:layout_height="wrap_content"
             android:text="@string/mypage_introduce"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:paddingBottom="8dp"/>
+            android:textSize="@dimen/text_size_medium"
+            android:paddingBottom="@dimen/padding_small"/>
 
         <!-- 한 줄 소개 입력 필드 -->
         <EditText
@@ -52,7 +52,7 @@
             android:textColor="@color/black"
             android:textColorHint="@color/gray_200"
             android:importantForAccessibility="yes"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="@dimen/margin_medium"/>
 
         <!-- 가입하기 버튼 -->
         <Button
