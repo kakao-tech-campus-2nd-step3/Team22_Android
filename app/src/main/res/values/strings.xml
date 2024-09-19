@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Soundary</string>
+
+
+    <!-- -->
+    <string name="search_music_hint">검색할 노래를 입력해 주세요.</string>
+    <string name="share_top">어떤 노래를 공유할까요?</string>
+    <string name="share_sort_share">많은 사용자들이 공유한 노래</string>
+    <string name="share_sort_like">많은 사용자들이 좋아한 노래</string>
+
 </resources>
