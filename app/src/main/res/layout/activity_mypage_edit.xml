@@ -116,51 +116,27 @@
 
             <Button
                 android:text="@string/category_hiphop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_button"
-                android:textColor="@android:color/white"
-                android:layout_margin="8dp"/>
+                style="@style/CategoryButton" />
 
             <Button
                 android:text="@string/category_rock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_button"
-                android:textColor="@android:color/white"
-                android:layout_margin="8dp"/>
+                style="@style/CategoryButton" />
 
             <Button
                 android:text="@string/category_pop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_button"
-                android:textColor="@android:color/white"
-                android:layout_margin="8dp"/>
+                style="@style/CategoryButton" />
 
             <Button
                 android:text="@string/category_jpop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_button"
-                android:textColor="@android:color/white"
-                android:layout_margin="8dp"/>
+                style="@style/CategoryButton" />
 
             <Button
                 android:text="@string/category_ballad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_button"
-                android:textColor="@android:color/white"
-                android:layout_margin="8dp"/>
+                style="@style/CategoryButton" />
 
             <Button
                 android:text="@string/category_dance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_button"
-                android:textColor="@android:color/white"
-                android:layout_margin="8dp"/>
+                style="@style/CategoryButton" />
         </GridLayout>
 
         <!-- 저장 버튼 -->

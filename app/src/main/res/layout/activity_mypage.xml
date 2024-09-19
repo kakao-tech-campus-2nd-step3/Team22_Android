@@ -69,31 +69,19 @@
             <!-- Category Buttons -->
             <Button
                 android:text="@string/category_hiphop"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_toggle_button"
-                android:layout_margin="4dp" />
+                style="@style/CategoryButton" />
 
             <Button
                 android:text="@string/category_rock"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_toggle_button"
-                android:layout_margin="4dp" />
+                style="@style/CategoryButton" />
 
             <Button
                 android:text="@string/category_pop"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_toggle_button"
-                android:layout_margin="4dp" />
+                style="@style/CategoryButton" />
 
             <Button
                 android:text="@string/category_jpop"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_toggle_button"
-                android:layout_margin="4dp" />
+                style="@style/CategoryButton" />
         </LinearLayout>
 
         <!-- 공유한 노래 목록 -->
