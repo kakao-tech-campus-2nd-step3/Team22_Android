@@ -17,7 +17,7 @@
             android:id="@+id/signup_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="필수 정보를 입력해주세요."
+            android:text="@string/signup_necessary_info"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:layout_gravity="center"
@@ -28,7 +28,7 @@
             android:id="@+id/signup_email_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="앱의 고유 아이디는 카카오 아이디의 앞 부분입니다."
+            android:text="@string/signup_nick_intro_info"
             android:textColor="@color/black"
             android:textSize="14sp"/>
 
@@ -36,7 +36,7 @@
             android:id="@+id/signup_edittext_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="아이디 입력"
+            android:hint="@string/signup_ID_hint"
             android:inputType="textEmailAddress"
             android:textColor="@color/black"
             android:textColorHint="@color/gray_200"
@@ -48,7 +48,7 @@
             android:id="@+id/signup_nickname_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="닉네임"
+            android:text="@string/mypage_nickname"
             android:textColor="@color/black"
             android:textSize="14sp"/>
 
@@ -56,7 +56,7 @@
             android:id="@+id/signup_edittext_nickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="앱에서 사용할 닉네임 (최대 8자)"
+            android:hint="@string/signup_nickname_hint"
             android:maxLength="8"
             android:textColor="@color/black"
             android:textColorHint="@color/gray_200"
@@ -68,7 +68,7 @@
             android:id="@+id/signup_category_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="카테고리 설정하기 (1-3개)"
+            android:text="@string/signup_category_title"
             android:textSize="14sp"
             android:textColor="@color/black"/>
 
@@ -82,56 +82,56 @@
 
             <ToggleButton
                 android:id="@+id/signup_togglebutton_category_hiphop"
-                android:textOn="힙합"
-                android:textOff="힙합"
+                android:textOn="@string/category_hiphop"
+                android:textOff="@string/category_hiphop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_toggle_button"/>
 
             <ToggleButton
                 android:id="@+id/signup_togglebutton_category_rock"
-                android:textOn="Rock"
-                android:textOff="Rock"
+                android:textOn="@string/category_rock"
+                android:textOff="@string/category_rock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_toggle_button"/>
 
             <ToggleButton
                 android:id="@+id/signup_togglebutton_category_pop"
-                android:textOn="POP"
-                android:textOff="POP"
+                android:textOn="@string/category_pop"
+                android:textOff="@string/category_pop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_toggle_button"/>
 
             <ToggleButton
                 android:id="@+id/signup_togglebutton_category_jpop"
-                android:textOn="Jpop"
-                android:textOff="Jpop"
+                android:textOn="@string/category_jpop"
+                android:textOff="@string/category_jpop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_toggle_button"/>
 
             <ToggleButton
                 android:id="@+id/signup_togglebutton_category_ballad"
-                android:textOn="발라드"
-                android:textOff="발라드"
+                android:textOn="@string/category_ballad"
+                android:textOff="@string/category_ballad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_toggle_button"/>
 
             <ToggleButton
                 android:id="@+id/signup_togglebutton_category_dance"
-                android:textOn="댄스"
-                android:textOff="댄스"
+                android:textOn="@string/category_dance"
+                android:textOff="@string/category_dance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_toggle_button"/>
 
             <ToggleButton
                 android:id="@+id/signup_togglebutton_category_rnb"
-                android:textOn="RnB"
-                android:textOff="RnB"
+                android:textOn="@string/category_rnb"
+                android:textOff="@string/category_rnb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_toggle_button"/>
@@ -146,7 +146,7 @@
                 android:id="@+id/signup_radiobutton_service"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="서비스이용약관에 동의합니다."
+                android:text="@string/signup_terms_agreement"
                 android:textColor="@color/black"
                 android:checked="true"/>
 
@@ -154,7 +154,7 @@
                 android:id="@+id/signup_radiobutton_privacy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="개인정보 수집 이용에 동의"
+                android:text="@string/signup_privacy_agreement"
                 android:textColor="@color/black"/>
         </RadioGroup>
 
@@ -163,7 +163,7 @@
             android:id="@+id/signup_button_continue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="계속 가입하기"
+            android:text="@string/signup_continue_button"
             android:background="@drawable/all_rounded_button"
             android:textColor="@color/black"
             android:layout_marginTop="24dp"/>

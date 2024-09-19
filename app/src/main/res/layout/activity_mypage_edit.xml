@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="회원정보수정"
+            android:text="@string/mypage_edit_info"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -52,14 +52,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="닉네임"
+                    android:text="@string/mypage_nickname"
                     android:textSize="14sp"
                     android:textColor="@color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="김남남"
+                    android:text="@string/mypage_name"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="8dp"/>
@@ -68,14 +68,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="아이디"
+                    android:text="@string/mypage_ID"
                     android:textSize="14sp"
                     android:textColor="@color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="nammynam@naver.com"
+                    android:text="@string/mypage_email"
                     android:textSize="16sp"
                     android:layout_marginBottom="8dp"/>
 
@@ -83,7 +83,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="한줄 소개"
+                    android:text="@string/mypage_introduce"
                     android:textSize="14sp"
                     android:textColor="@color/black" />
 
@@ -99,7 +99,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="카테고리 설정"
+            android:text="@string/mypage_category_setting"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:layout_marginBottom="16dp"/>
@@ -115,7 +115,7 @@
             android:layout_marginBottom="24dp">
 
             <Button
-                android:text="힙합"
+                android:text="@string/category_hiphop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_button"
@@ -123,7 +123,7 @@
                 android:layout_margin="8dp"/>
 
             <Button
-                android:text="Rock"
+                android:text="@string/category_rock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_button"
@@ -131,7 +131,7 @@
                 android:layout_margin="8dp"/>
 
             <Button
-                android:text="POP"
+                android:text="@string/category_pop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_button"
@@ -139,7 +139,7 @@
                 android:layout_margin="8dp"/>
 
             <Button
-                android:text="Jpop"
+                android:text="@string/category_jpop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_button"
@@ -147,7 +147,7 @@
                 android:layout_margin="8dp"/>
 
             <Button
-                android:text="발라드"
+                android:text="@string/category_ballad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_button"
@@ -155,7 +155,7 @@
                 android:layout_margin="8dp"/>
 
             <Button
-                android:text="댄스"
+                android:text="@string/category_dance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_button"
@@ -168,7 +168,7 @@
             android:id="@+id/save_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="저장하기"
+            android:text="@string/mypage_save"
             android:background="@drawable/all_rounded_button"
             android:textColor="@android:color/white"
             android:layout_marginTop="16dp"

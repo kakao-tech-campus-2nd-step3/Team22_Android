@@ -18,7 +18,7 @@
             android:id="@+id/signup_label_profileimage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="본인 프로필 사진 고르기"
+            android:text="@string/signup_pick_profile_imageview"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:paddingBottom="8dp"/>
@@ -38,7 +38,7 @@
             android:id="@+id/signup_intro_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="한 줄 소개"
+            android:text="@string/mypage_introduce"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:paddingBottom="8dp"/>
@@ -48,7 +48,7 @@
             android:id="@+id/signup_edittext_intro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="한 줄 소개를 작성해주세요."
+            android:hint="@string/signup_introduce_hint"
             android:textColor="@color/black"
             android:textColorHint="@color/gray_200"
             android:importantForAccessibility="yes"
@@ -59,7 +59,7 @@
             android:id="@+id/signup_button_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="가입하기"
+            android:text="@string/signup_button"
             android:background="@drawable/all_rounded_button"
             android:textColor="@color/black"
             android:layout_gravity="center"/>

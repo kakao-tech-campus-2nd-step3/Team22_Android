@@ -27,7 +27,7 @@
             android:id="@+id/profile_textview_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="김남남"
+            android:text="@string/mypage_name"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:layout_marginTop="8dp"
@@ -37,7 +37,7 @@
             android:id="@+id/profile_textview_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="nammynam@naver.com"
+            android:text="@string/mypage_email"
             android:textColor="@color/gray_500"
             android:textSize="14sp"
             android:layout_marginTop="4dp" />
@@ -46,7 +46,7 @@
             android:id="@+id/profile_textview_intro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="한줄 소개글 두줄소개까지?"
+            android:text="@string/mypage_introduce"
             android:textColor="@color/gray_500"
             android:textSize="14sp"
             android:layout_marginTop="4dp" />
@@ -55,7 +55,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="카테고리 설정"
+            android:text="@string/mypage_category_setting"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:layout_marginTop="16dp" />
@@ -68,28 +68,28 @@
 
             <!-- Category Buttons -->
             <Button
-                android:text="힙합"
+                android:text="@string/category_hiphop"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_toggle_button"
                 android:layout_margin="4dp" />
 
             <Button
-                android:text="Rock"
+                android:text="@string/category_rock"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_toggle_button"
                 android:layout_margin="4dp" />
 
             <Button
-                android:text="POP"
+                android:text="@string/category_pop"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_toggle_button"
                 android:layout_margin="4dp" />
 
             <Button
-                android:text="Jpop"
+                android:text="@string/category_jpop"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/all_rounded_toggle_button"
@@ -100,7 +100,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="내가 공유한 노래"
+            android:text="@string/mypage_share_song"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:layout_marginTop="24dp" />
@@ -135,7 +135,7 @@
             android:id="@+id/leave_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="탈퇴하기"
+            android:text="@string/mypage_out"
             android:textColor="@color/white"
             android:backgroundTint="@color/red"
             android:layout_marginTop="24dp" />
