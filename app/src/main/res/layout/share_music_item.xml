@@ -14,7 +14,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
@@ -25,7 +24,7 @@
         app:layout_constraintTop_toTopOf="@+id/share_music_imageview">
 
         <TextView
-            android:id="@+id/musicNameTextView"
+            android:id="@+id/share_music_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/share_music_name"
@@ -34,7 +33,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/singerNameTextView"
+            android:id="@+id/share_singer_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/share_singer_name"
@@ -42,7 +41,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/ShareCountTextView"
+            android:id="@+id/share_sort_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/share_sort_count"
