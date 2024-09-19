@@ -3,37 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="15dp">
+    android:layout_marginVertical="8dp">
 
-    <androidx.cardview.widget.CardView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/share_music_imageview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="50dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/stalker"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/AlbumImageView"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/ic_launcher_background"
-            android:contentDescription="album" />
-
-    </androidx.cardview.widget.CardView>
-
-<!--    <de.hdodenhof.circleimageview.CircleImageView-->
-<!--        android:id="@+id/share_music_imageview"-->
-<!--        android:layout_width="70dp"-->
-<!--        android:layout_height="70dp"-->
-<!--        android:src="@drawable/stalker"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
         android:layout_marginStart="15dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/share_music_imageview"
@@ -44,15 +28,16 @@
             android:id="@+id/musicNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="스토커"
+            android:text="@string/share_music_name"
             android:textColor="@color/black"
-            android:textSize="17sp" />
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/singerNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10cm"
+            android:text="@string/share_singer_name"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -60,7 +45,7 @@
             android:id="@+id/ShareCountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1000명이 공유함"
+            android:text="@string/share_sort_count"
             android:textColor="@color/gray_500"
             android:textSize="11sp" />
 

@@ -11,10 +11,10 @@
         android:id="@+id/share_top_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="@string/share_top"
         android:textColor="@color/black"
-        android:textSize="25sp"
+        android:textSize="27sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,30 +57,30 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@null"
         android:src="@drawable/icon_spinner"
-        app:layout_constraintStart_toEndOf="@id/share_select_sort_spinner"
-        app:layout_constraintTop_toTopOf="@id/share_select_sort_spinner"
         app:layout_constraintBottom_toBottomOf="@id/share_select_sort_spinner"
-        android:contentDescription="@null" />
+        app:layout_constraintStart_toEndOf="@id/share_select_sort_spinner"
+        app:layout_constraintTop_toTopOf="@id/share_select_sort_spinner" />
 
-<!--    <Spinner-->
-<!--        android:id="@+id/share_select_sort_spinner"-->
-<!--        android:layout_width="200dp"-->
-<!--        android:layout_height="20dp"-->
-<!--        android:layout_marginStart="5dp"-->
-<!--        android:layout_marginTop="5dp"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/share_search_edittext"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/share_search_edittext" />-->
+    <!--    <Spinner-->
+    <!--        android:id="@+id/share_select_sort_spinner"-->
+    <!--        android:layout_width="200dp"-->
+    <!--        android:layout_height="20dp"-->
+    <!--        android:layout_marginStart="5dp"-->
+    <!--        android:layout_marginTop="5dp"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/share_search_edittext"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/share_search_edittext" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/share_music_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="@+id/share_search_edittext"
         app:layout_constraintTop_toBottomOf="@+id/share_select_sort_spinner"
         tools:itemCount="8"
-        tools:listitem="@layout/share_music_item"/>
+        tools:listitem="@layout/share_music_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
