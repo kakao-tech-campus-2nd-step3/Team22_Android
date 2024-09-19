@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/shareBottomSheet"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="430dp"
     android:background="@drawable/bottom_sheet_background"
     android:padding="25dp"
     app:layout_behavior="@string/bottom_sheet_behavior">
@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/categoryList"
+        android:id="@+id/category_list"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginVertical="5dp"
@@ -70,20 +70,33 @@
         android:layout_height="0dp"
         android:layout_marginVertical="10dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/send_button"
+        app:layout_constraintBottom_toTopOf="@id/share_comment_edittext"
         app:layout_constraintEnd_toEndOf="@id/share_search_edittext"
         app:layout_constraintStart_toStartOf="@id/share_search_edittext"
-        app:layout_constraintTop_toBottomOf="@id/categoryList"
+        app:layout_constraintTop_toBottomOf="@id/category_list"
         app:spanCount="4"
         tools:itemCount="11"
         tools:listitem="@layout/share_friend_item" />
+
+    <EditText
+        android:id="@+id/share_comment_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        android:hint="@string/share_friend_q2"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@id/send_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_friend_recyclerview" />
 
     <CheckBox
         android:id="@+id/share_select_all_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/select_all_friend"
-        app:layout_constraintBottom_toBottomOf="@id/send_button"
+        app:layout_constraintBottom_toBottomOf="@+id/send_button"
         app:layout_constraintEnd_toStartOf="@id/send_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/send_button" />
@@ -103,6 +116,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/share_select_all_button"
-        app:layout_constraintTop_toBottomOf="@id/select_friend_recyclerview" />
+        app:layout_constraintTop_toBottomOf="@id/share_comment_edittext" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

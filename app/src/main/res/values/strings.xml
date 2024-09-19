@@ -11,6 +11,7 @@
     <string name="share_singer_name">10cm</string>
     <string name="share_sort_count">1000명이 공유함</string>
 
+    <!-- 공유 페이지 - 친구 선택 -->
     <string name="share_friend_top">누구에게 공유할까요?</string>
     <string name="share_friend_q1">공유할 친구를 선택해 주세요.</string>
     <string name="share_friend_q2">코멘트를 남겨주세요. (최대 30자)</string>
@@ -19,11 +20,24 @@
     <string name="share_user_name">쿠키즈</string>
     <string name="share_user_name_first_word">쿠</string>
 
+    <!-- 바텀 시트 -->
+    <string name="search_friend_hint">검색할 친구를 입력해 주세요.</string>
+    <string name="select_all_friend">전체 선택</string>
 
     <!-- ImageView에 쓰이는 contentDescription -->
     <string name="share_back_button">backButton</string>
     <string name="share_album_image">albumImage</string>
     <string name="share_add_friend">addFriend</string>
+
+    <!--category-->
+    <string name="mypage_category_setting">카테고리 설정</string>
+    <string name="category_hiphop">힙합</string>
+    <string name="category_rock">Rock</string>
+    <string name="category_pop">POP</string>
+    <string name="category_jpop">JPOP</string>
+    <string name="category_ballad">발라드</string>
+    <string name="category_dance">댄스</string>
+    <string name="category_rnb">RnB</string>
 
 
 </resources>

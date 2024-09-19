@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/share_music_top_textview"
-        style="@style/ShareTopTextStyle"
+        style="@style/shareTopTextStyle"
         android:text="@string/share_music_top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

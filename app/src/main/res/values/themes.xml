@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="ShareTopTextStyle">
+    <style name="shareTopTextStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/black</item>
@@ -23,12 +23,24 @@
         <item name="android:layout_marginTop">15dp</item>
     </style>
 
-    <style name="ShareFriendTextStyle">
+    <style name="shareFriendTextStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
         <item name="android:layout_marginTop">20dp</item>
         <item name="android:layout_marginStart">10dp</item>
+    </style>
+
+    <style name="bottomSheetCategory">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/category_unselected</item>
+        <item name="android:textColor">@color/gray_500</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:layout_marginHorizontal">3dp</item>
+
     </style>
 </resources>
