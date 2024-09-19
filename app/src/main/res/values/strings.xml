@@ -1,3 +1,46 @@
 <resources>
     <string name="app_name">Soundary</string>
+    <!-- 위젯 화면 관련 텍스트 -->
+    <string name="widget_label_text">콘</string>  <!-- 위젯 텍스트 (콘) -->
+
+    <!--sign intro-->
+    <string name="sign_intro_start">카카오톡으로 시작하기</string>
+
+    <!-- signup -->
+    <string name="signup_necessary_info">필수 정보를 입력해주세요.</string>
+    <string name="signup_nick_intro_info">앱의 고유 아이디는 카카오 아이디의 앞 부분입니다.</string>
+    <string name="signup_ID_hint">아이디를 입력하세요</string>
+    <string name="signup_nickname_hint">앱에서 사용할 닉네임 (최대 8자)</string>  <!-- 닉네임 입력 힌트 -->
+    <string name="signup_category_title">카테고리 설정하기 (1~3개)</string>  <!-- 카테고리 설정 텍스트 -->
+    <string name="signup_terms_agreement">서비스 이용 약관에 동의합니다.</string>  <!-- 약관 동의 텍스트 -->
+    <string name="signup_privacy_agreement">개인정보 수집 이용에 동의합니다.</string>  <!-- 개인정보 동의 텍스트 -->
+    <string name="signup_continue_button">계속 가입하기</string>
+    <string name="signup_button">가입하기</string>
+
+    <!--signup2-->
+    <string name="signup_pick_profile_imageview">본인 프로필 사진 고르기</string>
+    <string name="signup_introduce_hint">한 줄 소개를 작성해주세요.</string>
+
+    <!--mypage-->
+    <string name="mypage_name">김냠냠</string>
+    <string name="mypage_email">nammynam@naver.com</string>
+    <string name="mypage_introduce">한 줄 소개글</string>
+    <string name="mypage_share_song">내가 공유한 노래</string>
+    <string name="mypage_out">탈퇴하기</string>
+    <string name="mypage_edit_info">회원정보수정</string>
+    <string name="mypage_nickname">닉네임</string>
+    <string name="mypage_ID">아이디</string>
+    <string name="mypage_save">저장하기</string>
+
+    <!--category-->
+    <string name="mypage_category_setting">카테고리 설정</string>
+    <string name="category_hiphop">힙합</string>
+    <string name="category_rock">Rock</string>
+    <string name="category_pop">POP</string>
+    <string name="category_jpop">JPOP</string>
+    <string name="category_ballad">발라드</string>
+    <string name="category_dance">댄스</string>
+    <string name="category_rnb">RnB</string>
+
+
 </resources>
