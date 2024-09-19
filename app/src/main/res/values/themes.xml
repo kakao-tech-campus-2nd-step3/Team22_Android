@@ -15,12 +15,22 @@
 
     </style>
 
-    <!-- mypage_button_styles -->
+    <!-- category_button_styles -->
     <style name="CategoryButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/all_rounded_button</item>
+        <item name="android:background">@drawable/all_rounded_toggle_button</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <!--signup button-->
+    <style name="SignupButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/all_rounded_button</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:layout_gravity">center</item>
     </style>
 </resources>

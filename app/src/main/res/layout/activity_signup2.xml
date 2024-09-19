@@ -57,11 +57,7 @@
         <!-- 가입하기 버튼 -->
         <Button
             android:id="@+id/signup_button_submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/signup_button"
-            android:background="@drawable/all_rounded_button"
-            android:textColor="@color/black"
-            android:layout_gravity="center"/>
+            style="@style/SignupButton" />
     </LinearLayout>
 </ScrollView>

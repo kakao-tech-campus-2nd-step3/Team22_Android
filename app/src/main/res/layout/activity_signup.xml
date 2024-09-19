@@ -92,49 +92,37 @@
                 android:id="@+id/signup_togglebutton_category_rock"
                 android:textOn="@string/category_rock"
                 android:textOff="@string/category_rock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_toggle_button"/>
+                style="@style/CategoryButton"/>
 
             <ToggleButton
                 android:id="@+id/signup_togglebutton_category_pop"
                 android:textOn="@string/category_pop"
                 android:textOff="@string/category_pop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_toggle_button"/>
+                style="@style/CategoryButton"/>
 
             <ToggleButton
                 android:id="@+id/signup_togglebutton_category_jpop"
                 android:textOn="@string/category_jpop"
                 android:textOff="@string/category_jpop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_toggle_button"/>
+                style="@style/CategoryButton"/>
 
             <ToggleButton
                 android:id="@+id/signup_togglebutton_category_ballad"
                 android:textOn="@string/category_ballad"
                 android:textOff="@string/category_ballad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_toggle_button"/>
+                style="@style/CategoryButton"/>
 
             <ToggleButton
                 android:id="@+id/signup_togglebutton_category_dance"
                 android:textOn="@string/category_dance"
                 android:textOff="@string/category_dance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_toggle_button"/>
+                style="@style/CategoryButton"/>
 
             <ToggleButton
                 android:id="@+id/signup_togglebutton_category_rnb"
                 android:textOn="@string/category_rnb"
                 android:textOff="@string/category_rnb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_toggle_button"/>
+                style="@style/CategoryButton"/>
         </GridLayout>
 
         <!-- 약관 동의 체크박스 -->
@@ -161,11 +149,8 @@
         <!-- 계속 가입하기 버튼 -->
         <Button
             android:id="@+id/signup_button_continue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/signup_continue_button"
             android:background="@drawable/all_rounded_button"
-            android:textColor="@color/black"
-            android:layout_marginTop="24dp"/>
+            style="@style/SignupButton"/>
     </LinearLayout>
 </ScrollView>
