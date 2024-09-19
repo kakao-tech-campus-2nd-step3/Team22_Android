@@ -25,14 +25,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent" />
 
-    <TextView
-        android:id="@+id/sort_textView"
+    <Spinner
+        android:id="@+id/sort_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/top_margin"
-        android:drawableEnd="@drawable/main_expand"
-        android:text="춘식이"
-        android:textSize="@dimen/sort_text_size"
+        android:paddingHorizontal="10dp"
+        android:spinnerMode="dropdown"
+        android:popupBackground="@drawable/main_sort_background"
+        android:popupElevation="5dp"
+        android:dropDownWidth="match_parent"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/main_progressBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,12 +46,11 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/top_margin"
         android:progress="50"
         android:progressTint="@color/yellow_500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sort_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/sort_spinner" />
 
     <ImageView
         android:id="@+id/current_imageView"
