@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="?attr/actionBarSize"
+    android:padding="90dp"
+    android:fillViewport="true"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/signup_label_profileimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="본인 프로필 사진 고르기"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:paddingBottom="8dp"/>
+
+        <!-- 상단 프로필 이미지 -->
+        <ImageView
+            android:id="@+id/signup_imageview_profileimage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/all_profile_placeholder"/>
+
+        <!-- 한 줄 소개 텍스트 -->
+        <TextView
+            android:id="@+id/signup_intro_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="한 줄 소개"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:paddingBottom="8dp"/>
+
+        <!-- 한 줄 소개 입력 필드 -->
+        <EditText
+            android:id="@+id/signup_edittext_intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="한 줄 소개를 작성해주세요."
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray_200"
+            android:importantForAccessibility="yes"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- 가입하기 버튼 -->
+        <Button
+            android:id="@+id/signup_button_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="가입하기"
+            android:background="@drawable/all_rounded_button"
+            android:textColor="@color/black"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+</ScrollView>

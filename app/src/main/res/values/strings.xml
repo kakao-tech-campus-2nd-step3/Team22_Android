@@ -10,9 +10,4 @@
     <string name="signup_terms_agreement">서비스 이용 약관에 동의합니다.</string>  <!-- 약관 동의 텍스트 -->
     <string name="signup_privacy_agreement">개인정보 수집 이용에 동의합니다.</string>  <!-- 개인정보 동의 텍스트 -->
     <string name="signup_continue_button">계속 가입하기</string>  <!-- 가입 버튼 텍스트 -->
-
-    <!-- 기타 다이얼로그 메시지 (필요시 추가) -->
-    <string name="dialog_permission_message">SOUNDARY의 다음 작업을 허용하시겠습니까?</string>  <!-- 다이얼로그 메시지 -->
-    <string name="dialog_permission_allow">허용</string>
-    <string name="dialog_permission_deny">거부</string>
 </resources>
