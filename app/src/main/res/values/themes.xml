@@ -13,16 +13,14 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 
-        <!-- mypage_button_styles -->
-        <style name="CategoryButton">
-            <item name="android:layout_width">wrap_content</item>
-            <item name="android:layout_height">wrap_content</item>
-            <item name="android:background">@drawable/all_rounded_button</item>
-            <item name="android:textColor">@android:color/white</item>
-            <item name="android:layout_margin">8dp</item>
-        </style>
+    </style>
 
-
-
+    <!-- mypage_button_styles -->
+    <style name="CategoryButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/all_rounded_button</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_margin">8dp</item>
     </style>
 </resources>
