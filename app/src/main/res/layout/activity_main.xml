@@ -29,7 +29,7 @@
         android:id="@+id/sort_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/top_margin_double"
+        android:layout_marginTop="@dimen/top_margin"
         android:drawableEnd="@drawable/main_expand"
         android:text="춘식이"
         android:textSize="@dimen/sort_text_size"
@@ -59,7 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.2" />
 
     <ImageView
         android:id="@+id/next_imageView"
@@ -87,7 +87,7 @@
         android:id="@+id/message_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="@dimen/bottom_margin"
         android:background="@drawable/main_message_bubble"
         android:paddingHorizontal="@dimen/message_padding_horizontal"
@@ -148,7 +148,8 @@
         android:src="@drawable/main_music_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/friend_pic_imageView" />
+        app:layout_constraintTop_toTopOf="@+id/friend_pic_imageView"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"/>
 
     <ImageButton
         android:id="@+id/like_button"
@@ -187,7 +188,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/bottom_margin"
+        android:layout_marginBottom="@dimen/bottom_margin_double"
         android:text="@string/main_not_enough_listen"
         android:textColor="@color/gray_500"
         app:layout_constraintBottom_toBottomOf="@id/control_imageView"
@@ -215,11 +216,13 @@
         app:layout_constraintTop_toBottomOf="@id/music_name_textView" />
 
     <TextView
+        android:id="@+id/navigationBar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="0dp"
         android:background="@color/yellow_500"
         android:gravity="center"
         android:text="네비게이션바"
+        app:layout_constraintDimensionRatio="344:65"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
