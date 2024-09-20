@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/search_container"
@@ -28,15 +27,10 @@
             android:drawablePadding="8dp"
             android:inputType="text" />
 
-        <Button
-            android:id="@+id/cancel_button"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:text="X"
-            android:textColor="@color/gray_500"
-            android:contentDescription="삭제"
-            android:background="@android:color/transparent"
-            android:layout_marginStart="8dp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_cancel"/>
     </LinearLayout>
 
     <!-- 친구 목록을 표시하는 RecyclerView -->
