@@ -71,5 +71,20 @@
     <string name="category_dance">댄스</string>
     <string name="category_rnb">RnB</string>
 
+    <!--profile-->
+    <string name="user_name">쿠키즈</string>
+    <string name="user_id">\@kookoo</string>
+    <string name="user_email">\kookoo@naver.com</string>
+
+    <string name="state_message">안녕? 나 쿠키즈!</string>
+
+    <string name="category">선호 카테고리</string>
+    <string name="genre_pop">POP</string>
+    <string name="genre_ballad">발라드</string>
+    <string name="genre_hiphop">힙합</string>
+    <string name="genre_rock">Rock</string>
+    <string name="genre_Jpop">JPOP</string>
+
+    <string name="add_friend">친구 추가</string>
 </resources>
 
