@@ -17,4 +17,32 @@
     <dimen name="message_text_size">16sp</dimen>
     <dimen name="song_text_size">20sp</dimen>
 
+    <!-- login, mypage -->
+    <!-- Margin -->
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+
+    <!-- Padding -->
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+
+    <!-- Textsize -->
+    <dimen name="text_size_large">24sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+
+    <!-- share -->
+    <dimen name="share_padding">20dp</dimen>
+    
+    <!--profile-->
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="text_size_big">18sp</dimen>
+    <dimen name="padding_half">8dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
+    <dimen name="margin_half">8dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_double">32dp</dimen>
 </resources>

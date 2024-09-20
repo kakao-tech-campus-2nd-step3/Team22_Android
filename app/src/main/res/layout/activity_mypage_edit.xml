@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_medium"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_medium">
+
+        <!-- 타이틀 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mypage_edit_info"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/margin_large"/>
+
+        <!-- 프로필 정보 섹션 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="start"
+            android:layout_marginBottom="@dimen/margin_large">
+
+            <!-- 프로필 이미지 -->
+            <ImageView
+                android:id="@+id/profile_imageview"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/all_profile_placeholder"
+                android:scaleType="centerCrop"
+                android:layout_marginEnd="@dimen/margin_medium"/>
+
+            <!-- 텍스트 정보 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="start">
+
+                <!-- 닉네임 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mypage_nickname"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mypage_name"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/margin_small"/>
+
+                <!-- 아이디 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mypage_ID"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mypage_email"
+                    android:textSize="@dimen/text_size_medium"
+                    android:layout_marginBottom="@dimen/margin_small"/>
+
+                <!-- 한줄 소개 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mypage_introduce"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="헤이 모두들 안녕 내가 누군지 아니?"
+                    android:textSize="@dimen/text_size_medium"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 카테고리 설정 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mypage_category_setting"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_medium"
+            android:layout_marginBottom="@dimen/margin_medium"/>
+
+        <!-- 카테고리 버튼들 -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:rowCount="2"
+            android:alignmentMode="alignBounds"
+            android:useDefaultMargins="true"
+            android:layout_marginBottom="@dimen/margin_large">
+
+            <Button
+                android:text="@string/category_hiphop"
+                style="@style/CategoryButton" />
+
+            <Button
+                android:text="@string/category_rock"
+                style="@style/CategoryButton" />
+
+            <Button
+                android:text="@string/category_pop"
+                style="@style/CategoryButton" />
+
+            <Button
+                android:text="@string/category_jpop"
+                style="@style/CategoryButton" />
+
+            <Button
+                android:text="@string/category_ballad"
+                style="@style/CategoryButton" />
+
+            <Button
+                android:text="@string/category_dance"
+                style="@style/CategoryButton" />
+        </GridLayout>
+
+        <!-- 저장 버튼 -->
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mypage_save"
+            android:background="@drawable/all_rounded_button"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:elevation="8dp"/>
+    </LinearLayout>
+</ScrollView>
