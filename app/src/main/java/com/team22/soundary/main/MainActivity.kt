@@ -1,10 +1,10 @@
-package com.team22.soundary
+package com.team22.soundary.main
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.team22.soundary.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val spinner = findViewById<Spinner>(R.id.sort_spinner)
-        spinner.adapter = ArrayAdapter(this,R.layout.main_spinner_item,resources.getStringArray(R.array.mock_array))
+        spinner.adapter = ArrayAdapter(this,
+            R.layout.main_spinner_item,resources.getStringArray(R.array.mock_array))
     }
 }
