@@ -1,4 +1,4 @@
-package com.team22.soundary.share;
+package com.team22.soundary.feature.share;
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

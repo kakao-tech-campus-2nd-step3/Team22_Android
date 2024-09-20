@@ -1,4 +1,4 @@
-package com.team22.soundary.main
+package com.team22.soundary.feature.main
 
 import android.os.Bundle
 import android.widget.ArrayAdapter

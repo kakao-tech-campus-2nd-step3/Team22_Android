@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/share_padding"
-    tools:context=".share.ShareFriendActivity">
+    tools:context=".feature.share.ShareFriendActivity">
 
     <ImageView
         android:layout_width="wrap_content"

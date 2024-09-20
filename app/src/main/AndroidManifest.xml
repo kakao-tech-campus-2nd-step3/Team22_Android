@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Soundary"
         tools:targetApi="31">
         <activity
-            android:name=".main.MainActivity"
+            android:name=".feature.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,13 +22,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".search.FriendSearchActivity"
+            android:name=".feature.search.FriendSearchActivity"
             android:exported="false" />
         <activity
-            android:name=".share.ShareFriendActivity"
+            android:name=".feature.share.ShareFriendActivity"
             android:exported="false" />
         <activity
-            android:name=".share.ShareMusicActivity"
+            android:name=".feature.share.ShareMusicActivity"
             android:exported="false" />
     </application>
 
