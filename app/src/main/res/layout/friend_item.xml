@@ -42,10 +42,10 @@
                 android:id="@+id/favorite_genre_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="@string/genre_pop"
                 android:textColor="@color/gray_500"
-                android:textSize="14sp"
-                android:layout_marginStart="8dp" />
+                android:textSize="14sp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <TextView

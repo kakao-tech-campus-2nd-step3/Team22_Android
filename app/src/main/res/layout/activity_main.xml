@@ -30,12 +30,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_normal"
-        android:paddingHorizontal="10dp"
-        android:spinnerMode="dropdown"
-        android:popupBackground="@drawable/main_sort_background"
-        android:popupElevation="5dp"
         android:dropDownWidth="match_parent"
         android:gravity="center"
+        android:paddingHorizontal="10dp"
+        android:popupBackground="@drawable/main_sort_background"
+        android:popupElevation="5dp"
+        android:spinnerMode="dropdown"
         app:layout_constraintBottom_toTopOf="@id/main_progressBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -148,10 +148,10 @@
         android:layout_marginHorizontal="@dimen/margin_normal"
         android:layout_marginVertical="@dimen/margin_normal"
         android:src="@drawable/main_music_info"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/friend_pic_imageView"
-        app:layout_constraintBottom_toTopOf="@id/navigationBar"/>
+        app:layout_constraintTop_toBottomOf="@+id/friend_pic_imageView" />
 
     <ImageButton
         android:id="@+id/like_button"
@@ -224,8 +224,8 @@
         android:background="@color/yellow_500"
         android:gravity="center"
         android:text="네비게이션바"
-        app:layout_constraintDimensionRatio="344:65"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="344:65"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

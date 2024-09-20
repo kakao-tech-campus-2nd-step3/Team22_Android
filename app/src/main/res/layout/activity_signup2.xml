@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="?attr/actionBarSize"
-    android:padding="9dp"
-    android:fillViewport="true"
     android:background="@android:color/white"
-    android:fitsSystemWindows="true">
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:padding="9dp"
+    android:paddingTop="?attr/actionBarSize">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,10 +17,10 @@
             android:id="@+id/signup_label_profileimage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_half"
             android:text="@string/signup_pick_profile_imageview"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_size_medium"
-            android:paddingBottom="@dimen/padding_half"/>
+            android:textSize="@dimen/text_size_medium" />
 
         <!-- 상단 프로필 이미지 -->
         <ImageView
@@ -31,33 +30,33 @@
             android:layout_marginTop="@dimen/margin_half"
             android:layout_marginBottom="@dimen/margin_normal"
             android:scaleType="centerCrop"
-            android:src="@drawable/all_profile_placeholder"/>
+            android:src="@drawable/all_profile_placeholder" />
 
         <!-- 한 줄 소개 텍스트 -->
         <TextView
             android:id="@+id/signup_intro_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_half"
             android:text="@string/mypage_introduce"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_size_medium"
-            android:paddingBottom="@dimen/padding_half"/>
+            android:textSize="@dimen/text_size_medium" />
 
         <!-- 한 줄 소개 입력 필드 -->
         <EditText
             android:id="@+id/signup_edittext_intro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
             android:hint="@string/signup_introduce_hint"
-            android:textColor="@color/black"
-            android:textColorHint="@color/gray_200"
             android:importantForAccessibility="yes"
-            android:layout_marginBottom="@dimen/margin_normal"/>
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray_200" />
 
         <!-- 가입하기 버튼 -->
         <Button
             android:id="@+id/signup_button_submit"
-            android:text="@string/signup_button"
-            style="@style/SignupButton" />
+            style="@style/SignupButton"
+            android:text="@string/signup_button" />
     </LinearLayout>
 </ScrollView>
