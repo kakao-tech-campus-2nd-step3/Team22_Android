@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Main-->
+    <dimen name="top_margin_half">8dp</dimen>
+    <dimen name="top_margin">16dp</dimen>
+    <dimen name="top_margin_double">32dp</dimen>
+    <dimen name="bottom_margin">8dp</dimen>
+    <dimen name="bottom_margin_double">16dp</dimen>
+    <dimen name="horizontal_margin">16dp</dimen>
+    <dimen name="icons_padding">12dp</dimen>
+    <dimen name="icons_margin">38dp</dimen>
+    <dimen name="message_padding_vertical">8dp</dimen>
+    <dimen name="message_padding_horizontal">36dp</dimen>
+    <dimen name="music_cover_size">250dp</dimen>
+    <dimen name="friend_pic_size">42dp</dimen>
+    <dimen name="sort_text_size">22sp</dimen>
+    <dimen name="message_text_size">16sp</dimen>
+    <dimen name="song_text_size">20sp</dimen>
 
     <!-- login, mypage -->
     <!-- Margin -->

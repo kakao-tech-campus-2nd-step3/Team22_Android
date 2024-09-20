@@ -1,5 +1,7 @@
 <resources>
+    <!-- 
     <string name="app_name">Soundary</string>
+    <string name="main_not_enough_listen">5초 더 들어 친구의 메시지를 확인해보세요.</string>
 
     <!-- 공유 페이지 - 노래 선택 -->
     <string name="share_search_music_hint">검색할 노래를 입력해 주세요.</string>
