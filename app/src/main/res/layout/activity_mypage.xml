@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/padding_medium"
+    android:padding="@dimen/padding_normal"
     android:background="@android:color/white"
     android:fitsSystemWindows="true">
 
@@ -58,7 +58,7 @@
             android:text="@string/mypage_category_setting"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_medium"
-            android:layout_marginTop="@dimen/padding_medium" />
+            android:layout_marginTop="@dimen/padding_normal" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -97,25 +97,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:columnCount="3"
-            android:layout_marginTop="@dimen/margin_small">
+            android:layout_marginTop="@dimen/margin_half">
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/mypage_album1"
-                android:layout_margin="@dimen/margin_small" />
+                android:layout_margin="@dimen/margin_half" />
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/mypage_album2"
-                android:layout_margin="@dimen/margin_small" />
+                android:layout_margin="@dimen/margin_half" />
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/mypage_album3"
-                android:layout_margin="@dimen/margin_small" />
+                android:layout_margin="@dimen/margin_half" />
         </GridLayout>
 
         <!-- 탈퇴하기 버튼 -->

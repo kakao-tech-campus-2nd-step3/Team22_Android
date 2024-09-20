@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="?attr/actionBarSize"
-    android:padding="90dp"
+    android:padding="9dp"
     android:fillViewport="true"
     android:background="@android:color/white"
     android:fitsSystemWindows="true">
@@ -21,15 +21,15 @@
             android:text="@string/signup_pick_profile_imageview"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_medium"
-            android:paddingBottom="@dimen/padding_small"/>
+            android:paddingBottom="@dimen/padding_half"/>
 
         <!-- 상단 프로필 이미지 -->
         <ImageView
             android:id="@+id/signup_imageview_profileimage"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_half"
+            android:layout_marginBottom="@dimen/margin_normal"
             android:scaleType="centerCrop"
             android:src="@drawable/all_profile_placeholder"/>
 
@@ -41,7 +41,7 @@
             android:text="@string/mypage_introduce"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_medium"
-            android:paddingBottom="@dimen/padding_small"/>
+            android:paddingBottom="@dimen/padding_half"/>
 
         <!-- 한 줄 소개 입력 필드 -->
         <EditText
@@ -52,7 +52,7 @@
             android:textColor="@color/black"
             android:textColorHint="@color/gray_200"
             android:importantForAccessibility="yes"
-            android:layout_marginBottom="@dimen/margin_medium"/>
+            android:layout_marginBottom="@dimen/margin_normal"/>
 
         <!-- 가입하기 버튼 -->
         <Button

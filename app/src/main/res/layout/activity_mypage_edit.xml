@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/padding_medium"
+    android:padding="@dimen/padding_normal"
     android:background="@android:color/white"
     android:fitsSystemWindows="true">
 
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/padding_medium">
+        android:padding="@dimen/padding_normal">
 
         <!-- 타이틀 -->
         <TextView
@@ -39,7 +39,7 @@
                 android:layout_height="100dp"
                 android:src="@drawable/all_profile_placeholder"
                 android:scaleType="centerCrop"
-                android:layout_marginEnd="@dimen/margin_medium"/>
+                android:layout_marginEnd="@dimen/margin_normal"/>
 
             <!-- 텍스트 정보 -->
             <LinearLayout
@@ -62,7 +62,7 @@
                     android:text="@string/mypage_name"
                     android:textSize="@dimen/text_size_medium"
                     android:textStyle="bold"
-                    android:layout_marginBottom="@dimen/margin_small"/>
+                    android:layout_marginBottom="@dimen/margin_half"/>
 
                 <!-- 아이디 -->
                 <TextView
@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/mypage_email"
                     android:textSize="@dimen/text_size_medium"
-                    android:layout_marginBottom="@dimen/margin_small"/>
+                    android:layout_marginBottom="@dimen/margin_half"/>
 
                 <!-- 한줄 소개 -->
                 <TextView
@@ -102,7 +102,7 @@
             android:text="@string/mypage_category_setting"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_medium"
-            android:layout_marginBottom="@dimen/margin_medium"/>
+            android:layout_marginBottom="@dimen/margin_normal"/>
 
         <!-- 카테고리 버튼들 -->
         <GridLayout
@@ -147,7 +147,7 @@
             android:text="@string/mypage_save"
             android:background="@drawable/all_rounded_button"
             android:textColor="@android:color/white"
-            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_normal"
             android:elevation="8dp"/>
     </LinearLayout>
 </ScrollView>

@@ -121,7 +121,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/button_background"
+        android:background="@drawable/all_rounded_button"
         android:gravity="center"
         android:padding="10dp"
         android:text="@string/share_button_text"

@@ -23,14 +23,14 @@
             android:hint="검색"
             android:layout_weight="1"
             android:padding="@dimen/padding_half"
-            android:drawableStart="@drawable/ic_search"
+            android:drawableStart="@drawable/search_search"
             android:drawablePadding="8dp"
             android:inputType="text" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_cancel"/>
+            android:src="@drawable/all_icon_cancel"/>
     </LinearLayout>
 
     <!-- 친구 목록을 표시하는 RecyclerView -->

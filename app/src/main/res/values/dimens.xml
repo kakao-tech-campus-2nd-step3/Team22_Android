@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--Main-->
-    <dimen name="top_margin_half">8dp</dimen>
-    <dimen name="top_margin">16dp</dimen>
-    <dimen name="top_margin_double">32dp</dimen>
-    <dimen name="bottom_margin">8dp</dimen>
-    <dimen name="bottom_margin_double">16dp</dimen>
-    <dimen name="horizontal_margin">16dp</dimen>
+    <!-- all -->
+    <!-- margin -->
+    <dimen name="margin_half">8dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_double">32dp</dimen>
+
+    <!-- Padding -->
+    <dimen name="padding_half">8dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+
+    <!-- Main -->
     <dimen name="icons_padding">12dp</dimen>
     <dimen name="icons_margin">38dp</dimen>
-    <dimen name="message_padding_vertical">8dp</dimen>
     <dimen name="message_padding_horizontal">36dp</dimen>
     <dimen name="music_cover_size">250dp</dimen>
     <dimen name="friend_pic_size">42dp</dimen>
@@ -19,14 +23,7 @@
 
     <!-- login, mypage -->
     <!-- Margin -->
-    <dimen name="margin_small">8dp</dimen>
-    <dimen name="margin_medium">16dp</dimen>
     <dimen name="margin_large">24dp</dimen>
-
-    <!-- Padding -->
-    <dimen name="padding_small">8dp</dimen>
-    <dimen name="padding_medium">16dp</dimen>
-    <dimen name="padding_large">24dp</dimen>
 
     <!-- Textsize -->
     <dimen name="text_size_large">24sp</dimen>
@@ -37,12 +34,7 @@
     <dimen name="share_padding">20dp</dimen>
     
     <!--profile-->
-    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="category_margin">4dp</dimen>
     <dimen name="text_size_normal">16sp</dimen>
-    <dimen name="text_size_big">18sp</dimen>
-    <dimen name="padding_half">8dp</dimen>
-    <dimen name="padding_normal">16dp</dimen>
-    <dimen name="margin_half">8dp</dimen>
-    <dimen name="margin_normal">16dp</dimen>
-    <dimen name="margin_double">32dp</dimen>
+    <dimen name="text_size_double">18sp</dimen>
 </resources>
