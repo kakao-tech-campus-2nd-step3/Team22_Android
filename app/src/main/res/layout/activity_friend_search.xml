@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:padding="@dimen/padding_normal"
         android:gravity="center_vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:hint="검색"
             android:layout_weight="1"
-            android:padding="8dp"
+            android:padding="@dimen/padding_half"
             android:drawableStart="@drawable/ic_search"
             android:drawablePadding="8dp"
             android:inputType="text" />
@@ -38,7 +38,7 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/margin_normal"
         app:layout_constraintTop_toBottomOf="@+id/search_container"
         app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

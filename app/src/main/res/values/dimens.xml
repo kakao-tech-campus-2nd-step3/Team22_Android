@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--profile-->
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="text_size_big">18sp</dimen>
+    <dimen name="padding_half">8dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
+    <dimen name="margin_half">8dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_double">32dp</dimen>
+</resources>
