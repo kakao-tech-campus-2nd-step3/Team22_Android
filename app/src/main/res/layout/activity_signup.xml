@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 상단 안내 텍스트 -->
+        <TextView
+            android:id="@+id/signup_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/signup_necessary_info"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:paddingBottom="@dimen/padding_medium"/>
+
+        <!-- 앱의 고유 아이디 입력 필드 -->
+        <TextView
+            android:id="@+id/signup_email_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup_nick_intro_info"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_small"/>
+
+        <EditText
+            android:id="@+id/signup_edittext_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/signup_ID_hint"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray_200"
+            android:importantForAccessibility="yes"
+            android:layout_marginBottom="@dimen/margin_medium"/>
+
+        <!-- 닉네임 입력 필드 -->
+        <TextView
+            android:id="@+id/signup_nickname_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mypage_nickname"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_small"/>
+
+        <EditText
+            android:id="@+id/signup_edittext_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/signup_nickname_hint"
+            android:maxLength="8"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray_200"
+            android:importantForAccessibility="yes"
+            android:layout_marginBottom="@dimen/margin_medium"/>
+
+        <!-- 카테고리 설정 타이틀 -->
+        <TextView
+            android:id="@+id/signup_category_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup_category_title"
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/black"/>
+
+        <!-- 카테고리 선택 버튼들 -->
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="4"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_medium">
+
+            <ToggleButton
+                android:id="@+id/signup_togglebutton_category_hiphop"
+                android:textOn="@string/category_hiphop"
+                android:textOff="@string/category_hiphop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/all_rounded_toggle_button"/>
+
+            <ToggleButton
+                android:id="@+id/signup_togglebutton_category_rock"
+                android:textOn="@string/category_rock"
+                android:textOff="@string/category_rock"
+                style="@style/CategoryButton"/>
+
+            <ToggleButton
+                android:id="@+id/signup_togglebutton_category_pop"
+                android:textOn="@string/category_pop"
+                android:textOff="@string/category_pop"
+                style="@style/CategoryButton"/>
+
+            <ToggleButton
+                android:id="@+id/signup_togglebutton_category_jpop"
+                android:textOn="@string/category_jpop"
+                android:textOff="@string/category_jpop"
+                style="@style/CategoryButton"/>
+
+            <ToggleButton
+                android:id="@+id/signup_togglebutton_category_ballad"
+                android:textOn="@string/category_ballad"
+                android:textOff="@string/category_ballad"
+                style="@style/CategoryButton"/>
+
+            <ToggleButton
+                android:id="@+id/signup_togglebutton_category_dance"
+                android:textOn="@string/category_dance"
+                android:textOff="@string/category_dance"
+                style="@style/CategoryButton"/>
+
+            <ToggleButton
+                android:id="@+id/signup_togglebutton_category_rnb"
+                android:textOn="@string/category_rnb"
+                android:textOff="@string/category_rnb"
+                style="@style/CategoryButton"/>
+        </GridLayout>
+
+        <!-- 약관 동의 체크박스 -->
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/signup_radiobutton_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/signup_terms_agreement"
+                android:textColor="@color/black"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/signup_radiobutton_privacy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/signup_privacy_agreement"
+                android:textColor="@color/black"/>
+        </RadioGroup>
+
+        <!-- 계속 가입하기 버튼 -->
+        <Button
+            android:id="@+id/signup_button_continue"
+            android:text="@string/signup_continue_button"
+            android:background="@drawable/all_rounded_button"
+            style="@style/SignupButton"/>
+    </LinearLayout>
+</ScrollView>
