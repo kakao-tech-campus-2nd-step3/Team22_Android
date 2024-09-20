@@ -98,39 +98,20 @@
         android:layout_marginTop="16dp">
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:text="@string/genre_hiphop"
-            android:background="@drawable/button_background"
-            android:textColor="@color/white"
-            android:layout_weight="1" />
+            style="@style/profile_category_style"/>
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:text="@string/genre_rock"
-            android:background="@drawable/button_background"
-            android:textColor="@color/white"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1" />
+            style="@style/profile_category_style"/>
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:text="@string/genre_pop"
-            android:background="@drawable/button_background"
-            android:textColor="@color/white"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1" />
+            style="@style/profile_category_style"/>
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:text="@string/genre_Jpop"
-            android:background="@drawable/button_background"
-            android:textColor="@color/white"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1" />
+            style="@style/profile_category_style"/>
     </LinearLayout>
 </LinearLayout>
 
