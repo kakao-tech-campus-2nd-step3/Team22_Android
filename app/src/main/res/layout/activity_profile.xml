@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <LinearLayout
+        android:id="@+id/vertical_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/add_friend_button">
+
+    <LinearLayout
+        android:id="@+id/header_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="@dimen/padding_normal">
+
+        <ImageView
+            android:id="@+id/back_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:id="@+id/title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kookies"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginStart="125dp" />
+    </LinearLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_imageview"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@drawable/all_profile_placeholder"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:contentDescription="Profile Image" />
+
+    <TextView
+        android:id="@+id/user_name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_name"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_size_big"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_normal" />
+
+    <TextView
+        android:id="@+id/user_email_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_email"
+        android:textSize="@dimen/text_size_small"
+        android:textColor="@color/gray_500"
+        android:layout_gravity="center"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:id="@+id/status_message_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/state_message"
+        android:textSize="@dimen/text_size_normal"
+        android:textStyle="italic"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_half" />
+
+    <TextView
+        android:id="@+id/favorite_category_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="선호 카테고리"
+        android:textSize="@dimen/text_size_normal"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_double" />
+
+    <LinearLayout
+        android:id="@+id/category_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_normal">
+
+        <Button
+            android:text="@string/genre_hiphop"
+            style="@style/profile_category_style"/>
+
+        <Button
+            android:text="@string/genre_rock"
+            style="@style/profile_category_style"/>
+
+        <Button
+            android:text="@string/genre_pop"
+            style="@style/profile_category_style"/>
+
+        <Button
+            android:text="@string/genre_Jpop"
+            style="@style/profile_category_style"/>
+    </LinearLayout>
+</LinearLayout>
+
+    <Button
+        android:id="@+id/add_friend_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_friend"
+        android:background="@drawable/button_background"
+        android:padding="@dimen/padding_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="60dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
