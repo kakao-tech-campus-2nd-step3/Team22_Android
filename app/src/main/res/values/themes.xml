@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Soundary" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
@@ -12,5 +12,65 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="windowNoTitle">true</item>
+
     </style>
+
+    <!-- category_button_styles -->
+    <style name="CategoryButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/all_rounded_toggle_button</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_margin">@dimen/category_margin</item>
+    </style>
+
+    <!--signup button-->
+    <style name="SignupButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/all_rounded_button</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">@dimen/margin_large</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="shareTopTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
+
+    <style name="shareFriendTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+    </style>
+
+    <style name="bottomSheetCategory">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/all_rounded_toggle_button</item>
+        <item name="android:textColor">@color/gray_500</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:layout_marginHorizontal">3dp</item>
+    </style>
+    <!-- profile -->
+    <style name="profile_category_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/all_rounded_button</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginHorizontal">8dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
 </resources>

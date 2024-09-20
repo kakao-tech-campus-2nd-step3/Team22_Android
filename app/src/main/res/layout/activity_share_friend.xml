@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/share_padding"
+    tools:context=".feature.share.ShareFriendActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:contentDescription="@string/share_back_button"
+        android:src="@drawable/all_icon_back"
+        app:layout_constraintBottom_toBottomOf="@+id/share_friend_top_textview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/share_friend_top_textview" />
+
+    <TextView
+        android:id="@+id/share_friend_top_textview"
+        style="@style/shareTopTextStyle"
+        android:text="@string/share_friend_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/album_image_card_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/share_friend_top_textview">
+
+        <ImageView
+            android:id="@+id/share_music_imageview"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:contentDescription="@string/share_album_image"
+            android:src="@drawable/stalker" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/share_music_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="@string/share_music_name"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/album_image_card_view" />
+
+    <TextView
+        android:id="@+id/share_singer_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/share_singer_name"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/share_music_textview" />
+
+    <TextView
+        android:id="@+id/share_select_friend"
+        style="@style/shareFriendTextStyle"
+        android:text="@string/share_friend_q1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/share_singer_textview" />
+
+    <ImageView
+        android:id="@+id/share_add_friend"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/share_add_friend"
+        android:src="@drawable/all_profile_placeholder"
+        app:layout_constraintStart_toStartOf="@+id/share_select_friend"
+        app:layout_constraintTop_toBottomOf="@+id/share_select_friend" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/share_friend_recyclerview"
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:layout_marginTop="5dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toEndOf="@+id/share_add_friend"
+        app:layout_constraintTop_toBottomOf="@+id/share_select_friend"
+        tools:itemCount="8"
+        tools:listitem="@layout/share_friend_item"
+        tools:orientation="horizontal" />
+
+    <TextView
+        android:id="@+id/share_select_comment"
+        style="@style/shareFriendTextStyle"
+        android:text="@string/share_friend_q2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/share_friend_recyclerview" />
+
+    <EditText
+        android:id="@+id/share_comment_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:hint="@string/share_comment_hint"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/share_select_comment"
+        app:layout_constraintTop_toBottomOf="@+id/share_select_comment" />
+
+    <TextView
+        android:id="@+id/share_send_button"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/all_rounded_button"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/share_button_text"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
