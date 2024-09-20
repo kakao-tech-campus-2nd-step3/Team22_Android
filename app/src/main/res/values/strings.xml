@@ -1,5 +1,33 @@
 <resources>
     <string name="app_name">Soundary</string>
+
+    <!-- 공유 페이지 - 노래 선택 -->
+    <string name="share_search_music_hint">검색할 노래를 입력해 주세요.</string>
+    <string name="share_music_top">어떤 노래를 공유할까요?</string>
+    <string name="share_sort_share">많은 사용자들이 공유한 노래</string>
+    <string name="share_sort_like">많은 사용자들이 좋아한 노래</string>
+    <string name="share_music_name">스토커</string>
+    <string name="share_singer_name">10cm</string>
+    <string name="share_sort_count">1000명이 공유함</string>
+
+    <!-- 공유 페이지 - 친구 선택 -->
+    <string name="share_friend_top">누구에게 공유할까요?</string>
+    <string name="share_friend_q1">공유할 친구를 선택해 주세요.</string>
+    <string name="share_friend_q2">코멘트를 남겨주세요. (최대 30자)</string>
+    <string name="share_comment_hint">코멘트 디폴트값</string>
+    <string name="share_button_text">n명에게 보내기</string>
+    <string name="share_user_name">쿠키즈</string>
+    <string name="share_user_name_first_word">쿠</string>
+
+    <!-- 바텀 시트 -->
+    <string name="search_friend_hint">검색할 친구를 입력해 주세요.</string>
+    <string name="select_all_friend">전체 선택</string>
+
+    <!-- ImageView에 쓰이는 contentDescription -->
+    <string name="share_back_button">backButton</string>
+    <string name="share_album_image">albumImage</string>
+    <string name="share_add_friend">addFriend</string>
+
     <!-- 위젯 화면 관련 텍스트 -->
     <string name="widget_label_text">콘</string>  <!-- 위젯 텍스트 (콘) -->
 
@@ -32,6 +60,7 @@
     <string name="mypage_ID">아이디</string>
     <string name="mypage_save">저장하기</string>
 
+
     <!--category-->
     <string name="mypage_category_setting">카테고리 설정</string>
     <string name="category_hiphop">힙합</string>
@@ -58,3 +87,4 @@
 
     <string name="add_friend">친구 추가</string>
 </resources>
+
