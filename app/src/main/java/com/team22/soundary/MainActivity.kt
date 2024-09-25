@@ -13,6 +13,6 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }*/
-        setContentView(R.layout.widget_main)
+        setContentView(R.layout.activity_mypage)
     }
 }
