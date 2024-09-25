@@ -5,9 +5,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layoutDescription="@xml/motion_scene_main"
     tools:context=".feature.main.MainActivity">
 
     <ImageView
+        android:id="@+id/background_upper_imageView"
         android:layout_width="800dp"
         android:layout_height="400dp"
         android:src="@drawable/main_background"
@@ -17,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/background_lower_imageView"
         android:layout_width="800dp"
         android:layout_height="400dp"
         android:src="@drawable/main_background"
@@ -80,7 +83,7 @@
         android:layout_height="@dimen/music_cover_size"
         android:layout_marginTop="110dp"
         android:background="@drawable/main_music_cover"
-        android:rotation="160"
+        android:rotation="-20"
         app:layout_constraintBottom_toBottomOf="@id/current_imageView"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/current_imageView" />
@@ -98,9 +101,13 @@
         android:textSize="@dimen/message_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/current_imageView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        />
 
     <ImageView
+        android:id="@+id/message_tail_imageView"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:src="@drawable/main_message_bubble_tail"
@@ -109,15 +116,22 @@
         app:layout_constraintTop_toBottomOf="@+id/message_textView" />
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <androidx.cardview.widget.CardView
         android:id="@+id/friend_pic_imageView"
         android:layout_width="@dimen/friend_pic_size"
         android:layout_height="@dimen/friend_pic_size"
         android:layout_marginTop="@dimen/margin_half"
         android:layout_marginBottom="@dimen/margin_half"
-        android:src="@drawable/ic_launcher_background"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="0dp"
         app:layout_constraintEnd_toStartOf="@id/friend_name_textView"
-        app:layout_constraintTop_toBottomOf="@+id/message_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/message_textView">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_launcher_background"/>
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/friend_name_textView"
@@ -166,6 +180,7 @@
         app:layout_constraintVertical_bias="0.55" />
 
     <ImageButton
+        android:id="@+id/emotion_imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/icons_margin"
@@ -177,6 +192,7 @@
         app:layout_constraintTop_toTopOf="@id/like_button" />
 
     <ImageButton
+        android:id="@+id/share_imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/icons_margin"
@@ -188,6 +204,7 @@
         app:layout_constraintTop_toTopOf="@id/like_button" />
 
     <TextView
+        android:id="@+id/instruction_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_normal"
