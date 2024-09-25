@@ -124,14 +124,9 @@
         android:layout_marginBottom="@dimen/margin_half"
         app:cardCornerRadius="100dp"
         app:cardElevation="0dp"
+        android:foreground="@drawable/ic_launcher_background"
         app:layout_constraintEnd_toStartOf="@id/friend_name_textView"
-        app:layout_constraintTop_toBottomOf="@+id/message_textView">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_launcher_background"/>
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@+id/message_textView"/>
 
     <TextView
         android:id="@+id/friend_name_textView"
