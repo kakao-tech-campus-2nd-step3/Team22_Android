@@ -40,7 +40,7 @@ class ShareRepositoryImpl : ShareRepository {
             UserEntity("", "콘", "", "", "", Date(), Date()),
             SongEntity("", "Supernova", "", "", "aespa", Date()),
             "내 최애 노래야!",
-            false
+            true
         ),
     )
 

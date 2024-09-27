@@ -6,8 +6,10 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.team22.soundary.R
@@ -59,4 +61,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+}
+
+@BindingAdapter("like")
+fun checkLike(imageView: ImageView,boolean: Boolean){
+    if(boolean){
+        imageView.setImageResource(R.drawable.main_like_background_pressed)
+    } else {
+        imageView.setImageResource(R.drawable.main_like_background)
+    }
 }

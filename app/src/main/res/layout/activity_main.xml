@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:hi="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="viewModel"
@@ -179,6 +180,7 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:src="@drawable/main_like_background"
+            hi:like="@{viewModel.uiState.likeSong}"
             app:layout_constraintBottom_toBottomOf="@id/control_imageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
