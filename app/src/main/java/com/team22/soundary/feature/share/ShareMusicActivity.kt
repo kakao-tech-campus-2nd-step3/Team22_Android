@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,15 +26,14 @@ class ShareMusicActivity : AppCompatActivity() {
             resources.getStringArray(R.array.share_sort_array)
         )
 
-        // recyclerView
-
-        // 임시데이터 생성
+        // recyclerView 임시데이터 생성
         val musicList = mutableListOf<MusicItemEntity>()
         for (i in 0..5) {
             musicList.add(MusicItemEntity(i, "노래이름1", "가수", "100명이 공유함"))
             musicList.add(MusicItemEntity(i, "노래이름2", "가수", "100명이 공유함"))
         }
 
+        // recyclerView
         val recyclerView = findViewById<RecyclerView>(R.id.share_music_recyclerview)
         val mapListAdapter = MusicListAdapter(musicList, LayoutInflater.from(this))
         recyclerView.adapter = mapListAdapter
