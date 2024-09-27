@@ -9,10 +9,10 @@ import com.team22.soundary.R
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.widget_main)
 
-        val spinner = findViewById<Spinner>(R.id.sort_spinner)
+        /*val spinner = findViewById<Spinner>(R.id.sort_spinner)
         spinner.adapter = ArrayAdapter(this,
-            R.layout.main_spinner_item,resources.getStringArray(R.array.mock_array))
+            R.layout.main_spinner_item,resources.getStringArray(R.array.mock_array))*/
     }
 }
