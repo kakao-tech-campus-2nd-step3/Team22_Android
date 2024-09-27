@@ -1,5 +1,4 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,10 +14,10 @@
         android:text="@string/signup_necessary_info"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- 앱의 고유 아이디 입력 필드 -->
     <TextView
@@ -28,8 +27,8 @@
         android:text="@string/signup_nick_intro_info"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_small"
-        app:layout_constraintTop_toBottomOf="@id/signup_title"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_title" />
 
     <EditText
         android:id="@+id/signup_edittext_email"
@@ -40,9 +39,9 @@
         android:inputType="textEmailAddress"
         android:textColor="@color/black"
         android:textColorHint="@color/gray_200"
-        app:layout_constraintTop_toBottomOf="@id/signup_email_label"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/signup_email_label" />
 
     <!-- 닉네임 입력 필드 -->
     <TextView
@@ -52,8 +51,8 @@
         android:text="@string/mypage_nickname"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_small"
-        app:layout_constraintTop_toBottomOf="@id/signup_edittext_email"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_edittext_email" />
 
     <EditText
         android:id="@+id/signup_edittext_nickname"
@@ -64,9 +63,9 @@
         android:maxLength="8"
         android:textColor="@color/black"
         android:textColorHint="@color/gray_200"
-        app:layout_constraintTop_toBottomOf="@id/signup_nickname_label"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/signup_nickname_label" />
 
     <!-- 카테고리 설정 타이틀 -->
     <TextView
@@ -76,8 +75,8 @@
         android:text="@string/signup_category_title"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_small"
-        app:layout_constraintTop_toBottomOf="@id/signup_edittext_nickname"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_edittext_nickname" />
 
     <!-- 카테고리 선택 버튼들 -->
     <GridLayout
@@ -87,9 +86,9 @@
         android:layout_marginTop="@dimen/margin_half"
         android:layout_marginBottom="@dimen/margin_normal"
         android:columnCount="4"
-        app:layout_constraintTop_toBottomOf="@id/signup_category_title"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/signup_category_title">
 
         <ToggleButton
             android:id="@+id/signup_togglebutton_category_hiphop"
@@ -141,9 +140,9 @@
         android:id="@+id/signup_radiogroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/signup_category_grid"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/signup_category_grid">
 
         <RadioButton
             android:id="@+id/signup_radiobutton_service"
@@ -169,8 +168,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/all_rounded_button"
         android:text="@string/signup_continue_button"
-        app:layout_constraintTop_toBottomOf="@id/signup_radiogroup"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/signup_radiogroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
