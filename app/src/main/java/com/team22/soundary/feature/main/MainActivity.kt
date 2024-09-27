@@ -31,9 +31,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        binding.likeButton.setOnClickListener {
-            ShareRepositoryImpl().add()
-        }
         binding.sortSpinner.adapter = ArrayAdapter(this,R.layout.main_spinner_item,viewModel.friendNames)
         binding.sortSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
