@@ -68,7 +68,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/select_friend_recyclerview"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="170dp"
         android:layout_marginVertical="10dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/share_comment_edittext"
@@ -97,6 +97,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/select_all_friend"
+        android:button="@null"
+        android:drawableTop="@drawable/all_circle_checkbox_selector"
         app:layout_constraintBottom_toBottomOf="@+id/send_button"
         app:layout_constraintEnd_toStartOf="@id/send_button"
         app:layout_constraintStart_toStartOf="parent"
