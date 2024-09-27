@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="50dp"
+        app:cardElevation="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -17,8 +18,8 @@
             android:id="@+id/share_music_imageview"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/stalker"
-            android:contentDescription="@string/share_album_image" />
+            android:contentDescription="@string/share_album_image"
+            android:src="@drawable/stalker" />
 
     </androidx.cardview.widget.CardView>
 

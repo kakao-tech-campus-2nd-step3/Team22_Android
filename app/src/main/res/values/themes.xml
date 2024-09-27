@@ -64,6 +64,14 @@
         <item name="android:button">@null</item>
         <item name="android:layout_marginHorizontal">3dp</item>
     </style>
+
+    <style name="shareGrayBackground">
+        <item name="android:layout_width">@dimen/item_size</item>
+        <item name="android:layout_height">@dimen/item_size</item>
+        <item name="android:visibility">invisible</item>
+        <item name="android:src">@drawable/share_gray_circle</item>
+    </style>
+
     <!-- profile -->
     <style name="profile_category_style">
         <item name="android:layout_width">0dp</item>

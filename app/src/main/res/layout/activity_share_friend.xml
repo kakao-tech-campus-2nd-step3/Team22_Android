@@ -94,7 +94,7 @@
         app:layout_constraintStart_toEndOf="@+id/share_add_friend"
         app:layout_constraintTop_toBottomOf="@+id/share_select_friend"
         tools:itemCount="8"
-        tools:listitem="@layout/share_friend_item"
+        tools:listitem="@layout/share_friend_item_no_image"
         tools:orientation="horizontal" />
 
     <TextView
