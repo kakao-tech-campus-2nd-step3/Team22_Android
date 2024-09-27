@@ -5,33 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/search_container"
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/search_edit_text"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/padding_normal"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="검색"
+        android:padding="@dimen/padding_half"
+        android:drawableStart="@drawable/all_icon_search"
+        android:drawablePadding="8dp"
+        android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toStartOf="@+id/cancel_button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/cancel_button"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"/>
 
-        <EditText
-            android:id="@+id/search_edit_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableStart="@drawable/search_search"
-            android:drawablePadding="8dp"
-            android:hint="검색"
-            android:inputType="text"
-            android:padding="@dimen/padding_half" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/all_icon_cancel" />
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/all_icon_cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/search_edit_text"
+        app:layout_constraintBottom_toBottomOf="@+id/search_edit_text"
+        android:layout_marginEnd="@dimen/margin_normal" />
 
     <!-- 친구 목록을 표시하는 RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
@@ -39,6 +38,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        app:layout_constraintTop_toBottomOf="@+id/search_edit_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_container" />
+        tools:listitem="@layout/friend_item_basic"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
