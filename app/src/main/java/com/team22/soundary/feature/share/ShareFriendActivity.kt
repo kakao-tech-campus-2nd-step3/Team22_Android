@@ -44,5 +44,13 @@ class ShareFriendActivity : AppCompatActivity() {
         recyclerView.adapter = FriendListAdapter(friendList, LayoutInflater.from(this))
         recyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        // bottom Sheet
+        val addFriendButton = findViewById<ImageView>(R.id.share_add_friend)
+
+        addFriendButton.setOnClickListener {
+            val modal = ShareBottomSheet()
+            modal.show(supportFragmentManager, ShareBottomSheet.TAG)
+        }
     }
 }
