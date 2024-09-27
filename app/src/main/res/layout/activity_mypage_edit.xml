@@ -18,9 +18,9 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
+            android:contentDescription="@string/share_album_image"
             android:scaleType="centerCrop"
-            android:src="@drawable/all_profile_placeholder"
-            android:contentDescription="@string/share_album_image" />
+            android:src="@drawable/all_profile_placeholder" />
 
         <!-- 한줄소개 수정 -->
         <EditText
@@ -45,39 +45,39 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="3"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:columnCount="3">
 
             <!-- 카테고리 버튼들 -->
             <Button
+                android:id="@+id/button_hiphop"
                 style="@style/CategoryButton"
-                android:text="@string/category_hiphop"
-                android:id="@+id/button_hiphop" />
+                android:text="@string/category_hiphop" />
 
             <Button
+                android:id="@+id/button_rock"
                 style="@style/CategoryButton"
-                android:text="@string/category_rock"
-                android:id="@+id/button_rock" />
+                android:text="@string/category_rock" />
 
             <Button
+                android:id="@+id/button_pop"
                 style="@style/CategoryButton"
-                android:text="@string/category_pop"
-                android:id="@+id/button_pop" />
+                android:text="@string/category_pop" />
 
             <Button
+                android:id="@+id/button_jpop"
                 style="@style/CategoryButton"
-                android:text="@string/category_jpop"
-                android:id="@+id/button_jpop" />
+                android:text="@string/category_jpop" />
 
             <Button
+                android:id="@+id/button_ballad"
                 style="@style/CategoryButton"
-                android:text="@string/category_ballad"
-                android:id="@+id/button_ballad" />
+                android:text="@string/category_ballad" />
 
             <Button
+                android:id="@+id/button_dance"
                 style="@style/CategoryButton"
-                android:text="@string/category_dance"
-                android:id="@+id/button_dance" />
+                android:text="@string/category_dance" />
         </GridLayout>
     </LinearLayout>
 </ScrollView>

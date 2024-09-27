@@ -41,7 +41,8 @@ class ProfileActivity : AppCompatActivity() {
                 ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
             }
 
-            val cameraPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+            val cameraPermission =
+                ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
 
             val listPermissionsNeeded = ArrayList<String>()
             if (readPermission != PackageManager.PERMISSION_GRANTED) {
@@ -55,7 +56,11 @@ class ProfileActivity : AppCompatActivity() {
                 listPermissionsNeeded.add(Manifest.permission.CAMERA)
             }
             if (listPermissionsNeeded.isNotEmpty()) {
-                ActivityCompat.requestPermissions(this, listPermissionsNeeded.toTypedArray(), PERMISSION_REQUEST_CODE)
+                ActivityCompat.requestPermissions(
+                    this,
+                    listPermissionsNeeded.toTypedArray(),
+                    PERMISSION_REQUEST_CODE
+                )
                 return false
             }
         }
@@ -76,7 +81,11 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             PERMISSION_REQUEST_CODE -> {
