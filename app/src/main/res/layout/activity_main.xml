@@ -114,7 +114,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/message_textView" />
 
-
     <androidx.cardview.widget.CardView
         android:id="@+id/friend_pic_imageView"
         android:layout_width="@dimen/friend_pic_size"
