@@ -5,7 +5,7 @@ import android.graphics.Bitmap
 data class MainUiState(
     val friendNameList: List<String> = emptyList(),
     val friendName: String = "",
-    val friendImage: Bitmap? = null,
+    val friendImage: String? = null,
     val isLastSong: Boolean = false,
     val isFirstSong: Boolean = false,
     val musicName: String = "",
