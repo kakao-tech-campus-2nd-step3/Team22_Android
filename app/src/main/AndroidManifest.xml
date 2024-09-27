@@ -22,7 +22,7 @@
         android:theme="@style/Theme.Soundary"
         tools:targetApi="31">
         <activity
-            android:name=".feature.main.profile.ProfileActivity"
+            android:name=".feature.main.profile.ProfileEditActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
