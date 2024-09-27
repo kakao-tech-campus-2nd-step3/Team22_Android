@@ -11,16 +11,23 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <!-- 프로필 이미지 및 갤러리 접근 -->
-        <ImageView
-            android:id="@+id/profile_imageview"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+        <!-- 프로필 이미지 및 갤러리 접근 - CardView로 감쌈 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/all_profile_placeholder"
-            android:contentDescription="@string/share_album_image" />
+            app:cardCornerRadius="75dp"
+            app:cardElevation="4dp">
+
+            <ImageView
+                android:id="@+id/profile_imageview"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/all_profile_placeholder"
+                android:contentDescription="@string/share_album_image" />
+        </androidx.cardview.widget.CardView>
 
         <!-- 한줄소개 수정 -->
         <EditText

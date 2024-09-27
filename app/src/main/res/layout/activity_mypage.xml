@@ -1,6 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white"
     android:fitsSystemWindows="true"
     android:padding="@dimen/padding_normal">
@@ -11,15 +12,22 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <!-- 프로필 이미지 및 정보 -->
-        <ImageView
-            android:id="@+id/profile_imageview"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+        <!-- 프로필 이미지 및 정보 - CardView로 감쌈 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/all_profile_placeholder" />
+            app:cardCornerRadius="75dp"
+            app:cardElevation="4dp">
+
+            <ImageView
+                android:id="@+id/profile_imageview"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/all_profile_placeholder" />
+        </androidx.cardview.widget.CardView>
 
         <!-- 연필 아이콘 -->
         <ImageButton
