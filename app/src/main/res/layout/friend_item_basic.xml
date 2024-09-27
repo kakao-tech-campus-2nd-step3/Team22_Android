@@ -71,7 +71,7 @@
         android:text="삭제"
         android:textColor="@color/black"
         android:backgroundTint="@android:color/transparent"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/all_rounded_button"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
