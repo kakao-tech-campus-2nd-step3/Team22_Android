@@ -57,12 +57,6 @@ class MainActivity : AppCompatActivity() {
                 binding.prevImageView.visibility = if (uiState.isFirstSong) GONE else VISIBLE
             }
         }
-
-        lifecycleScope.launch {
-            viewModel.uiState.collect { uiState ->
-            }
-        }
-
     }
 
 }
