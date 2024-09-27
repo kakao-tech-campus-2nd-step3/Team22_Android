@@ -1,7 +1,9 @@
 package com.team22.soundary.feature.share;
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +15,13 @@ class ShareFriendActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_share_friend)
+
+        // back Button
+        val backButton = findViewById<ImageView>(R.id.share_friend_back_button)
+
+        backButton.setOnClickListener {
+            finish()
+        }
 
         // musicInfo
         val musicTextView = findViewById<TextView>(R.id.share_music_textview)
