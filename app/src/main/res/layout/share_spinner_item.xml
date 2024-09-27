@@ -3,6 +3,6 @@
     style="?android:attr/spinnerItemStyle"
     android:layout_width="match_parent"
     android:layout_height="35dp"
-    android:textSize="13sp"
     android:gravity="center"
-    android:textColor="@color/black" />
+    android:textColor="@color/black"
+    android:textSize="13sp" />

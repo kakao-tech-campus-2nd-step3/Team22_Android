@@ -96,13 +96,16 @@
         android:id="@+id/share_select_all_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/select_all_friend"
         android:button="@null"
         android:drawableTop="@drawable/all_circle_checkbox_selector"
+        android:gravity="center"
+        android:text="@string/select_all_friend"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/send_button"
         app:layout_constraintEnd_toStartOf="@id/send_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/send_button" />
+        app:layout_constraintTop_toTopOf="@id/send_button"
+        app:layout_constraintVertical_bias="0" />
 
     <TextView
         android:id="@+id/send_button"
