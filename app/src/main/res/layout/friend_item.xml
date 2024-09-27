@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginVertical="8dp">
 
+
     <androidx.cardview.widget.CardView
         android:id="@+id/profile_imageview"
         android:layout_width="70dp"
