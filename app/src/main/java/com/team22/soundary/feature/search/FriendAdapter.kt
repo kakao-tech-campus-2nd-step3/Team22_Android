@@ -1,85 +1,77 @@
 package com.team22.soundary.feature.search
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.team22.soundary.R
+import com.team22.soundary.databinding.FriendItemBasicBinding
+import com.team22.soundary.databinding.FriendItemNewBinding
 import com.team22.soundary.feature.search.data.Friend
 
 class FriendAdapter(private var friends: List<Friend>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val VIEW_TYPE_NEW = 1
-    private val VIEW_TYPE_REGULAR = 2
+    private val VIEW_TYPE_BASIC = 2
 
     override fun getItemViewType(position: Int): Int {
         return if (friends[position].isNewFriend) {
             VIEW_TYPE_NEW
         } else {
-            VIEW_TYPE_REGULAR
+            VIEW_TYPE_BASIC
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if (viewType == VIEW_TYPE_NEW) {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.friend_item_new, parent, false)
-            NewFriendViewHolder(view)
-        } else {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.friend_item_basic, parent, false)
-            RegularFriendViewHolder(view)
+        return when (viewType) {
+            VIEW_TYPE_NEW -> {
+                // NewFriendViewHolder 생성
+                val binding = FriendItemNewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                NewFriendViewHolder(binding)
+            }
+            VIEW_TYPE_BASIC -> {
+                // BasicFriendViewHolder 생성 (ViewBinding 사용)
+                val binding = FriendItemBasicBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                BasicFriendViewHolder(binding)
+            }
+            else -> throw IllegalArgumentException("Invalid view type")
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val friend = friends[position]
-        if (holder is NewFriendViewHolder) {
-            holder.bind(friend)
-        } else if (holder is RegularFriendViewHolder) {
-            holder.bind(friend)
+        // ViewHolder 타입에 따라 캐스팅하여 bind() 호출
+        when (holder) {
+            is NewFriendViewHolder -> holder.bind(friend)
+            is BasicFriendViewHolder -> holder.bind(friend)
         }
     }
 
-    override fun getItemCount() = friends.size
+    override fun getItemCount(): Int {
+        return friends.size
+    }
 
-    class NewFriendViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val nameTextView: TextView = itemView.findViewById(R.id.user_name_textview)
-        private val genreTextView: TextView = itemView.findViewById(R.id.favorite_genre_textview)
-        private val profileInitialTextView: TextView = itemView.findViewById(R.id.profile_initial_textview)
-        private val acceptButton: Button = itemView.findViewById(R.id.friend_accept_button)
-        private val declineButton: Button = itemView.findViewById(R.id.friend_decline_button)
-
+    class NewFriendViewHolder(private val binding: FriendItemNewBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(friend: Friend) {
-            nameTextView.text = friend.name
-            genreTextView.text = friend.genre
-            profileInitialTextView.text = friend.name.first().toString()
+            binding.userNameTextview.text = friend.name
+            binding.favoriteGenreTextview.text = friend.genre
+            binding.profileInitialTextview.text = friend.name.first().toString()
 
-            // 수락, 거절 버튼 클릭 리스너 추가
-            acceptButton.setOnClickListener {
+            binding.friendAcceptButton.setOnClickListener {
                 // 새로운 친구 수락 로직
             }
-            declineButton.setOnClickListener {
+            binding.friendDeclineButton.setOnClickListener {
                 // 새로운 친구 거절 로직
             }
         }
     }
 
-    class RegularFriendViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val nameTextView: TextView = itemView.findViewById(R.id.user_name_textview)
-        private val genreTextView: TextView = itemView.findViewById(R.id.favorite_genre_textview)
-        private val profileInitialTextView: TextView = itemView.findViewById(R.id.profile_initial_textview)
-        private val deleteButton: Button = itemView.findViewById(R.id.friend_delete_button)
-
+    // BasicFriendViewHolder에서 ViewBinding을 사용
+    class BasicFriendViewHolder(private val binding: FriendItemBasicBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(friend: Friend) {
-            nameTextView.text = friend.name
-            genreTextView.text = friend.genre
-            profileInitialTextView.text = friend.name.first().toString()
+            binding.userNameTextview.text = friend.name
+            binding.favoriteGenreTextview.text = friend.genre
+            binding.profileInitialTextview.text = friend.name.first().toString()
 
-            // 삭제 버튼 클릭 리스너 추가
-            deleteButton.setOnClickListener {
+            binding.friendDeleteButton.setOnClickListener {
                 // 친구 삭제 로직
             }
         }

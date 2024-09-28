@@ -11,60 +11,53 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.team22.soundary.R
+import com.team22.soundary.databinding.ActivityFriendSearchBinding
 import com.team22.soundary.feature.search.data.Friend
 
 class FriendSearchActivity : AppCompatActivity() {
 
-    private lateinit var newFriendsRecyclerView: RecyclerView
-    private lateinit var myFriendsRecyclerView: RecyclerView
-    private lateinit var searchEditText: EditText
-    private lateinit var cancelButton: ImageView
     private lateinit var newFriendsAdapter: FriendAdapter // 새로운 친구 목록 어댑터
     private lateinit var myFriendsAdapter: FriendAdapter // 내 친구 목록 어댑터
-    private lateinit var friendsListTitle: TextView
-    private lateinit var expandableListView: ExpandableListView
+    private lateinit var binding: ActivityFriendSearchBinding // 바인딩 객체 추가
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_friend_search)
 
-        // UI 요소와 연결
-        searchEditText = findViewById(R.id.search_edit_text)
-        cancelButton = findViewById(R.id.cancel_button)
-        newFriendsRecyclerView = findViewById(R.id.new_friends_recycler_view)
-        myFriendsRecyclerView = findViewById(R.id.my_friends_recycler_view)
-        friendsListTitle = findViewById(R.id.friends_list_title)
-        expandableListView = findViewById(R.id.expandable_list_view)
+        // 바인딩 객체 획득
+        binding = ActivityFriendSearchBinding.inflate(layoutInflater)
+
+        // 액티비티 화면 출력
+        setContentView(binding.root)
 
         // 새로운 친구 RecyclerView 설정
-        newFriendsRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.newFriendsRecyclerView.layoutManager = LinearLayoutManager(this)
         newFriendsAdapter = FriendAdapter(getNewFriendList()) // 예시 데이터로 새로운 친구 어댑터 설정
-        newFriendsRecyclerView.adapter = newFriendsAdapter
+        binding.newFriendsRecyclerView.adapter = newFriendsAdapter
 
         // ExpandableListView 어댑터 설정
         val pendingFriendsAdapter = PendingFriendAdapter("대기중인 친구", getPendingFriendsList())
-        expandableListView.setAdapter(pendingFriendsAdapter)
+        binding.expandableListView.setAdapter(pendingFriendsAdapter)
 
-        expandableListView.setOnGroupExpandListener { groupPosition ->
+        // ExpandableListView의 그룹 확장 및 축소 리스너
+        binding.expandableListView.setOnGroupExpandListener {
             // 그룹이 확장되면 레이아웃을 다시 그려 '내 친구' 목록이 제대로 배치되도록 처리
-            myFriendsRecyclerView.invalidate()
+            binding.myFriendsRecyclerView.invalidate()
         }
 
-        expandableListView.setOnGroupCollapseListener { groupPosition ->
+        binding.expandableListView.setOnGroupCollapseListener {
             // 그룹이 축소되면 레이아웃을 다시 그려서 업데이트
-            myFriendsRecyclerView.invalidate()
+            binding.myFriendsRecyclerView.invalidate()
         }
-
 
         // 내 친구 RecyclerView 설정
-        myFriendsRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.myFriendsRecyclerView.layoutManager = LinearLayoutManager(this)
         myFriendsAdapter = FriendAdapter(getMyFriendList()) // 예시 데이터로 내 친구 어댑터 설정
-        myFriendsRecyclerView.adapter = myFriendsAdapter
+        binding.myFriendsRecyclerView.adapter = myFriendsAdapter
 
         updateFriendsCount()
 
         // 검색 기능 추가
-        searchEditText.addTextChangedListener(object : TextWatcher {
+        binding.searchEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 // 검색어에 따라 친구 목록을 필터링하는 로직 추가
                 filterFriends(s.toString())
@@ -75,8 +68,8 @@ class FriendSearchActivity : AppCompatActivity() {
         })
 
         // 취소 버튼 클릭 시 검색창 초기화
-        cancelButton.setOnClickListener {
-            searchEditText.text.clear()
+        binding.cancelButton.setOnClickListener {
+            binding.searchEditText.text.clear()
         }
     }
 
@@ -102,16 +95,15 @@ class FriendSearchActivity : AppCompatActivity() {
         return listOf(
             Friend("김남남", "@nyamnyam", "R&B", false),
             Friend("이남남", "@nyamnyam_22", "Jpop", false),
-            Friend("쿠키즈", "@kookoo", "POP", false),
+            Friend("쿠키즈용", "@kookooyong", "POP", false),
             Friend("쿠키즈", "@kookoo", "POP", false)
         )
     }
 
-
     // 친구 목록 수를 업데이트하는 함수
     private fun updateFriendsCount() {
         val myFriendsCount = myFriendsAdapter.itemCount
-        friendsListTitle.text = "내 친구 ($myFriendsCount/20)"  // 친구 수 업데이트
+        binding.friendsListTitle.text = "내 친구 ($myFriendsCount/20)"  // 친구 수 업데이트
     }
 
     // 친구 목록을 필터링하는 함수 (새로운 친구와 내 친구 모두 필터링)
@@ -131,5 +123,4 @@ class FriendSearchActivity : AppCompatActivity() {
         // 필터링 후 친구 수 업데이트
         updateFriendsCount()
     }
-
 }
