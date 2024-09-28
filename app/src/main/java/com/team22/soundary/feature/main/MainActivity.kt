@@ -2,19 +2,14 @@ package com.team22.soundary.feature.main
 
 import android.os.Bundle
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.BindingAdapter
-import androidx.databinding.DataBindingUtil
+import androidx.core.view.isGone
 import androidx.lifecycle.lifecycleScope
 import com.team22.soundary.R
 import com.team22.soundary.databinding.ActivityMainBinding
-import com.team22.soundary.feature.main.data.ShareRepositoryImpl
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -24,16 +19,31 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setupUI()
         observeUiState()
     }
 
     private fun setupUI() {
-        binding.sortSpinner.adapter = ArrayAdapter(this,R.layout.main_spinner_item,viewModel.friendNames)
+        setSongClickListener()
+        setSpinner()
+    }
+
+    private fun setSongClickListener() {
+        binding.nextImageView.setOnClickListener {
+            viewModel.onNextClicked()
+        }
+
+        binding.prevImageView.setOnClickListener {
+            viewModel.onPrevClicked()
+        }
+    }
+
+    private fun setSpinner() {
+        binding.sortSpinner.adapter =
+            ArrayAdapter(this, R.layout.main_spinner_item, viewModel.friendNames)
         binding.sortSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
@@ -46,7 +56,6 @@ class MainActivity : AppCompatActivity() {
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
-
     }
 
     private fun observeUiState() {
@@ -55,19 +64,11 @@ class MainActivity : AppCompatActivity() {
                 binding.musicNameTextView.text = uiState.musicName
                 binding.singerTextView.text = uiState.singer
                 binding.messageTextView.text = uiState.message
-                binding.nextImageView.visibility = if (uiState.isLastSong) GONE else VISIBLE
-                binding.prevImageView.visibility = if (uiState.isFirstSong) GONE else VISIBLE
+                binding.nextImageView.isGone = uiState.isLastSong
+                binding.prevImageView.isGone= uiState.isFirstSong
+                binding.likeButton.setImageResource(if(uiState.isLikeSong) R.drawable.main_like_background_pressed else R.drawable.main_like_background)
             }
         }
     }
 
-}
-
-@BindingAdapter("like")
-fun checkLike(imageView: ImageView,boolean: Boolean){
-    if(boolean){
-        imageView.setImageResource(R.drawable.main_like_background_pressed)
-    } else {
-        imageView.setImageResource(R.drawable.main_like_background)
-    }
 }
