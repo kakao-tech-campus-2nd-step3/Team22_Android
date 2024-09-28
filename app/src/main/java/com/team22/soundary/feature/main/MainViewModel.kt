@@ -16,64 +16,68 @@ class MainViewModel(
     private var groupedShares: Map<String, List<Share>> = emptyMap()
     val friendNames: List<String>
         get() = groupedShares.keys.toList() //for setting spinner
-    private var _currentFriendIndex = 0
-    private var _currentSongIndex = 0
-
     private val _uiState = MutableStateFlow(MainUiState())
     val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()
 
     init {
         viewModelScope.launch {
-            getShareUseCase.invoke().collect{
+            getShareUseCase.invoke().collect {
                 groupedShares = it
-                updateUiState()
+                if (it.isNotEmpty()) updateUiState(it.entries.first().value.first(), 0)
             }
         }
     }
 
 
     fun onFriendChanged(index: Int) {
-        _currentFriendIndex = index
-        _currentSongIndex = 0
-        updateUiState()
+        val targetFriendName = friendNames[index]
+        groupedShares[targetFriendName]?.first()?.let { updateUiState(it, 0) }
     }
 
     fun onNextClicked() {
-        if (_currentSongIndex < getCurrentShareList().size - 1) {
-            _currentSongIndex += 1
-            updateUiState()
-        }
+        val currentIndex = getCurrentShareIndex()
+        val nextIndex = currentIndex + 1
+
+        if (currentIndex == EMPTY_SHARE || nextIndex == getCurrentShares().size) return
+        updateUiState(getCurrentShares()[nextIndex], nextIndex)
     }
 
     fun onPrevClicked() {
-        if (_currentSongIndex > 0) {
-            _currentSongIndex -= 1
-            updateUiState()
-        }
+        val currentIndex = getCurrentShareIndex()
+        val prevIndex = currentIndex - 1
+
+        if (currentIndex == EMPTY_SHARE || prevIndex < 0) return
+        updateUiState(getCurrentShares()[prevIndex], prevIndex)
     }
 
-    private fun getCurrentShareList(): List<Share> {
-        val currentFriendName = friendNames[_currentFriendIndex]
-        return groupedShares[currentFriendName] ?: emptyList()
+    private fun getCurrentShares(): List<Share> =
+        groupedShares[_uiState.value.friendName] ?: emptyList()
+
+    private fun getCurrentShareIndex(): Int {
+        val currentFriendName = _uiState.value.friendName
+        val currentSongTitle = _uiState.value.musicName
+        val shares = groupedShares[currentFriendName]
+
+        return shares?.indexOfFirst { it.song.title == currentSongTitle } ?: EMPTY_SHARE
     }
 
-    private fun updateUiState() {
-        val currentFriendShares = getCurrentShareList()
-        if (currentFriendShares.isNotEmpty()) {
-            val currentShare = currentFriendShares[_currentSongIndex]
-            _uiState.update {
-                MainUiState(
-                    friendNameList = groupedShares.keys.toList(),
-                    friendName = currentShare.friend.name,
-                    friendImage = currentShare.friend.image,
-                    musicName = currentShare.song.title,
-                    singer = currentShare.song.artist,
-                    message = currentShare.message,
-                    isLastSong = _currentSongIndex == currentFriendShares.size - 1,
-                    isFirstSong = _currentSongIndex == 0,
-                    isLikeSong = currentShare.isLike
-                )
-            }
+    private fun updateUiState(targetShare: Share, shareIndex: Int) {
+        _uiState.update {
+            MainUiState(
+                friendName = targetShare.friend.name,
+                friendImage = targetShare.friend.image,
+                musicName = targetShare.song.title,
+                singer = targetShare.song.artist,
+                message = targetShare.message,
+                isLastSong = shareIndex == groupedShares[targetShare.friend.name]?.size?.minus(1),
+                isFirstSong = shareIndex == 0,
+                isLikeSong = targetShare.isLike
+            )
         }
+
+    }
+
+    companion object {
+        const val EMPTY_SHARE = -1
     }
 }
