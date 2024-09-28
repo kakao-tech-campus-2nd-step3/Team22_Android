@@ -61,6 +61,7 @@ class MainActivity : AppCompatActivity() {
     private fun observeUiState() {
         lifecycleScope.launch {
             viewModel.uiState.collect { uiState ->
+                binding.friendNameTextView.text = uiState.friendName
                 binding.musicNameTextView.text = uiState.musicName
                 binding.singerTextView.text = uiState.singer
                 binding.messageTextView.text = uiState.message
