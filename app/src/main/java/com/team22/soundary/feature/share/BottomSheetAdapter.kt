@@ -11,7 +11,7 @@ import com.team22.soundary.feature.share.data.FriendItemEntity
 class BottomSheetAdapter(
     private var friendItemList: List<FriendItemEntity>,
 ) : RecyclerView.Adapter<BottomSheetAdapter.ViewHolder>() {
-    inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView
 
         init {

@@ -11,7 +11,7 @@ import com.team22.soundary.feature.share.data.FriendItemEntity
 class FriendListAdapter(
     private var friendItemList: List<FriendItemEntity>,
 ) : RecyclerView.Adapter<FriendListAdapter.ViewHolder>() {
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView
 
         init {

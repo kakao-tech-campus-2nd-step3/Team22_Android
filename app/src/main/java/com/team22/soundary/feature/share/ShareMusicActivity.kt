@@ -28,24 +28,21 @@ class ShareMusicActivity : AppCompatActivity() {
 
         // recyclerView 임시데이터 생성
         val musicList = mutableListOf<MusicItemEntity>()
-        for (i in 0..5) {
-            musicList.add(MusicItemEntity(i, "노래이름1", "가수", "100명이 공유함"))
-            musicList.add(MusicItemEntity(i, "노래이름2", "가수", "100명이 공유함"))
+        for (i in 1..20) {
+            musicList.add(MusicItemEntity(i, "노래이름"+i, "가수", "100명이 공유함"))
         }
 
         // recyclerView
         val recyclerView = findViewById<RecyclerView>(R.id.share_music_recyclerview)
-        val mapListAdapter = MusicListAdapter(musicList)
-        recyclerView.adapter = mapListAdapter
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-
-        mapListAdapter.setItemClickListener(object : ItemClickListener {
-            override fun onClick(v: View, musicItem: MusicItemEntity) {
+        val musicListAdapter = MusicListAdapter(musicList, object : ItemClickListener {
+            override fun onClick(v: View, selectItem: MusicItemEntity) {
                 val intent = Intent(this@ShareMusicActivity, ShareFriendActivity::class.java)
-                intent.putExtra(ShareFriendActivity.KEY_MUSIC, musicItem.music)
-                intent.putExtra(ShareFriendActivity.KEY_SINGER, musicItem.singer)
+                intent.putExtra(ShareFriendActivity.KEY_MUSIC, selectItem.music)
+                intent.putExtra(ShareFriendActivity.KEY_SINGER, selectItem.singer)
                 startActivity(intent)
             }
         })
+        recyclerView.adapter = musicListAdapter
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
 }
