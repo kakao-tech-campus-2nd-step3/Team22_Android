@@ -1,40 +1,55 @@
 package com.team22.soundary.feature.share
 
 import android.os.Bundle
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.team22.soundary.R
+import com.team22.soundary.databinding.BottomSheetBinding
 import com.team22.soundary.feature.share.data.FriendItemEntity
 
 class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
+    private var _binding: BottomSheetBinding? = null
+    private val binding get() = _binding!!
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val button = view.findViewById<TextView>(R.id.bottom_sheet_send_button)
+        _binding = BottomSheetBinding.bind(view)
 
-        button.setOnClickListener {
+        setSendButton()
+        setRecyclerView(view)
+    }
+
+    private fun setSendButton() {
+        binding.bottomSheetSendButton.setOnClickListener {
             dismiss()
         }
+    }
 
-        // recyclerView 임시데이터 생성
+    private fun setRecyclerView(view: View) {
+        // recyclerView 임시 데이터 생성
         val friendList = mutableListOf<FriendItemEntity>()
         for (i in 0..10) {
-            friendList.add(FriendItemEntity("이름"))
+            friendList.add(FriendItemEntity("쿠키즈"))
         }
 
-        // recyclerView
-        val recyclerView = view.findViewById<RecyclerView>(R.id.select_friend_recyclerview)
-        recyclerView.adapter = BottomSheetAdapter(friendList)
-        recyclerView.layoutManager = GridLayoutManager(view.context, 4)
+        binding.selectFriendRecyclerview.adapter = BottomSheetAdapter(friendList, object : FriendItemClickListener {
+            override fun onClick(v: View, selectItem: FriendItemEntity) {
+                Log.d("uin", "" + selectItem.name)
+            }
+        })
+        binding.selectFriendRecyclerview.layoutManager = GridLayoutManager(view.context, 4)
     }
+
 
     companion object {
         const val TAG = "ShareBottomModalSheet"
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

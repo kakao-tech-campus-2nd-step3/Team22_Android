@@ -1,54 +1,52 @@
-package com.team22.soundary.feature.share;
+package com.team22.soundary.feature.share
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.team22.soundary.R
+import com.team22.soundary.databinding.ActivityShareFriendBinding
 import com.team22.soundary.feature.share.data.FriendItemEntity
 
 class ShareFriendActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityShareFriendBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_share_friend)
+        binding = ActivityShareFriendBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // back Button
-        val backButton = findViewById<ImageView>(R.id.share_friend_back_button)
+        setBackButton()
+        setMusicInfoText()
+        setRecyclerView()
+        setAddFriendButton()
+    }
 
-        backButton.setOnClickListener {
+    private fun setBackButton() {
+        binding.shareFriendBackButton.setOnClickListener {
             finish()
         }
+    }
 
-        // musicInfo
-        val musicTextView = findViewById<TextView>(R.id.share_music_textview)
-        val singerTextView = findViewById<TextView>(R.id.share_singer_textview)
-
+    private fun setMusicInfoText() {
         val music: String? = intent.extras?.getString(KEY_MUSIC)
         val singer: String? = intent.extras?.getString(KEY_SINGER)
+        binding.shareMusicTextview.text = music
+        binding.shareSingerTextview.text = singer
+    }
 
-        musicTextView.text = music
-        singerTextView.text = singer
-
-        // recyclerView 임시데이터 생성
+    private fun setRecyclerView() {
+        // recyclerView 임시 데이터 생성
         val friendList = mutableListOf<FriendItemEntity>()
         for (i in 0..8) {
-            friendList.add(FriendItemEntity("이름"))
+            friendList.add(FriendItemEntity("쿠키즈"))
         }
 
-        // recyclerView
-        val recyclerView = findViewById<RecyclerView>(R.id.share_friend_recyclerview)
-        recyclerView.adapter = FriendListAdapter(friendList)
-        recyclerView.layoutManager =
+        binding.shareFriendRecyclerview.adapter = FriendListAdapter(friendList)
+        binding.shareFriendRecyclerview.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+    }
 
-        // bottom Sheet
-        val addFriendButton = findViewById<ImageView>(R.id.share_add_friend)
-
-        addFriendButton.setOnClickListener {
+    private fun setAddFriendButton() {
+        binding.shareAddFriend.setOnClickListener {
             val modal = ShareBottomSheet()
             modal.show(supportFragmentManager, ShareBottomSheet.TAG)
         }
