@@ -3,6 +3,7 @@ package com.team22.soundary.feature.share
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.team22.soundary.databinding.ShareMusicItemBinding
 import com.team22.soundary.feature.share.data.MusicItemEntity
@@ -10,7 +11,7 @@ import com.team22.soundary.feature.share.data.MusicItemEntity
 class MusicListAdapter(
     private var musicItemList: List<MusicItemEntity>,
     private val listener: MusicItemClickListener
-) : RecyclerView.Adapter<MusicListAdapter.ViewHolder>() {
+) : ListAdapter<MusicItemEntity, MusicListAdapter.ViewHolder>(MusicItemDiffCallback()) {
     class ViewHolder(
         private val binding: ShareMusicItemBinding,
         private val listener: MusicItemClickListener

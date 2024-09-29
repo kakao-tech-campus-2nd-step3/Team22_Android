@@ -1,6 +1,8 @@
 package com.team22.soundary.feature.share.data
 
 
-class FriendItemEntity(
-    val name: String
+data class FriendItemEntity(
+    val id : String,
+    val name: String,
+    val image : Boolean
 )

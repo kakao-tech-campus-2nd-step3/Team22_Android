@@ -3,6 +3,7 @@ package com.team22.soundary.feature.share
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.team22.soundary.databinding.ShareFriendItemNoImageBinding
 import com.team22.soundary.feature.share.data.FriendItemEntity
@@ -10,7 +11,7 @@ import com.team22.soundary.feature.share.data.FriendItemEntity
 class BottomSheetAdapter(
     private var friendItemList: List<FriendItemEntity>,
     private val listener: FriendItemClickListener
-) : RecyclerView.Adapter<BottomSheetAdapter.ViewHolder>() {
+) : ListAdapter<FriendItemEntity, BottomSheetAdapter.ViewHolder>(FriendItemDiffCallback()) {
     class ViewHolder(
         private val binding: ShareFriendItemNoImageBinding,
         private val listener: FriendItemClickListener

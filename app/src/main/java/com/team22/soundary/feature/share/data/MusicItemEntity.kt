@@ -1,6 +1,6 @@
 package com.team22.soundary.feature.share.data
 
-class MusicItemEntity(
+data class MusicItemEntity(
     val id: Int,
     val music: String,
     val singer: String,

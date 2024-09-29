@@ -32,12 +32,12 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
         // recyclerView 임시 데이터 생성
         val friendList = mutableListOf<FriendItemEntity>()
         for (i in 0..10) {
-            friendList.add(FriendItemEntity("쿠키즈"))
+            friendList.add(FriendItemEntity(""+i, "쿠키즈", false))
         }
 
         binding.selectFriendRecyclerview.adapter = BottomSheetAdapter(friendList, object : FriendItemClickListener {
             override fun onClick(v: View, selectItem: FriendItemEntity) {
-                Log.d("uin", "" + selectItem.name)
+                Log.d("uin", "" + selectItem.id)
             }
         })
         binding.selectFriendRecyclerview.layoutManager = GridLayoutManager(view.context, 4)

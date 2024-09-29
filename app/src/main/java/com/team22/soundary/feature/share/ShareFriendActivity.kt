@@ -37,7 +37,7 @@ class ShareFriendActivity : AppCompatActivity() {
         // recyclerView 임시 데이터 생성
         val friendList = mutableListOf<FriendItemEntity>()
         for (i in 0..8) {
-            friendList.add(FriendItemEntity("쿠키즈"))
+            friendList.add(FriendItemEntity(""+i, "쿠키즈", false))
         }
 
         binding.shareFriendRecyclerview.adapter = FriendListAdapter(friendList)

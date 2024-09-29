@@ -2,13 +2,14 @@ package com.team22.soundary.feature.share
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.team22.soundary.databinding.ShareFriendItemNoImageBinding
 import com.team22.soundary.feature.share.data.FriendItemEntity
 
 class FriendListAdapter(
     private var friendItemList: List<FriendItemEntity>,
-) : RecyclerView.Adapter<FriendListAdapter.ViewHolder>() {
+) : ListAdapter<FriendItemEntity, FriendListAdapter.ViewHolder>(FriendItemDiffCallback()) {
     class ViewHolder(
         private val binding: ShareFriendItemNoImageBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
