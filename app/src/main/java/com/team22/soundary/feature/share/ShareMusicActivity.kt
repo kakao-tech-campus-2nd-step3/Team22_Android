@@ -35,16 +35,15 @@ class ShareMusicActivity : AppCompatActivity() {
 
         // recyclerView
         val recyclerView = findViewById<RecyclerView>(R.id.share_music_recyclerview)
-        val mapListAdapter = MusicListAdapter(musicList, LayoutInflater.from(this))
+        val mapListAdapter = MusicListAdapter(musicList)
         recyclerView.adapter = mapListAdapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         mapListAdapter.setItemClickListener(object : ItemClickListener {
             override fun onClick(v: View, musicItem: MusicItemEntity) {
                 val intent = Intent(this@ShareMusicActivity, ShareFriendActivity::class.java)
-                intent.putExtra("music", musicItem.music)
-                intent.putExtra("singer", musicItem.singer)
-                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra(ShareFriendActivity.KEY_MUSIC, musicItem.music)
+                intent.putExtra(ShareFriendActivity.KEY_SINGER, musicItem.singer)
                 startActivity(intent)
             }
         })

@@ -27,8 +27,8 @@ class ShareFriendActivity : AppCompatActivity() {
         val musicTextView = findViewById<TextView>(R.id.share_music_textview)
         val singerTextView = findViewById<TextView>(R.id.share_singer_textview)
 
-        val music: String? = intent.extras?.getString("music")
-        val singer: String? = intent.extras?.getString("singer")
+        val music: String? = intent.extras?.getString(KEY_MUSIC)
+        val singer: String? = intent.extras?.getString(KEY_SINGER)
 
         musicTextView.text = music
         singerTextView.text = singer
@@ -41,7 +41,7 @@ class ShareFriendActivity : AppCompatActivity() {
 
         // recyclerView
         val recyclerView = findViewById<RecyclerView>(R.id.share_friend_recyclerview)
-        recyclerView.adapter = FriendListAdapter(friendList, LayoutInflater.from(this))
+        recyclerView.adapter = FriendListAdapter(friendList)
         recyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
@@ -52,5 +52,10 @@ class ShareFriendActivity : AppCompatActivity() {
             val modal = ShareBottomSheet()
             modal.show(supportFragmentManager, ShareBottomSheet.TAG)
         }
+    }
+
+    companion object {
+        const val KEY_MUSIC = "music"
+        const val KEY_SINGER = "singer"
     }
 }
