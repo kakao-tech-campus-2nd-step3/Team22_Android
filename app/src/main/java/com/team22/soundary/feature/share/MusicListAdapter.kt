@@ -10,7 +10,6 @@ import com.team22.soundary.feature.share.data.MusicItemEntity
 
 class MusicListAdapter(
     private var musicItemList: List<MusicItemEntity>,
-    private val layoutInflater: LayoutInflater
 ) : RecyclerView.Adapter<MusicListAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val musicTextView: TextView
@@ -34,7 +33,7 @@ class MusicListAdapter(
     lateinit var itemListener: ItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = layoutInflater.inflate(R.layout.share_music_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.share_music_item, parent, false)
         return ViewHolder(view)
     }
 

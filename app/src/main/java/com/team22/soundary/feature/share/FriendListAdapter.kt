@@ -10,7 +10,6 @@ import com.team22.soundary.feature.share.data.FriendItemEntity
 
 class FriendListAdapter(
     private var friendItemList: List<FriendItemEntity>,
-    private val layoutInflater: LayoutInflater
 ) : RecyclerView.Adapter<FriendListAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView
@@ -21,7 +20,7 @@ class FriendListAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = layoutInflater.inflate(R.layout.share_friend_item_no_image, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.share_friend_item_no_image, parent, false)
         return ViewHolder(view)
     }
 
