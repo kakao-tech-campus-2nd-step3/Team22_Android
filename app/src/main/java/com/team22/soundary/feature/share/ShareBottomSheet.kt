@@ -11,16 +11,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.team22.soundary.R
 import com.team22.soundary.feature.share.data.FriendItemEntity
 
-class ShareBottomSheet : BottomSheetDialogFragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.bottom_sheet, container, false)
-    }
-
+class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
