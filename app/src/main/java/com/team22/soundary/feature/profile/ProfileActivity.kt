@@ -14,18 +14,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.team22.soundary.R
+import com.team22.soundary.databinding.ActivityMypageBinding
 
 class ProfileActivity : AppCompatActivity() {
 
     private val PERMISSION_REQUEST_CODE = 100
-    private lateinit var profileImageView: ImageView
+    private lateinit var binding: ActivityMypageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mypage)
 
-        profileImageView = findViewById(R.id.profile_imageview)
-        profileImageView.setOnClickListener {
+        //viewBinding 초기화
+        binding = ActivityMypageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.profileImageview.setOnClickListener {
             if (checkAndRequestPermissions()) {
                 openGallery()
             }
@@ -77,7 +80,7 @@ class ProfileActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PERMISSION_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
             val selectedImage: Uri? = data.data
-            profileImageView.setImageURI(selectedImage)
+            binding.profileImageview.setImageURI(selectedImage)
         }
     }
 
