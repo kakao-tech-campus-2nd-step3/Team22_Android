@@ -17,7 +17,9 @@ import com.team22.soundary.databinding.ActivityMypageBinding
 
 class ProfileActivity : AppCompatActivity() {
 
-    private val PERMISSION_REQUEST_CODE = 100
+    companion object{
+        private val PERMISSION_REQUEST_CODE = 100
+    }
     private lateinit var binding: ActivityMypageBinding
 
     //registerForActivityResult 쓰기
