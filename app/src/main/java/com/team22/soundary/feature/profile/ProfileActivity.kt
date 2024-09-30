@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.team22.soundary.R
 import com.team22.soundary.databinding.ActivityMypageBinding
+import com.team22.soundary.feature.extensions.checkAndRequestPermissions
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -41,47 +42,18 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     // 초기화 메소드 분리 1
-    private fun initProfileImageView(){
+    private fun initProfileImageView() {
         binding.profileImageview.setOnClickListener {
-            if (checkAndRequestPermissions()) {
+            val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                arrayOf(Manifest.permission.READ_MEDIA_IMAGES)
+            } else {
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+            }
+
+            if (checkAndRequestPermissions(permissions, PERMISSION_REQUEST_CODE)) {
                 openGallery()
             }
         }
-    }
-
-    // 권한 체크 및 요청
-    private fun checkAndRequestPermissions(): Boolean {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val readPermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES)
-            } else {
-                ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-            }
-
-            val cameraPermission =
-                ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-
-            val listPermissionsNeeded = ArrayList<String>()
-            if (readPermission != PackageManager.PERMISSION_GRANTED) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    listPermissionsNeeded.add(Manifest.permission.READ_MEDIA_IMAGES)
-                } else {
-                    listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE)
-                }
-            }
-            if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
-                listPermissionsNeeded.add(Manifest.permission.CAMERA)
-            }
-            if (listPermissionsNeeded.isNotEmpty()) {
-                ActivityCompat.requestPermissions(
-                    this,
-                    listPermissionsNeeded.toTypedArray(),
-                    PERMISSION_REQUEST_CODE
-                )
-                return false
-            }
-        }
-        return true
     }
 
     // 갤러리 접근하기
