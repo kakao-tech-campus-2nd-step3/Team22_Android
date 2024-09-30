@@ -12,17 +12,23 @@ import android.widget.TextView
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.team22.soundary.R
+import com.team22.soundary.databinding.WidgetMainBinding
 
 class ActivityWidget : AppCompatActivity() {
 
+    private lateinit var binding: WidgetMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.widget_main)
+        //setContentView(R.layout.widget_main)
 
-        // XML 요소 찾기
-        val widgetImageView: ImageView = findViewById(R.id.widget_imageview)
-        val widgetTextView: TextView = findViewById(R.id.widget_textview)
-        val notificationDot: View = findViewById(R.id.widget_notification_dot)
+        // ViewBinding 초기화
+        binding = WidgetMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // binding으로 뷰 접근
+        val widgetImageView = binding.widgetImageview
+        val widgetTextView = binding.widgetTextview
+        val notificationDot = binding.widgetNotificationDot
 
         // 원형 이미지 처리
         val originalBitmap = BitmapFactory.decodeResource(resources, R.drawable.widget_image)
