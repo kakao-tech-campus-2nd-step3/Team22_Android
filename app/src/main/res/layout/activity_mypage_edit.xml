@@ -98,38 +98,40 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_normal"
+            android:layout_marginTop="16dp"
             android:text="@string/mypage_category_setting"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_medium" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <!-- 카테고리 버튼들 -->
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_large"
-            android:alignmentMode="alignBounds"
-            android:columnCount="3"
-            android:rowCount="2"
-            android:useDefaultMargins="true">
+            android:layout_marginTop="8dp"
+            android:columnCount="3">
 
+            <!-- 카테고리 버튼들 -->
             <Button
+                android:id="@+id/button_hiphop"
                 style="@style/CategoryButton"
                 android:text="@string/category_hiphop" />
 
             <Button
+                android:id="@+id/button_rock"
                 style="@style/CategoryButton"
                 android:text="@string/category_rock" />
 
             <Button
+                android:id="@+id/button_pop"
                 style="@style/CategoryButton"
                 android:text="@string/category_pop" />
 
             <Button
+                android:id="@+id/button_jpop"
                 style="@style/CategoryButton"
                 android:text="@string/category_jpop" />
 
             <Button
+                android:id="@+id/button_ballad"
                 style="@style/CategoryButton"
                 android:text="@string/category_ballad" />
 
