@@ -32,6 +32,7 @@
 
     <!-- share -->
     <dimen name="share_padding">20dp</dimen>
+    <dimen name="item_size">60dp</dimen>
 
     <!--profile-->
     <dimen name="category_margin">4dp</dimen>

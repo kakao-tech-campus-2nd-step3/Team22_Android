@@ -1,12 +1,59 @@
-package com.team22.soundary.feature.share;
+package com.team22.soundary.feature.share
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.team22.soundary.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.team22.soundary.databinding.ActivityShareFriendBinding
+import com.team22.soundary.feature.share.data.FriendItemEntity
 
 class ShareFriendActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityShareFriendBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_share_friend)
+        binding = ActivityShareFriendBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setBackButton()
+        setMusicInfoText()
+        setRecyclerView()
+        setAddFriendButton()
+    }
+
+    private fun setBackButton() {
+        binding.shareFriendBackButton.setOnClickListener {
+            finish()
+        }
+    }
+
+    private fun setMusicInfoText() {
+        val music: String? = intent.extras?.getString(KEY_MUSIC)
+        val singer: String? = intent.extras?.getString(KEY_SINGER)
+        binding.shareMusicTextview.text = music
+        binding.shareSingerTextview.text = singer
+    }
+
+    private fun setRecyclerView() {
+        // recyclerView 임시 데이터 생성
+        val friendList = mutableListOf<FriendItemEntity>()
+        for (i in 0..8) {
+            friendList.add(FriendItemEntity(""+i, "쿠키즈", false))
+        }
+
+        binding.shareFriendRecyclerview.adapter = FriendListAdapter(friendList)
+        binding.shareFriendRecyclerview.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+    }
+
+    private fun setAddFriendButton() {
+        binding.shareAddFriend.setOnClickListener {
+            val modal = ShareBottomSheet()
+            modal.show(supportFragmentManager, ShareBottomSheet.TAG)
+        }
+    }
+
+    companion object {
+        const val KEY_MUSIC = "music"
+        const val KEY_SINGER = "singer"
     }
 }

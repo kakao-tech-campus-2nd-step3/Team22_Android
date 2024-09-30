@@ -27,6 +27,7 @@
     <!-- ImageView에 쓰이는 contentDescription -->
     <string name="share_back_button">backButton</string>
     <string name="share_album_image">albumImage</string>
+    <string name="share_friend_image">friendImage</string>
     <string name="share_add_friend">addFriend</string>
 
     <!-- 위젯 화면 관련 텍스트 -->
