@@ -1,3 +1,6 @@
+import org.gradle.internal.impldep.software.amazon.ion.impl.PrivateIonConstants.True
+import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -37,6 +40,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     viewBinding{
         enable = true
     }
@@ -49,6 +53,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.gridlayout)
     implementation(libs.androidx.fragment.ktx)
 
     testImplementation(libs.junit)

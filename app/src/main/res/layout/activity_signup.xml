@@ -1,155 +1,175 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:fitsSystemWindows="true"
     android:padding="16dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- 상단 안내 텍스트 -->
+    <TextView
+        android:id="@+id/signup_title"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginBottom="16dp"
+        android:text="@string/signup_necessary_info"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- 상단 안내 텍스트 -->
-        <TextView
-            android:id="@+id/signup_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingBottom="@dimen/padding_normal"
-            android:text="@string/signup_necessary_info"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+    <!-- 앱의 고유 아이디 입력 필드 -->
+    <TextView
+        android:id="@+id/signup_email_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/signup_nick_intro_info"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_title" />
 
-        <!-- 앱의 고유 아이디 입력 필드 -->
-        <TextView
-            android:id="@+id/signup_email_label"
+    <EditText
+        android:id="@+id/signup_edittext_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:hint="@string/signup_ID_hint"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_email_label" />
+
+    <!-- 닉네임 입력 필드 -->
+    <TextView
+        android:id="@+id/signup_nickname_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mypage_nickname"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_edittext_email" />
+
+    <EditText
+        android:id="@+id/signup_edittext_nickname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:hint="@string/signup_nickname_hint"
+        android:maxLength="8"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_nickname_label" />
+
+    <!-- 카테고리 설정 타이틀 -->
+    <TextView
+        android:id="@+id/signup_category_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/signup_category_title"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_edittext_nickname" />
+
+    <!-- 카테고리 선택 버튼들 -->
+    <GridLayout
+        android:id="@+id/signup_category_grid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_half"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:columnCount="4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_category_title">
+
+        <ToggleButton
+            android:id="@+id/signup_togglebutton_category_hiphop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/signup_nick_intro_info"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_small" />
+            android:background="@drawable/all_rounded_toggle_button"
+            android:textOff="@string/category_hiphop"
+            android:textOn="@string/category_hiphop" />
 
-        <EditText
-            android:id="@+id/signup_edittext_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_normal"
-            android:hint="@string/signup_ID_hint"
-            android:importantForAccessibility="yes"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/black"
-            android:textColorHint="@color/gray_200" />
+        <ToggleButton
+            android:id="@+id/signup_togglebutton_category_rock"
+            style="@style/CategoryButton"
+            android:textOff="@string/category_rock"
+            android:textOn="@string/category_rock" />
 
-        <!-- 닉네임 입력 필드 -->
-        <TextView
-            android:id="@+id/signup_nickname_label"
+        <ToggleButton
+            android:id="@+id/signup_togglebutton_category_pop"
+            style="@style/CategoryButton"
+            android:textOff="@string/category_pop"
+            android:textOn="@string/category_pop" />
+
+        <ToggleButton
+            android:id="@+id/signup_togglebutton_category_jpop"
+            style="@style/CategoryButton"
+            android:textOff="@string/category_jpop"
+            android:textOn="@string/category_jpop" />
+
+        <ToggleButton
+            android:id="@+id/signup_togglebutton_category_ballad"
+            style="@style/CategoryButton"
+            android:textOff="@string/category_ballad"
+            android:textOn="@string/category_ballad" />
+
+        <ToggleButton
+            android:id="@+id/signup_togglebutton_category_dance"
+            style="@style/CategoryButton"
+            android:textOff="@string/category_dance"
+            android:textOn="@string/category_dance" />
+
+        <ToggleButton
+            android:id="@+id/signup_togglebutton_category_rnb"
+            style="@style/CategoryButton"
+            android:textOff="@string/category_rnb"
+            android:textOn="@string/category_rnb" />
+    </GridLayout>
+
+    <!-- 약관 동의 체크박스 -->
+    <RadioGroup
+        android:id="@+id/signup_radiogroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_category_grid">
+
+        <RadioButton
+            android:id="@+id/signup_radiobutton_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mypage_nickname"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_small" />
+            android:checked="true"
+            android:text="@string/signup_terms_agreement"
+            android:textColor="@color/black" />
 
-        <EditText
-            android:id="@+id/signup_edittext_nickname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_normal"
-            android:hint="@string/signup_nickname_hint"
-            android:importantForAccessibility="yes"
-            android:maxLength="8"
-            android:textColor="@color/black"
-            android:textColorHint="@color/gray_200" />
-
-        <!-- 카테고리 설정 타이틀 -->
-        <TextView
-            android:id="@+id/signup_category_title"
+        <RadioButton
+            android:id="@+id/signup_radiobutton_privacy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/signup_category_title"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_small" />
+            android:text="@string/signup_privacy_agreement"
+            android:textColor="@color/black" />
+    </RadioGroup>
 
-        <!-- 카테고리 선택 버튼들 -->
-        <GridLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_half"
-            android:layout_marginBottom="@dimen/margin_normal"
-            android:columnCount="4">
+    <!-- 계속 가입하기 버튼 -->
+    <Button
+        android:id="@+id/signup_button_continue"
+        style="@style/SignupButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/all_rounded_button"
+        android:text="@string/signup_continue_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_radiogroup" />
 
-            <ToggleButton
-                android:id="@+id/signup_togglebutton_category_hiphop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/all_rounded_toggle_button"
-                android:textOff="@string/category_hiphop"
-                android:textOn="@string/category_hiphop" />
-
-            <ToggleButton
-                android:id="@+id/signup_togglebutton_category_rock"
-                style="@style/CategoryButton"
-                android:textOff="@string/category_rock"
-                android:textOn="@string/category_rock" />
-
-            <ToggleButton
-                android:id="@+id/signup_togglebutton_category_pop"
-                style="@style/CategoryButton"
-                android:textOff="@string/category_pop"
-                android:textOn="@string/category_pop" />
-
-            <ToggleButton
-                android:id="@+id/signup_togglebutton_category_jpop"
-                style="@style/CategoryButton"
-                android:textOff="@string/category_jpop"
-                android:textOn="@string/category_jpop" />
-
-            <ToggleButton
-                android:id="@+id/signup_togglebutton_category_ballad"
-                style="@style/CategoryButton"
-                android:textOff="@string/category_ballad"
-                android:textOn="@string/category_ballad" />
-
-            <ToggleButton
-                android:id="@+id/signup_togglebutton_category_dance"
-                style="@style/CategoryButton"
-                android:textOff="@string/category_dance"
-                android:textOn="@string/category_dance" />
-
-            <ToggleButton
-                android:id="@+id/signup_togglebutton_category_rnb"
-                style="@style/CategoryButton"
-                android:textOff="@string/category_rnb"
-                android:textOn="@string/category_rnb" />
-        </GridLayout>
-
-        <!-- 약관 동의 체크박스 -->
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <RadioButton
-                android:id="@+id/signup_radiobutton_service"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/signup_terms_agreement"
-                android:textColor="@color/black" />
-
-            <RadioButton
-                android:id="@+id/signup_radiobutton_privacy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/signup_privacy_agreement"
-                android:textColor="@color/black" />
-        </RadioGroup>
-
-        <!-- 계속 가입하기 버튼 -->
-        <Button
-            android:id="@+id/signup_button_continue"
-            style="@style/SignupButton"
-            android:background="@drawable/all_rounded_button"
-            android:text="@string/signup_continue_button" />
-    </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
