@@ -8,7 +8,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -28,6 +27,11 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityMypageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initProfileImageView()
+    }
+
+    // 초기화 메소드 분리 1
+    private fun initProfileImageView(){
         binding.profileImageview.setOnClickListener {
             if (checkAndRequestPermissions()) {
                 openGallery()
