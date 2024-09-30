@@ -20,6 +20,14 @@ class ProfileActivity : AppCompatActivity() {
     private val PERMISSION_REQUEST_CODE = 100
     private lateinit var binding: ActivityMypageBinding
 
+    //registerForActivityResult 쓰기
+    private val galleryLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK && result.data != null) {
+            val selectedImage: Uri? = result.data?.data
+            binding.profileImageview.setImageURI(selectedImage)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -77,16 +85,9 @@ class ProfileActivity : AppCompatActivity() {
     // 갤러리 접근하기
     private fun openGallery() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent, PERMISSION_REQUEST_CODE)
+        galleryLauncher.launch(intent) //registerForActivityResult 사용하기
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == PERMISSION_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
-            val selectedImage: Uri? = data.data
-            binding.profileImageview.setImageURI(selectedImage)
-        }
-    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
