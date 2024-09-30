@@ -30,10 +30,7 @@ class ActivityWidget : AppCompatActivity() {
         val widgetTextView = binding.widgetTextview
         val notificationDot = binding.widgetNotificationDot
 
-        // 원형 이미지 처리
-        val originalBitmap = BitmapFactory.decodeResource(resources, R.drawable.widget_image)
-        val circularBitmapWithHole = createCircularImageWithHole(originalBitmap, 30f)
-        widgetImageView.setImageBitmap(circularBitmapWithHole)
+        //원형 두번 x
 
         // 닉네임 첫 글자 설정
         val nickname = "쿠키즈" // 예시 닉네임
