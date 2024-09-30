@@ -26,6 +26,21 @@
             android:src="@drawable/widget_image" />
     </androidx.cardview.widget.CardView>
 
+    <!-- 프로필 이미지 위에 덧대는 흰색 원 - view로 처리 -->
+    <View
+        android:id="@+id/white_circle_view"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@id/profile_cardview"
+        app:layout_constraintEnd_toEndOf="@id/profile_cardview"
+        app:layout_constraintTop_toTopOf="@id/profile_cardview"
+        app:layout_constraintStart_toStartOf="@id/profile_cardview"
+        android:elevation="5dp"
+        android:visibility="visible" />
+
     <!-- 닉네임 첫 글자 레이블 (원형 배경) -->
     <androidx.cardview.widget.CardView
         android:id="@+id/text_circle_background"
