@@ -30,7 +30,6 @@ class ActivityWidget : AppCompatActivity() {
         val widgetTextView = binding.widgetTextview
         val notificationDot = binding.widgetNotificationDot
 
-        //원형 두번 x
 
         // 닉네임 첫 글자 설정
         val nickname = "쿠키즈" // 예시 닉네임
@@ -39,23 +38,5 @@ class ActivityWidget : AppCompatActivity() {
         // 알림이 있을 경우 빨간 점 표시
         val hasNotification = true // 알림이 있다고 가정함
         notificationDot.visibility = if (hasNotification) View.VISIBLE else View.GONE
-    }
-
-    // 원형 -> 구멍
-    private fun createCircularImageWithHole(sourceBitmap: Bitmap, holeRadius: Float): Bitmap {
-        val size = Math.min(sourceBitmap.width, sourceBitmap.height)
-        val output = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(output)
-
-        val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-        val path = Path()
-        path.addCircle(size / 2f, size / 2f, size / 2f, Path.Direction.CCW)
-        path.addCircle(size / 2f, size / 2f, holeRadius, Path.Direction.CW)
-        canvas.clipPath(path)
-
-        val rect = RectF(0f, 0f, size.toFloat(), size.toFloat())
-        canvas.drawBitmap(sourceBitmap, null, rect, paint)
-
-        return output
     }
 }
