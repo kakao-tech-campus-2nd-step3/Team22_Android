@@ -1,17 +1,8 @@
 package com.team22.soundary.feature.profile
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Path
-import android.graphics.RectF
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.team22.soundary.R
 import com.team22.soundary.databinding.WidgetMainBinding
 
 class ActivityWidget : AppCompatActivity() {
