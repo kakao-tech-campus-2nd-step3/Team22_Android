@@ -61,6 +61,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/signup_intro_label" />
 
+
     <!-- 가입하기 버튼 -->
     <Button
         android:id="@+id/signup_button_submit"
