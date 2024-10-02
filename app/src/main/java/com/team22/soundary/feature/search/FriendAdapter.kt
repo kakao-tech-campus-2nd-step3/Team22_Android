@@ -5,10 +5,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.team22.soundary.databinding.FriendItemBasicBinding
 import com.team22.soundary.databinding.FriendItemNewBinding
-import com.team22.soundary.feature.search.data.Friend
+import com.team22.soundary.feature.search.data.FriendEntity
 
 // FriendAdapter를 ListAdapter로 변환
-class FriendAdapter : ListAdapter<Friend, RecyclerView.ViewHolder>(FriendDiffCallback()) {
+class FriendAdapter : ListAdapter<FriendEntity, RecyclerView.ViewHolder>(FriendDiffCallback()) {
 
     private val VIEW_TYPE_NEW = 1
     private val VIEW_TYPE_BASIC = 2
@@ -47,7 +47,7 @@ class FriendAdapter : ListAdapter<Friend, RecyclerView.ViewHolder>(FriendDiffCal
     }
 
     class NewFriendViewHolder(private val binding: FriendItemNewBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(friend: Friend) {
+        fun bind(friend: FriendEntity) {
             binding.userNameTextview.text = friend.name
             binding.favoriteGenreTextview.text = friend.genre
             binding.profileInitialTextview.text = friend.name.first().toString()
@@ -62,7 +62,7 @@ class FriendAdapter : ListAdapter<Friend, RecyclerView.ViewHolder>(FriendDiffCal
     }
 
     class BasicFriendViewHolder(private val binding: FriendItemBasicBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(friend: Friend) {
+        fun bind(friend: FriendEntity) {
             binding.userNameTextview.text = friend.name
             binding.favoriteGenreTextview.text = friend.genre
             binding.profileInitialTextview.text = friend.name.first().toString()
@@ -74,17 +74,17 @@ class FriendAdapter : ListAdapter<Friend, RecyclerView.ViewHolder>(FriendDiffCal
     }
 
     // 새로운 친구 목록 업데이트
-    fun updateList(newFriends: List<Friend>) {
+    fun updateList(newFriends: List<FriendEntity>) {
         submitList(newFriends) // ListAdapter의 submitList() 사용
     }
     // DiffUtil 콜백 클래스
-    class FriendDiffCallback : DiffUtil.ItemCallback<Friend>() {
-        override fun areItemsTheSame(oldItem: Friend, newItem: Friend): Boolean {
+    class FriendDiffCallback : DiffUtil.ItemCallback<FriendEntity>() {
+        override fun areItemsTheSame(oldItem: FriendEntity, newItem: FriendEntity): Boolean {
             // 고유한 id나 다른 식별자를 사용하여 동일한 항목인지 확인
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Friend, newItem: Friend): Boolean {
+        override fun areContentsTheSame(oldItem: FriendEntity, newItem: FriendEntity): Boolean {
             // 데이터가 동일한지 확인
             return oldItem == newItem
         }

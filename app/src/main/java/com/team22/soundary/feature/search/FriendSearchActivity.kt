@@ -8,7 +8,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team22.soundary.databinding.ActivityFriendSearchBinding
-import com.team22.soundary.feature.search.data.Friend
+import com.team22.soundary.feature.search.data.FriendEntity
 
 class FriendSearchActivity : AppCompatActivity() {
 
@@ -78,29 +78,29 @@ class FriendSearchActivity : AppCompatActivity() {
     }
 
     // 예시 새로운 친구 목록 데이터를 반환하는 함수
-    private fun getNewFriendList(): List<Friend> {
+    private fun getNewFriendList(): List<FriendEntity> {
         return listOf(
-            Friend("김고고", "@gogoKim", "Ballad", true),
-            Friend("박고고", "@parkKim", "Jazz", true)
+            FriendEntity("김고고", "@gogoKim", "Ballad", true),
+            FriendEntity("박고고", "@parkKim", "Jazz", true)
         )
     }
 
     // 대기 중인 친구 목록 반환
-    private fun getPendingFriendsList(): List<Friend> {
+    private fun getPendingFriendsList(): List<FriendEntity> {
         return listOf(
-            Friend("어피치", "@apeach", "K-pop", true),
-            Friend("라이언", "@ryan", "Jazz", true),
-            Friend("콘", "@cony", "Rock", true)
+            FriendEntity("어피치", "@apeach", "K-pop", true),
+            FriendEntity("라이언", "@ryan", "Jazz", true),
+            FriendEntity("콘", "@cony", "Rock", true)
         )
     }
 
     // 예시 내 친구 목록 데이터를 반환하는 함수
-    private fun getMyFriendList(): List<Friend> {
+    private fun getMyFriendList(): List<FriendEntity> {
         return listOf(
-            Friend("김남남", "@nyamnyam", "R&B", false),
-            Friend("이남남", "@nyamnyam_22", "Jpop", false),
-            Friend("쿠키즈용", "@kookooyong", "POP", false),
-            Friend("쿠키즈", "@kookoo", "POP", false)
+            FriendEntity("김남남", "@nyamnyam", "R&B", false),
+            FriendEntity("이남남", "@nyamnyam_22", "Jpop", false),
+            FriendEntity("쿠키즈용", "@kookooyong", "POP", false),
+            FriendEntity("쿠키즈", "@kookoo", "POP", false)
         )
     }
 
