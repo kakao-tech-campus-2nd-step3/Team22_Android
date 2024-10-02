@@ -1,15 +1,12 @@
 package com.team22.soundary.feature.search
 
+import android.animation.LayoutTransition
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.EditText
-import android.widget.ExpandableListView
-import android.widget.ImageView
-import android.widget.TextView
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.team22.soundary.R
 import com.team22.soundary.databinding.ActivityFriendSearchBinding
 import com.team22.soundary.feature.search.data.Friend
@@ -18,6 +15,7 @@ class FriendSearchActivity : AppCompatActivity() {
 
     private lateinit var newFriendsAdapter: FriendAdapter // 새로운 친구 목록 어댑터
     private lateinit var myFriendsAdapter: FriendAdapter // 내 친구 목록 어댑터
+    private lateinit var pendingFriendsAdapter: FriendAdapter // 대기중인 친구 목록 어댑터
     private lateinit var binding: ActivityFriendSearchBinding // 바인딩 객체 추가
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +23,7 @@ class FriendSearchActivity : AppCompatActivity() {
 
         // 바인딩 객체 획득
         binding = ActivityFriendSearchBinding.inflate(layoutInflater)
+
 
         // 액티비티 화면 출력
         setContentView(binding.root)
@@ -34,20 +33,11 @@ class FriendSearchActivity : AppCompatActivity() {
         newFriendsAdapter = FriendAdapter(getNewFriendList()) // 예시 데이터로 새로운 친구 어댑터 설정
         binding.newFriendsRecyclerView.adapter = newFriendsAdapter
 
-        // ExpandableListView 어댑터 설정
-        val pendingFriendsAdapter = PendingFriendAdapter("대기중인 친구", getPendingFriendsList())
-        binding.expandableListView.setAdapter(pendingFriendsAdapter)
+        // 대기 중인 친구 RecyclerView 설정 (가로 스크롤)
+        binding.pendingFriendsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        val pendingFriendsAdapter = PendingFriendAdapter(getPendingFriendsList()) // 대기중인 친구 어댑터 설정
+        binding.pendingFriendsRecyclerView.adapter = pendingFriendsAdapter
 
-        // ExpandableListView의 그룹 확장 및 축소 리스너
-        binding.expandableListView.setOnGroupExpandListener {
-            // 그룹이 확장되면 레이아웃을 다시 그려 '내 친구' 목록이 제대로 배치되도록 처리
-            binding.myFriendsRecyclerView.invalidate()
-        }
-
-        binding.expandableListView.setOnGroupCollapseListener {
-            // 그룹이 축소되면 레이아웃을 다시 그려서 업데이트
-            binding.myFriendsRecyclerView.invalidate()
-        }
 
         // 내 친구 RecyclerView 설정
         binding.myFriendsRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -70,6 +60,14 @@ class FriendSearchActivity : AppCompatActivity() {
         // 취소 버튼 클릭 시 검색창 초기화
         binding.cancelButton.setOnClickListener {
             binding.searchEditText.text.clear()
+        }
+        // 대기 중인 친구 보여주기
+        binding.pendingFriendsHeader.setOnClickListener {
+            if (binding.pendingFriendsRecyclerView.visibility == View.GONE) {
+                binding.pendingFriendsRecyclerView.visibility = View.VISIBLE
+            } else {
+                binding.pendingFriendsRecyclerView.visibility = View.GONE
+            }
         }
     }
 

@@ -1,89 +1,43 @@
 package com.team22.soundary.feature.search
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseExpandableListAdapter
-import android.widget.HorizontalScrollView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.team22.soundary.R
 import com.team22.soundary.feature.search.data.Friend
 
 class PendingFriendAdapter(
-    private val groupTitle: String, // "대기중인 친구"
-    private val pendingFriendsList: List<Friend>
-) : BaseExpandableListAdapter() {
+    private val pendingFriendsList: List<Friend> // 대기중인 친구 목록
+) : RecyclerView.Adapter<PendingFriendAdapter.PendingFriendViewHolder>() {
 
-    override fun getGroupCount(): Int {
-        return 1 // 그룹은 하나만
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PendingFriendViewHolder {
+        // friend_item_pending.xml을 inflate하여 ViewHolder 생성
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.friend_item_pending, parent, false)
+        return PendingFriendViewHolder(view)
     }
 
-    override fun getChildrenCount(groupPosition: Int): Int {
+    override fun onBindViewHolder(holder: PendingFriendViewHolder, position: Int) {
+        val friend = pendingFriendsList[position]
+        holder.bind(friend) // 친구 데이터를 ViewHolder에 바인딩
+    }
+
+    override fun getItemCount(): Int {
         return pendingFriendsList.size
     }
 
-    override fun getGroup(groupPosition: Int): Any {
-        return groupTitle
-    }
+    // ViewHolder 정의
+    class PendingFriendViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val profileInitialTextView: TextView = itemView.findViewById(R.id.profile_initial_textview)
+        private val userNameTextView: TextView = itemView.findViewById(R.id.user_name_textview)
 
-    override fun getChild(groupPosition: Int, childPosition: Int): Any {
-        return pendingFriendsList[childPosition]
-    }
-
-    override fun getGroupId(groupPosition: Int): Long {
-        return groupPosition.toLong()
-    }
-
-    override fun getChildId(groupPosition: Int, childPosition: Int): Long {
-        return childPosition.toLong()
-    }
-
-    override fun hasStableIds(): Boolean {
-        return true
-    }
-
-    override fun getGroupView(
-        groupPosition: Int,
-        isExpanded: Boolean,
-        convertView: View?,
-        parent: ViewGroup?
-    ): View {
-        val groupTitleView: TextView = convertView?.findViewById(android.R.id.text1)
-            ?: LayoutInflater.from(parent?.context)
-                .inflate(android.R.layout.simple_expandable_list_item_1, parent, false) as TextView
-        groupTitleView.text = groupTitle
-        return groupTitleView
-    }
-
-    override fun getChildView(
-        groupPosition: Int,
-        childPosition: Int,
-        isLastChild: Boolean,
-        convertView: View?,
-        parent: ViewGroup?
-    ): View {
-        val friend = getChild(groupPosition, childPosition) as Friend
-        val view = convertView ?: LayoutInflater.from(parent?.context)
-            .inflate(R.layout.friend_item_pending, parent, false)
-
-        // 여기에서 발생하는 NullPointerException을 방지하기 위한 수정
-        val nameTextView = view.findViewById<TextView>(R.id.user_name_textview)
-        val genreTextView = view.findViewById<TextView>(R.id.favorite_genre_textview)
-
-        // NullPointerException 방지: view 요소가 null이 아닌지 확인
-        if (nameTextView != null && genreTextView != null) {
-            nameTextView.text = friend.name
-            genreTextView.text = friend.genre
-        } else {
-            // 로그를 추가하여 문제를 디버깅할 수 있습니다.
-            Log.e("PendingFriendAdapter", "TextView ID가 null입니다. 레이아웃 파일을 확인하세요.")
+        // 데이터를 바인딩하는 메서드
+        fun bind(friend: Friend) {
+            // 프로필 이니셜과 이름 설정
+            profileInitialTextView.text = friend.name.first().toString() // 이름 첫 글자를 가져와서 설정
+            userNameTextView.text = friend.name
         }
-
-        return view
-    }
-
-    override fun isChildSelectable(groupPosition: Int, childPosition: Int): Boolean {
-        return true
     }
 }
