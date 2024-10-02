@@ -11,12 +11,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.team22.soundary.databinding.ActivitySignup2Binding
 import com.team22.soundary.feature.extensions.checkAndRequestPermissions
+import com.team22.soundary.feature.main.MainActivity  // MainActivity를 import
 
 class ActivitySignup2 : AppCompatActivity() {
 
+    companion object{
+        private val PERMISSION_REQUEST_CODE = 100
+        private val GALLERY_REQUEST_CODE = 101
+    }
+
     private lateinit var binding: ActivitySignup2Binding
-    private val PERMISSION_REQUEST_CODE = 100
-    private val GALLERY_REQUEST_CODE = 101
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,10 +42,12 @@ class ActivitySignup2 : AppCompatActivity() {
             }
         }
 
-        // 가입하기 버튼 클릭 시 메인으로 이동
+        // 가입하기 버튼 클릭 시 MainActivity로 이동
         binding.signupButtonSubmit.setOnClickListener {
-            // 가입 완료 처리 로직 작성
-            finish()
+            // 가입 완료 처리 후 MainActivity로 이동
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish() // 현재 Activity 종료
         }
     }
 
