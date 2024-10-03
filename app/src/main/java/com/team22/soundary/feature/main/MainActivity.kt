@@ -208,7 +208,7 @@ class MainActivity : AppCompatActivity() {
                 binding.likeButton.setImageResource(if (uiState.isLikeSong) R.drawable.main_like_background_pressed else R.drawable.main_like_background)
                 uiState.friendImage?.let {
                     Glide.with(this@MainActivity)
-                        .load(uiState.friendImage)
+                        .load(it)
                         .into(binding.friendPicImageView)
                 }
                 uiState.songImage?.let {
