@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -48,7 +49,6 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:progress="50"
         android:progressTint="@color/yellow_500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
         android:id="@+id/current_imageView"
         android:layout_width="@dimen/music_cover_size"
         android:layout_height="@dimen/music_cover_size"
-        android:background="@drawable/ic_launcher_background"
+        android:src="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +96,8 @@
         android:background="@drawable/main_message_bubble"
         android:paddingHorizontal="@dimen/message_padding_horizontal"
         android:paddingVertical="@dimen/padding_half"
-        android:text="이거듣고 눈물흘림"
+        android:visibility="invisible"
+        tools:text="이거듣고 눈물흘림"
         android:textSize="@dimen/message_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,33 +110,41 @@
         android:id="@+id/message_tail_imageView"
         android:layout_width="16dp"
         android:layout_height="16dp"
+        android:visibility="invisible"
         android:src="@drawable/main_message_bubble_tail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/message_textView" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/friend_pic_imageView"
+        android:id="@+id/friend_pic_cardView"
         android:layout_width="@dimen/friend_pic_size"
         android:layout_height="@dimen/friend_pic_size"
         android:layout_marginTop="@dimen/margin_half"
         android:layout_marginBottom="@dimen/margin_half"
         app:cardCornerRadius="100dp"
         app:cardElevation="0dp"
-        android:foreground="@drawable/ic_launcher_background"
         app:layout_constraintEnd_toStartOf="@id/friend_name_textView"
-        app:layout_constraintTop_toBottomOf="@+id/message_textView"/>
+        app:layout_constraintTop_toBottomOf="@+id/message_textView">
+
+        <ImageView
+            android:id="@+id/friend_pic_imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/ic_launcher_background"/>
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/friend_name_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingHorizontal="10dp"
-        android:text="춘식이"
-        app:layout_constraintBottom_toBottomOf="@id/friend_pic_imageView"
+        tools:text="춘식이"
+        app:layout_constraintBottom_toBottomOf="@id/friend_pic_cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/friend_pic_imageView" />
+        app:layout_constraintTop_toTopOf="@id/friend_pic_cardView" />
 
     <TextView
         android:id="@+id/day_textView"
@@ -144,9 +153,9 @@
         android:clipToOutline="true"
         android:text="3일"
         android:textColor="@color/gray_500"
-        app:layout_constraintBottom_toBottomOf="@id/friend_pic_imageView"
+        app:layout_constraintBottom_toBottomOf="@id/friend_pic_cardView"
         app:layout_constraintStart_toEndOf="@+id/friend_name_textView"
-        app:layout_constraintTop_toTopOf="@id/friend_pic_imageView" />
+        app:layout_constraintTop_toTopOf="@id/friend_pic_cardView" />
 
     <ImageView
         android:id="@+id/control_imageView"
@@ -157,7 +166,7 @@
         android:src="@drawable/main_music_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/friend_pic_imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/friend_pic_cardView" />
 
     <ImageButton
         android:id="@+id/like_button"
@@ -213,7 +222,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="스토커"
+        tools:text="스토커"
         android:textSize="@dimen/song_text_size"
         app:layout_constraintStart_toStartOf="@id/control_imageView"
         app:layout_constraintTop_toTopOf="@id/control_imageView" />
@@ -222,7 +231,7 @@
         android:id="@+id/singer_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="10cm"
+        tools:text="10cm"
         app:layout_constraintStart_toStartOf="@id/music_name_textView"
         app:layout_constraintTop_toBottomOf="@id/music_name_textView" />
 
@@ -232,4 +241,4 @@
         style="@style/bottom_navigation_bar"/>
     -->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>

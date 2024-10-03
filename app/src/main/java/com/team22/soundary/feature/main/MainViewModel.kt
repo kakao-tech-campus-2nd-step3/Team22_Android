@@ -1,14 +1,18 @@
 package com.team22.soundary.feature.main
 
+import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.team22.soundary.feature.main.domain.GetShareUseCase
 import com.team22.soundary.feature.main.domain.Share
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -20,7 +24,7 @@ class MainViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(MainUiState())
     val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()
 
-    init {
+    init{
         viewModelScope.launch {
             getShareUseCase.invoke().collect {
                 groupedShares = it
@@ -51,6 +55,8 @@ class MainViewModel @Inject constructor(
         updateUiState(getCurrentShares()[prevIndex], prevIndex)
     }
 
+    fun getSongUri(): Uri = _uiState.value.songUri
+
     private fun getCurrentShares(): List<Share> =
         groupedShares[_uiState.value.friendName] ?: emptyList()
 
@@ -70,9 +76,11 @@ class MainViewModel @Inject constructor(
                 musicName = targetShare.song.title,
                 singer = targetShare.song.artist,
                 message = targetShare.message,
+                songUri = targetShare.song.preview,
                 isLastSong = shareIndex == groupedShares[targetShare.friend.name]?.size?.minus(1),
                 isFirstSong = shareIndex == 0,
-                isLikeSong = targetShare.isLike
+                isLikeSong = targetShare.isLike,
+                songImage = targetShare.song.coverImage
             )
         }
 
