@@ -1,5 +1,6 @@
 package com.team22.soundary.feature.share
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,8 @@ class BottomSheetAdapter(
         fun bind(friendItem: FriendItemEntity) {
             binding.shareFriendImage.text = friendItem.name[0].toString()
             binding.shareFriendTextview.text = friendItem.name
+            binding.shareGrayBackground.visibility = if(friendItem.isSelected) View.VISIBLE else View.INVISIBLE
+            Log.d("uin", ""+binding.shareGrayBackground.visibility)
             item = friendItem
         }
     }
@@ -48,6 +51,7 @@ class BottomSheetAdapter(
         fun bind(friendItem: FriendItemEntity) {
             binding.shareFriendImage.setImageResource(R.drawable.stalker)
             binding.shareFriendTextview.text = friendItem.name
+            binding.shareGrayBackground.visibility = if(friendItem.isSelected) View.VISIBLE else View.INVISIBLE
             item = friendItem
         }
     }
@@ -96,4 +100,5 @@ class BottomSheetAdapter(
 
 interface FriendItemClickListener {
     fun onClick(v: View, selectItem: FriendItemEntity)
+    //fun onClick(v: View, position: Int)
 }

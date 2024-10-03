@@ -13,6 +13,9 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
     private var _binding: BottomSheetBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var friendList : MutableList<FriendItemEntity>
+    private lateinit var adapter : BottomSheetAdapter
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -30,18 +33,33 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
 
     private fun setRecyclerView(view: View) {
         // recyclerView 임시 데이터 생성
-        val friendList = mutableListOf<FriendItemEntity>()
-        for (i in 0..5) {
-            friendList.add(FriendItemEntity(""+i, "쿠키즈", null))
-            friendList.add(FriendItemEntity(""+i, "쿠키즈", "imageSrc"))
+        friendList = mutableListOf<FriendItemEntity>()
+        for (i in 0..10) {
+            friendList.add(FriendItemEntity(""+i, "쿠키즈", null, false))
+        }
+        for (i in 11..19) {
+            friendList.add(FriendItemEntity(""+i, "쿠키즈", "imageSrc", false))
         }
 
-        binding.selectFriendRecyclerview.adapter = BottomSheetAdapter(friendList, object : FriendItemClickListener {
+        adapter = BottomSheetAdapter(friendList, object : FriendItemClickListener {
             override fun onClick(v: View, selectItem: FriendItemEntity) {
-                Log.d("uin", "" + selectItem.id)
+                selectItem.isSelected = !selectItem.isSelected // 데이터 수정 부분 나중에 다른 파일로 옮기기
+
+                val updatedList = adapter.currentList.map {
+                    if(it.id == selectItem.id) {
+                        it.copy(isSelected = !it.isSelected)
+                    } else {
+                        it
+                    }
+                }
+                adapter.submitList(updatedList)
+                Log.d("uin", "" + selectItem.isSelected)
             }
         })
+
+        binding.selectFriendRecyclerview.adapter = adapter
         binding.selectFriendRecyclerview.layoutManager = GridLayoutManager(view.context, 4)
+        adapter.submitList(friendList)
     }
 
 
