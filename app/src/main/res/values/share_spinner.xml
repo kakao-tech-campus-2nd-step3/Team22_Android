@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="share_sort_array">
+        <item>@string/share_sort_share</item>
+        <item>@string/share_sort_like</item>
+    </string-array>
+</resources>
