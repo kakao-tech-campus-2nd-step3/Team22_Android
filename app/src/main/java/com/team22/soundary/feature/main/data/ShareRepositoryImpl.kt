@@ -8,10 +8,15 @@ import com.team22.soundary.feature.main.domain.User
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
+import java.net.URI
 import java.util.Date
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class ShareRepositoryImpl : ShareRepository {
-    private var mockDataList: MutableList<ShareEntity> = mutableListOf(
+class ShareRepositoryImpl @Inject constructor() : ShareRepository {
+    private var mockDataList: List<ShareEntity> = mutableListOf(
         ShareEntity(
             UserEntity("", "춘식이", "", "", "", Date(), Date()),
             SongEntity("", "스토커", "", "", "10cm", Date()),

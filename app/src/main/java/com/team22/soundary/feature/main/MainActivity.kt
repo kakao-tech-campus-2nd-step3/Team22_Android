@@ -12,6 +12,7 @@ import com.team22.soundary.R
 import com.team22.soundary.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding

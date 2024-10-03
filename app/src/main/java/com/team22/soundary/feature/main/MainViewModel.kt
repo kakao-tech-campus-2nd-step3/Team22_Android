@@ -10,8 +10,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class MainViewModel(
-    private val getShareUseCase: GetShareUseCase = GetShareUseCase()
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val getShareUseCase: GetShareUseCase
 ) : ViewModel() {
     private var groupedShares: Map<String, List<Share>> = emptyMap()
     val friendNames: List<String>
