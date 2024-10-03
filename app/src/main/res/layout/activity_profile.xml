@@ -4,128 +4,152 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.main.profile.ProfileActivity">
+    tools:context=".ProfileActivity">
 
-    <LinearLayout
-        android:id="@+id/vertical_container"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/add_friend_button"
-        app:layout_constraintEnd_toEndOf="parent"
+    <ImageView
+        android:id="@+id/back_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/all_icon_back"
+        android:contentDescription="Back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/padding_normal" />
 
-        <LinearLayout
-            android:id="@+id/header_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="@dimen/padding_normal">
+    <TextView
+        android:id="@+id/title_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="kookies"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/back_icon"
+        app:layout_constraintTop_toTopOf="@id/back_icon"
+        android:layout_marginStart="125dp" />
 
-            <ImageView
-                android:id="@+id/back_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:contentDescription="Back"
-                android:src="@drawable/all_icon_back" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/back_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/margin_normal"
+        app:cardElevation="0dp">
 
-            <TextView
-                android:id="@+id/title_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="125dp"
-                android:text="kookies"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/all_profile_placeholder"/>
+    </androidx.cardview.widget.CardView>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_imageview"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:contentDescription="Profile Image"
-            android:src="@drawable/all_profile_placeholder" />
+    <TextView
+        android:id="@+id/user_name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_name"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_size_large"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/cardView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/margin_normal" />
 
-        <TextView
-            android:id="@+id/user_name_textview"
+    <TextView
+        android:id="@+id/user_email_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_email"
+        android:textSize="@dimen/text_size_small"
+        android:textColor="@color/gray_500"
+        app:layout_constraintTop_toBottomOf="@id/user_name_textview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:id="@+id/status_message_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/state_message"
+        android:textSize="@dimen/text_size_normal"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/user_email_textview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/margin_half" />
+
+    <TextView
+        android:id="@+id/favorite_category_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:text="선호 카테고리"
+        android:textSize="@dimen/text_size_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.039"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/status_message_textview" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/category_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/favorite_category_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginStart="20dp">
+
+        <Button
+            android:id="@+id/genre_hiphop_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:text="@string/user_name"
-            android:textSize="@dimen/text_size_double"
-            android:textStyle="bold" />
+            android:text="@string/genre_hiphop"
+            android:textColor="@color/gray_200"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/user_email_textview"
+        <Button
+            android:id="@+id/genre_rock_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            android:text="@string/user_email"
-            android:textColor="@color/gray_500"
-            android:textSize="@dimen/text_size_small" />
+            android:text="@string/genre_rock"
+            android:textColor="@color/gray_200"
+            app:layout_constraintStart_toEndOf="@id/genre_hiphop_button"
+            android:layout_marginStart="8dp" />
 
-        <TextView
-            android:id="@+id/status_message_textview"
+        <Button
+            android:id="@+id/genre_pop_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin_half"
-            android:text="@string/state_message"
-            android:textSize="@dimen/text_size_normal"
-            android:textStyle="italic" />
+            android:text="@string/genre_pop"
+            android:textColor="@color/gray_200"
+            app:layout_constraintStart_toEndOf="@id/genre_rock_button"
+            android:layout_marginStart="8dp" />
 
-        <TextView
-            android:id="@+id/favorite_category_label"
+        <Button
+            android:id="@+id/genre_jpop_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin_double"
-            android:text="선호 카테고리"
-            android:textSize="@dimen/text_size_normal" />
+            android:text="@string/genre_Jpop"
+            android:textColor="@color/gray_200"
+            app:layout_constraintStart_toEndOf="@id/genre_pop_button"
+            android:layout_marginStart="8dp" />
 
-        <LinearLayout
-            android:id="@+id/category_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:orientation="horizontal">
-
-            <Button
-                style="@style/profile_category_style"
-                android:text="@string/genre_hiphop" />
-
-            <Button
-                style="@style/profile_category_style"
-                android:text="@string/genre_rock" />
-
-            <Button
-                style="@style/profile_category_style"
-                android:text="@string/genre_pop" />
-
-            <Button
-                style="@style/profile_category_style"
-                android:text="@string/genre_Jpop" />
-        </LinearLayout>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/add_friend_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/all_rounded_button"
-        android:paddingHorizontal="32dp"
         android:text="@string/add_friend"
+        android:background="@drawable/all_rounded_button"
+        android:padding="@dimen/padding_normal"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginBottom="60dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("kotlin-kapt")
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -33,6 +35,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    viewBinding{
+        enable = true
+    }
 }
 
 dependencies {
@@ -42,6 +48,15 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.cardview)
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.gridlayout)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    implementation(libs.glide)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+   
     
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
