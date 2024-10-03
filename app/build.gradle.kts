@@ -1,6 +1,3 @@
-import org.gradle.internal.impldep.software.amazon.ion.impl.PrivateIonConstants.True
-import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
-
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -53,9 +50,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation("androidx.cardview:cardview:1.0.0")
+
     implementation(libs.androidx.gridlayout)
     implementation(libs.androidx.fragment.ktx)
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

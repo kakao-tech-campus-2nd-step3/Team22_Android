@@ -26,7 +26,7 @@
         android:theme="@style/Theme.Soundary"
         tools:targetApi="31">
         <activity
-            android:name=".feature.main.MainActivity"
+            android:name=".feature.search.FriendSearchActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,15 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".feature.search.FriendSearchActivity"
-            android:exported="false" />
-        <activity
-            android:name=".feature.share.ShareFriendActivity"
-            android:exported="false" />
-        <activity
-            android:name=".feature.share.ShareMusicActivity"
-            android:exported="false" />
     </application>
 
 </manifest>

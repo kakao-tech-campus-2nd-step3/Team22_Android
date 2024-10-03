@@ -156,7 +156,6 @@
         android:layout_marginHorizontal="@dimen/margin_normal"
         android:layout_marginVertical="@dimen/margin_normal"
         android:src="@drawable/main_music_info"
-        app:layout_constraintBottom_toTopOf="@id/navigationBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/friend_pic_imageView" />
@@ -228,9 +227,10 @@
         app:layout_constraintStart_toStartOf="@id/music_name_textView"
         app:layout_constraintTop_toBottomOf="@id/music_name_textView" />
 
+    <!--
     <TextView
         android:id="@+id/navigationBar"
         style="@style/bottom_navigation_bar"/>
-
+    -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
