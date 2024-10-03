@@ -52,15 +52,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setSongClickListener() {
         binding.nextImageView.setOnClickListener {
-            binding.main.transitionToEnd {
-                binding.main.progress = 0f
-            }.let {
-                resetMediaPlayer()
-                resetText()
-                viewModel.onNextClicked()
-            }
-
-
+            resetMediaPlayer()
+            resetText()
+            viewModel.onNextClicked()
         }
 
         binding.prevImageView.setOnClickListener {
