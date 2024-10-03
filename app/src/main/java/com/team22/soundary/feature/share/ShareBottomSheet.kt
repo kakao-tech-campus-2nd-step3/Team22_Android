@@ -1,9 +1,12 @@
 package com.team22.soundary.feature.share
 
+import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.team22.soundary.R
 import com.team22.soundary.databinding.BottomSheetBinding
@@ -23,6 +26,10 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
 
         setSendButton()
         setRecyclerView(view)
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return BottomSheetDialog(requireActivity(), R.style.bottomSheetBackground)
     }
 
     private fun setSendButton() {

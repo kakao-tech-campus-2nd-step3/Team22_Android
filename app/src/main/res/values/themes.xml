@@ -65,6 +65,11 @@
         <item name="android:layout_marginHorizontal">3dp</item>
     </style>
 
+    <style name="bottomSheetBackground">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+    </style>
+
     <style name="shareGrayBackground">
         <item name="android:layout_width">@dimen/item_size</item>
         <item name="android:layout_height">@dimen/item_size</item>
