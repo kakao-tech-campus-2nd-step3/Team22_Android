@@ -1,6 +1,7 @@
 package com.team22.soundary.feature.share
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team22.soundary.databinding.ActivityShareFriendBinding
@@ -36,8 +37,9 @@ class ShareFriendActivity : AppCompatActivity() {
     private fun setRecyclerView() {
         // recyclerView 임시 데이터 생성
         val friendList = mutableListOf<FriendItemEntity>()
-        for (i in 0..8) {
-            friendList.add(FriendItemEntity(""+i, "쿠키즈", false))
+        for (i in 0..4) {
+            friendList.add(FriendItemEntity(""+i, "쿠키즈", null))
+            friendList.add(FriendItemEntity(""+i, "쿠키즈", "imageSrc"))
         }
 
         binding.shareFriendRecyclerview.adapter = FriendListAdapter(friendList)
