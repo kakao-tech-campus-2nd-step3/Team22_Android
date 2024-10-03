@@ -2,18 +2,27 @@ package com.team22.soundary.feature.share
 
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team22.soundary.databinding.ActivityShareFriendBinding
 import com.team22.soundary.feature.share.data.FriendItemEntity
+import kotlinx.coroutines.launch
 
 class ShareFriendActivity : AppCompatActivity() {
     private lateinit var binding: ActivityShareFriendBinding
+
+    private lateinit var adapter: FriendListAdapter
+    private val viewModel: ShareViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityShareFriendBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        viewModel.init()
 
         setBackButton()
         setMusicInfoText()
@@ -35,16 +44,16 @@ class ShareFriendActivity : AppCompatActivity() {
     }
 
     private fun setRecyclerView() {
-        // recyclerView 임시 데이터 생성
-        val friendList = mutableListOf<FriendItemEntity>()
-        for (i in 0..4) {
-            friendList.add(FriendItemEntity(""+i, "쿠키즈", null, false))
-            friendList.add(FriendItemEntity(""+i, "쿠키즈", "imageSrc", false))
-        }
-
-        binding.shareFriendRecyclerview.adapter = FriendListAdapter(friendList)
+        adapter = FriendListAdapter()
+        binding.shareFriendRecyclerview.adapter = adapter
         binding.shareFriendRecyclerview.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        lifecycleScope.launch {
+            viewModel.selectList.collect {
+                adapter.submitList(it)
+            }
+        }
     }
 
     private fun setAddFriendButton() {

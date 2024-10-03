@@ -10,9 +10,9 @@ import com.team22.soundary.R
 import com.team22.soundary.databinding.ShareFriendItemNoImageBinding
 import com.team22.soundary.databinding.ShareFriendItemWithImageBinding
 import com.team22.soundary.feature.share.data.FriendItemEntity
+import kotlinx.coroutines.flow.StateFlow
 
 class BottomSheetAdapter(
-    private var friendItemList: List<FriendItemEntity>,
     private val listener: FriendItemClickListener
 ) : ListAdapter<FriendItemEntity, RecyclerView.ViewHolder>(FriendItemDiffCallback()) {
     class ViewHolderNoImage(
@@ -30,8 +30,8 @@ class BottomSheetAdapter(
         fun bind(friendItem: FriendItemEntity) {
             binding.shareFriendImage.text = friendItem.name[0].toString()
             binding.shareFriendTextview.text = friendItem.name
-            binding.shareGrayBackground.visibility = if(friendItem.isSelected) View.VISIBLE else View.INVISIBLE
-            Log.d("uin", ""+binding.shareGrayBackground.visibility)
+            binding.shareGrayBackground.visibility =
+                if (friendItem.isSelected) View.VISIBLE else View.INVISIBLE
             item = friendItem
         }
     }
@@ -51,7 +51,8 @@ class BottomSheetAdapter(
         fun bind(friendItem: FriendItemEntity) {
             binding.shareFriendImage.setImageResource(R.drawable.stalker)
             binding.shareFriendTextview.text = friendItem.name
-            binding.shareGrayBackground.visibility = if(friendItem.isSelected) View.VISIBLE else View.INVISIBLE
+            binding.shareGrayBackground.visibility =
+                if (friendItem.isSelected) View.VISIBLE else View.INVISIBLE
             item = friendItem
         }
     }
@@ -66,6 +67,7 @@ class BottomSheetAdapter(
                 )
                 return ViewHolderNoImage(binding, listener)
             }
+
             1 -> {
                 val binding = ShareFriendItemWithImageBinding.inflate(
                     LayoutInflater.from(parent.context),
@@ -74,23 +76,20 @@ class BottomSheetAdapter(
                 )
                 return ViewHolderWithImage(binding, listener)
             }
+
             else -> throw IllegalArgumentException()
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is ViewHolderNoImage -> holder.bind(friendItemList[position])
-            is ViewHolderWithImage -> holder.bind(friendItemList[position])
+            is ViewHolderNoImage -> holder.bind(getItem(position))
+            is ViewHolderWithImage -> holder.bind(getItem(position))
         }
     }
 
-    override fun getItemCount(): Int {
-        return friendItemList.size
-    }
-
     override fun getItemViewType(position: Int): Int {
-        return if(friendItemList[position].image == null) {
+        return if (getItem(position).image == null) {
             FriendListAdapter.NO_IMAGE
         } else {
             FriendListAdapter.WITH_IMAGE
@@ -100,5 +99,4 @@ class BottomSheetAdapter(
 
 interface FriendItemClickListener {
     fun onClick(v: View, selectItem: FriendItemEntity)
-    //fun onClick(v: View, position: Int)
 }
