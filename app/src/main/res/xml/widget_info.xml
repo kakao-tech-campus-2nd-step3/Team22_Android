@@ -7,4 +7,4 @@
     android:initialLayout="@layout/widget_main"
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen">
-</appwidget-provider>
+    </appwidget-provider>
