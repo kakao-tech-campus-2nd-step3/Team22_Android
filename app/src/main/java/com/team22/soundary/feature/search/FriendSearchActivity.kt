@@ -114,7 +114,7 @@ class FriendSearchActivity : AppCompatActivity() {
 
         friendSearchViewModel.myFriends.observe(this) { myFriends ->
             myFriendsAdapter.submitList(myFriends)
-            updateFriendsCount()
+            updateFriendsCount(myFriends.size)
         }
 
         friendSearchViewModel.pendingFriends.observe(this) { pendingFriends ->
@@ -122,9 +122,8 @@ class FriendSearchActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateFriendsCount() {
-        val myFriendsCount = myFriendsAdapter.itemCount
-        binding.friendsListTitle.text = "내 친구 ($myFriendsCount/20)"
+    private fun updateFriendsCount(count: Int) {
+        binding.friendsListTitle.text = "내 친구 ($count/20)"
     }
 }
 
