@@ -9,7 +9,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team22.soundary.databinding.ActivityFriendSearchBinding
-import com.team22.soundary.feature.search.FriendProfileActivity
 
 class FriendSearchActivity : AppCompatActivity() {
 
@@ -26,20 +25,38 @@ class FriendSearchActivity : AppCompatActivity() {
         binding = ActivityFriendSearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 어댑터 초기화 시 클릭 리스너 전달
-        newFriendsAdapter = FriendAdapter { friend ->
-            val intent = Intent(this, FriendProfileActivity::class.java)
-            intent.putExtra("FRIEND_ID", friend.id)
-            startActivity(intent)
-        }
+        // 새로운 친구 어댑터 초기화 (수락/거절 콜백 포함)
+        newFriendsAdapter = FriendAdapter(
+            onItemClick = { friend ->
+                // 친구 프로필 화면으로 이동
+                val intent = Intent(this, FriendProfileActivity::class.java)
+                intent.putExtra("FRIEND_ID", friend.id)
+                startActivity(intent)
+            },
+            onAcceptClick = { friend ->
+                friendSearchViewModel.acceptFriend(friend)
+            },
+            onDeclineClick = { friend ->
+                friendSearchViewModel.declineFriend(friend)
+            }
+        )
 
-        myFriendsAdapter = FriendAdapter { friend ->
-            val intent = Intent(this, FriendProfileActivity::class.java)
-            intent.putExtra("FRIEND_ID", friend.id)
-            startActivity(intent)
-        }
+        // 내 친구 어댑터 초기화 (삭제 콜백 포함)
+        myFriendsAdapter = FriendAdapter(
+            onItemClick = { friend ->
+                // 친구 프로필 화면으로 이동
+                val intent = Intent(this, FriendProfileActivity::class.java)
+                intent.putExtra("FRIEND_ID", friend.id)
+                startActivity(intent)
+            },
+            onDeleteClick = { friend ->
+                friendSearchViewModel.deleteFriend(friend)
+            }
+        )
 
+        // 대기 중인 친구 어댑터 초기화
         pendingFriendsAdapter = PendingFriendAdapter { friend ->
+            // 친구 프로필 화면으로 이동
             val intent = Intent(this, FriendProfileActivity::class.java)
             intent.putExtra("FRIEND_ID", friend.id)
             startActivity(intent)
@@ -110,3 +127,4 @@ class FriendSearchActivity : AppCompatActivity() {
         binding.friendsListTitle.text = "내 친구 ($myFriendsCount/20)"
     }
 }
+
