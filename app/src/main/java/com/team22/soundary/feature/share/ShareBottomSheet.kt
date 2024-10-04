@@ -39,7 +39,8 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
         return BottomSheetDialog(requireActivity(), R.style.bottomSheetBackground)
     }
 
-    private fun setSendButton() {  // 전송 버튼을 눌러야만 반영되도록, 뒤로가기는 반영X
+    private fun setSendButton() {  // 메인버전이랑 공유버전이랑 나눠야
+        binding.bottomSheetSendButton.text = viewModel.getButtonText()
         binding.bottomSheetSendButton.setOnClickListener {
             viewModel.updateSelectItemList()
             viewModel.setComment(binding.shareCommentEdittext.text.toString())
@@ -56,6 +57,7 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
             override fun onClick(v: View, selectItem: FriendItemEntity) {
                 viewModel.setItemVisibility(selectItem)
                 binding.shareSelectAllButton.isChecked = viewModel.isSelectedAll()
+                binding.bottomSheetSendButton.text = viewModel.getButtonText()
             }
         })
         binding.selectFriendRecyclerview.adapter = adapter
@@ -69,12 +71,14 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
     }
 
     private fun setSelectAllButton() {
+        binding.shareSelectAllButton.isChecked = viewModel.isSelectedAll()
         binding.shareSelectAllButton.setOnClickListener {
-            if(binding.shareSelectAllButton.isChecked) {
+            if (binding.shareSelectAllButton.isChecked) {
                 viewModel.setItemVisibilityAll(true)
             } else {
                 viewModel.setItemVisibilityAll(false)
             }
+            binding.bottomSheetSendButton.text = viewModel.getButtonText()
         }
     }
 

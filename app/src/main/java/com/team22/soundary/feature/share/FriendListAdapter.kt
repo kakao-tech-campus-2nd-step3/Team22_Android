@@ -10,7 +10,8 @@ import com.team22.soundary.databinding.ShareFriendItemNoImageBinding
 import com.team22.soundary.databinding.ShareFriendItemWithImageBinding
 import com.team22.soundary.feature.share.data.FriendItemEntity
 
-class FriendListAdapter : ListAdapter<FriendItemEntity, RecyclerView.ViewHolder>(FriendItemDiffCallback()) {
+class FriendListAdapter :
+    ListAdapter<FriendItemEntity, RecyclerView.ViewHolder>(FriendItemDiffCallback()) {
     class ViewHolderNoImage(
         private val binding: ShareFriendItemNoImageBinding,
     ) : RecyclerView.ViewHolder(binding.root) {

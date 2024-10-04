@@ -3,7 +3,6 @@ package com.team22.soundary.feature.share
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team22.soundary.databinding.ActivityShareFriendBinding
@@ -52,6 +51,7 @@ class ShareFriendActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.selectList.collect {
                 adapter.submitList(it)
+                binding.shareSendButton.text = viewModel.getButtonText()
             }
         }
     }
@@ -73,6 +73,7 @@ class ShareFriendActivity : AppCompatActivity() {
     }
 
     private fun setSendButton() {
+        binding.shareSendButton.text = viewModel.getButtonText()
         binding.shareSendButton.setOnClickListener {
             viewModel.setComment(binding.shareCommentEdittext.text.toString())
             // viewModel의 데이터들 백으로 넘겨주고

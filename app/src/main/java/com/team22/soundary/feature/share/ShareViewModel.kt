@@ -51,7 +51,7 @@ class ShareViewModel : ViewModel() {
         updateSelectItemList()
     }
 
-    fun setItemVisibilityAll(visibility : Boolean) {
+    fun setItemVisibilityAll(visibility: Boolean) {
         val updatedList = _friendList.value.map {
             it.copy(isSelected = visibility)
         }
@@ -59,11 +59,11 @@ class ShareViewModel : ViewModel() {
         updateSelectItemList()
     }
 
-    fun isSelectedAll() : Boolean {
+    fun isSelectedAll(): Boolean {
         return _selectList.value.size == _friendList.value.size
     }
 
-    fun updateSelectItemList(){
+    fun updateSelectItemList() {
         val selectList = mutableListOf<FriendItemEntity>()
         for (item in _friendList.value) {
             if (item.isSelected) {
@@ -71,5 +71,9 @@ class ShareViewModel : ViewModel() {
             }
         }
         setSelectItemList(selectList)
+    }
+
+    fun getButtonText(): String {
+        return "" + _selectList.value.size + "명에게 보내기"
     }
 }
