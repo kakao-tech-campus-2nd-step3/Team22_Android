@@ -6,5 +6,5 @@ data class FriendEntity(
     val email: String,
     val statusMessage: String,
     val favoriteGenres: List<String>,
-    val status: String // "pending", "requested", "accepted"
+    var status: String // "pending", "requested", "accepted"
 )
