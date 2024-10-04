@@ -1,3 +1,5 @@
+package com.team22.soundary.feature.search
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -5,31 +7,30 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.team22.soundary.databinding.FriendItemBasicBinding
 import com.team22.soundary.databinding.FriendItemNewBinding
-import com.team22.soundary.feature.search.data.FriendEntity
+import com.team22.soundary.feature.search.data.model.FriendEntity
 
-// FriendAdapter를 ListAdapter로 변환
-class FriendAdapter : ListAdapter<FriendEntity, RecyclerView.ViewHolder>(FriendDiffCallback()) {
+class FriendAdapter(
+    private val onItemClick: (FriendEntity) -> Unit
+) : ListAdapter<FriendEntity, RecyclerView.ViewHolder>(FriendDiffCallback()) {
 
     private val VIEW_TYPE_NEW = 1
     private val VIEW_TYPE_BASIC = 2
 
     override fun getItemViewType(position: Int): Int {
-        return if (getItem(position).isNewFriend) {
-            VIEW_TYPE_NEW
+        return if (getItem(position).status == "requested") {
+            VIEW_TYPE_NEW // 나에게 친구 요청을 보낸 친구
         } else {
-            VIEW_TYPE_BASIC
+            VIEW_TYPE_BASIC // 친구 상태인 친구
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             VIEW_TYPE_NEW -> {
-                // NewFriendViewHolder 생성
                 val binding = FriendItemNewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 NewFriendViewHolder(binding)
             }
             VIEW_TYPE_BASIC -> {
-                // BasicFriendViewHolder 생성 (ViewBinding 사용)
                 val binding = FriendItemBasicBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 BasicFriendViewHolder(binding)
             }
@@ -38,19 +39,53 @@ class FriendAdapter : ListAdapter<FriendEntity, RecyclerView.ViewHolder>(FriendD
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val friend = getItem(position) // ListAdapter는 getItem()으로 데이터 접근
-        // ViewHolder 타입에 따라 캐스팅하여 bind() 호출
+        val friend = getItem(position)
         when (holder) {
             is NewFriendViewHolder -> holder.bind(friend)
             is BasicFriendViewHolder -> holder.bind(friend)
         }
     }
 
-    class NewFriendViewHolder(private val binding: FriendItemNewBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class BasicFriendViewHolder(
+        private val binding: FriendItemBasicBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(friend: FriendEntity) {
             binding.userNameTextview.text = friend.name
-            binding.favoriteGenreTextview.text = friend.genre
             binding.profileInitialTextview.text = friend.name.first().toString()
+
+            // favoriteGenres의 첫 번째 항목을 가져와서 표시
+            val firstGenre = friend.favoriteGenres.firstOrNull() ?: "장르 없음"
+            binding.favoriteGenreTextview.text = firstGenre
+
+            // '@' + id로 사용자 아이디 표시
+            binding.userIdTextview.text = "@${friend.id}"
+
+
+            binding.friendDeleteButton.setOnClickListener {
+                // 친구 삭제 로직
+            }
+
+            binding.root.setOnClickListener {
+                onItemClick(friend)
+            }
+        }
+    }
+
+    inner class NewFriendViewHolder(
+        private val binding: FriendItemNewBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(friend: FriendEntity) {
+            binding.userNameTextview.text = friend.name
+            binding.profileInitialTextview.text = friend.name.first().toString()
+
+            // favoriteGenres의 첫 번째 항목을 가져와서 표시
+            val firstGenre = friend.favoriteGenres.firstOrNull() ?: "장르 없음"
+            binding.favoriteGenreTextview.text = firstGenre
+
+            // '@' + id로 사용자 아이디 표시
+            binding.userIdTextview.text = "@${friend.id}"
 
             binding.friendAcceptButton.setOnClickListener {
                 // 새로운 친구 수락 로직
@@ -58,36 +93,20 @@ class FriendAdapter : ListAdapter<FriendEntity, RecyclerView.ViewHolder>(FriendD
             binding.friendDeclineButton.setOnClickListener {
                 // 새로운 친구 거절 로직
             }
-        }
-    }
 
-    class BasicFriendViewHolder(private val binding: FriendItemBasicBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(friend: FriendEntity) {
-            binding.userNameTextview.text = friend.name
-            binding.favoriteGenreTextview.text = friend.genre
-            binding.profileInitialTextview.text = friend.name.first().toString()
-
-            binding.friendDeleteButton.setOnClickListener {
-                // 친구 삭제 로직
+            binding.root.setOnClickListener {
+                onItemClick(friend)
             }
         }
     }
 
-    // 새로운 친구 목록 업데이트
-    fun updateList(newFriends: List<FriendEntity>) {
-        submitList(newFriends) // ListAdapter의 submitList() 사용
-    }
-    // DiffUtil 콜백 클래스
     class FriendDiffCallback : DiffUtil.ItemCallback<FriendEntity>() {
         override fun areItemsTheSame(oldItem: FriendEntity, newItem: FriendEntity): Boolean {
-            // 고유한 id나 다른 식별자를 사용하여 동일한 항목인지 확인
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: FriendEntity, newItem: FriendEntity): Boolean {
-            // 데이터가 동일한지 확인
             return oldItem == newItem
         }
     }
-
 }
