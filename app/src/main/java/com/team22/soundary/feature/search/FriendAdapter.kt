@@ -10,7 +10,10 @@ import com.team22.soundary.databinding.FriendItemNewBinding
 import com.team22.soundary.feature.search.data.model.FriendEntity
 
 class FriendAdapter(
-    private val onItemClick: (FriendEntity) -> Unit
+    private val onItemClick: (FriendEntity) -> Unit,
+    private val onAcceptClick: ((FriendEntity) -> Unit)? = null,
+    private val onDeclineClick: ((FriendEntity) -> Unit)? = null,
+    private val onDeleteClick: ((FriendEntity) -> Unit)? = null
 ) : ListAdapter<FriendEntity, RecyclerView.ViewHolder>(FriendDiffCallback()) {
 
     private val VIEW_TYPE_NEW = 1
@@ -63,7 +66,7 @@ class FriendAdapter(
 
 
             binding.friendDeleteButton.setOnClickListener {
-                // 친구 삭제 로직
+                onDeleteClick?.invoke(friend)
             }
 
             binding.root.setOnClickListener {
@@ -88,10 +91,10 @@ class FriendAdapter(
             binding.userIdTextview.text = "@${friend.id}"
 
             binding.friendAcceptButton.setOnClickListener {
-                // 새로운 친구 수락 로직
+                onAcceptClick?.invoke(friend)
             }
             binding.friendDeclineButton.setOnClickListener {
-                // 새로운 친구 거절 로직
+                onDeclineClick?.invoke(friend)
             }
 
             binding.root.setOnClickListener {
