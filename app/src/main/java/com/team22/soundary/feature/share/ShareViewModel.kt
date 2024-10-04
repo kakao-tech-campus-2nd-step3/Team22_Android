@@ -13,6 +13,9 @@ class ShareViewModel : ViewModel() {
     private val _selectList = MutableStateFlow<List<FriendItemEntity>>(emptyList())
     val selectList: StateFlow<List<FriendItemEntity>> = _selectList.asStateFlow()
 
+    private val _comment = MutableStateFlow("")
+    val comment: StateFlow<String> = _comment.asStateFlow()
+
     private fun setFriendItemList(updatedList: List<FriendItemEntity>) {
         _friendList.value = updatedList
     }
@@ -21,7 +24,11 @@ class ShareViewModel : ViewModel() {
         _selectList.value = updatedList
     }
 
-    fun init() {
+    fun setComment(updatedText: String) {
+        _comment.value = updatedText
+    }
+
+    fun init() { // 나중에 백엔드에서 가져오도록 수정해야하는 친구 정보
         val initList = mutableListOf<FriendItemEntity>()
         for (i in 0..10) {
             initList.add(FriendItemEntity("" + i, "쿠키즈", null, false))
@@ -52,6 +59,4 @@ class ShareViewModel : ViewModel() {
         }
         setSelectItemList(selectList)
     }
-
-
 }

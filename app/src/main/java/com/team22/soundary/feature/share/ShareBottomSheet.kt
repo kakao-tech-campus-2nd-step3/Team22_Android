@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -29,6 +30,7 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
         _binding = BottomSheetBinding.bind(view)
 
         setSendButton()
+        setComment()
         setRecyclerView(view)
     }
 
@@ -36,11 +38,16 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
         return BottomSheetDialog(requireActivity(), R.style.bottomSheetBackground)
     }
 
-    private fun setSendButton() {
+    private fun setSendButton() {  // 전송 버튼을 눌러야만 반영되도록, 뒤로가기는 반영X
         binding.bottomSheetSendButton.setOnClickListener {
             viewModel.updateSelectItemList()
+            viewModel.setComment(binding.shareCommentEdittext.text.toString())
             dismiss()
         }
+    }
+
+    private fun setComment() {
+        binding.shareCommentEdittext.setText(viewModel.comment.value)
     }
 
     private fun setRecyclerView(view: View) {

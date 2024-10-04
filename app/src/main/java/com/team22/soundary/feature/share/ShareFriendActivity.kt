@@ -1,14 +1,12 @@
 package com.team22.soundary.feature.share
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team22.soundary.databinding.ActivityShareFriendBinding
-import com.team22.soundary.feature.share.data.FriendItemEntity
 import kotlinx.coroutines.launch
 
 class ShareFriendActivity : AppCompatActivity() {
@@ -27,7 +25,9 @@ class ShareFriendActivity : AppCompatActivity() {
         setBackButton()
         setMusicInfoText()
         setRecyclerView()
+        setComment()
         setAddFriendButton()
+        setSendButton()
     }
 
     private fun setBackButton() {
@@ -56,10 +56,27 @@ class ShareFriendActivity : AppCompatActivity() {
         }
     }
 
+    private fun setComment() {
+        lifecycleScope.launch {
+            viewModel.comment.collect {
+                binding.shareCommentEdittext.setText(it)
+            }
+        }
+    }
+
     private fun setAddFriendButton() {
         binding.shareAddFriend.setOnClickListener {
+            viewModel.setComment(binding.shareCommentEdittext.text.toString())
             val modal = ShareBottomSheet()
             modal.show(supportFragmentManager, ShareBottomSheet.TAG)
+        }
+    }
+
+    private fun setSendButton() {
+        binding.shareSendButton.setOnClickListener {
+            viewModel.setComment(binding.shareCommentEdittext.text.toString())
+            // viewModel의 데이터들 백으로 넘겨주고
+            // 메인으로 인텐트 넘겨주기
         }
     }
 
