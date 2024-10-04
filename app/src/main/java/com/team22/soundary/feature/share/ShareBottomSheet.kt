@@ -32,6 +32,7 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
         setSendButton()
         setComment()
         setRecyclerView(view)
+        setSelectAllButton()
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -54,6 +55,7 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
         adapter = BottomSheetAdapter(object : FriendItemClickListener {
             override fun onClick(v: View, selectItem: FriendItemEntity) {
                 viewModel.setItemVisibility(selectItem)
+                binding.shareSelectAllButton.isChecked = viewModel.isSelectedAll()
             }
         })
         binding.selectFriendRecyclerview.adapter = adapter
@@ -62,6 +64,16 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
         lifecycleScope.launch {
             viewModel.friendList.collect {
                 adapter.submitList(it)
+            }
+        }
+    }
+
+    private fun setSelectAllButton() {
+        binding.shareSelectAllButton.setOnClickListener {
+            if(binding.shareSelectAllButton.isChecked) {
+                viewModel.setItemVisibilityAll(true)
+            } else {
+                viewModel.setItemVisibilityAll(false)
             }
         }
     }

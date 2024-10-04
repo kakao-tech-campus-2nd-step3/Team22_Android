@@ -48,6 +48,19 @@ class ShareViewModel : ViewModel() {
             }
         }
         setFriendItemList(updatedList)
+        updateSelectItemList()
+    }
+
+    fun setItemVisibilityAll(visibility : Boolean) {
+        val updatedList = _friendList.value.map {
+            it.copy(isSelected = visibility)
+        }
+        setFriendItemList(updatedList)
+        updateSelectItemList()
+    }
+
+    fun isSelectedAll() : Boolean {
+        return _selectList.value.size == _friendList.value.size
     }
 
     fun updateSelectItemList(){
