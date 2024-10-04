@@ -1,6 +1,16 @@
 package com.team22.soundary.feature.profile
 
+
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Path
+import android.graphics.RectF
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
+
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.team22.soundary.R
@@ -11,6 +21,7 @@ class ActivityWidget : AppCompatActivity() {
     private lateinit var binding: WidgetMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         // ViewBinding 초기화
         binding = WidgetMainBinding.inflate(layoutInflater)
@@ -28,3 +39,4 @@ class ActivityWidget : AppCompatActivity() {
         binding.widgetNotificationDot.visibility = if (hasNotification) View.VISIBLE else View.GONE
     }
 }
+

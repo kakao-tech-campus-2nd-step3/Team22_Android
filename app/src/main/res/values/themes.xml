@@ -59,10 +59,19 @@
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/all_rounded_toggle_button</item>
-        <item name="android:textColor">@color/gray_500</item>
+        <item name="android:textColor">@drawable/all_rounded_toggle_text</item>
         <item name="android:textSize">13sp</item>
+        <item name="android:button">@null</item>
         <item name="android:layout_marginHorizontal">3dp</item>
     </style>
+
+    <style name="shareGrayBackground">
+        <item name="android:layout_width">@dimen/item_size</item>
+        <item name="android:layout_height">@dimen/item_size</item>
+        <item name="android:visibility">invisible</item>
+        <item name="android:src">@drawable/share_gray_circle</item>
+    </style>
+
     <!-- profile -->
     <style name="profile_category_style">
         <item name="android:layout_width">0dp</item>

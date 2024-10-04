@@ -1,8 +1,11 @@
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/transparent">
+
 
     <!--위젯 적용 가능 frame-->
     <FrameLayout
@@ -17,6 +20,7 @@
         android:background="@drawable/widget_lp_background"> <
 
         <!-- 이미지를 원형으로 자르기 -->
+
         <ImageView
             android:id="@+id/widget_imageview"
             android:layout_width="match_parent"
@@ -48,7 +52,45 @@
             android:textSize="16sp" />
     </FrameLayout>
 
-    <!-- 알림용 빨간 점 -->
+    <!-- 프로필 이미지 위에 덧대는 흰색 원 - view로 처리 -->
+    <View
+        android:id="@+id/white_circle_view"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@id/profile_cardview"
+        app:layout_constraintEnd_toEndOf="@id/profile_cardview"
+        app:layout_constraintTop_toTopOf="@id/profile_cardview"
+        app:layout_constraintStart_toStartOf="@id/profile_cardview"
+        android:elevation="5dp"
+        android:visibility="visible" />
+
+    <!-- 닉네임 첫 글자 레이블 (원형 배경) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/text_circle_background"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/profile_cardview"
+        app:layout_constraintEnd_toEndOf="@id/profile_cardview">
+
+        <TextView
+            android:id="@+id/widget_textview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="쿠"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_medium" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- 알림용 빨간 점 (동그랗게 표시) -->
     <View
         android:id="@+id/widget_notification_dot"
         android:layout_width="10dp"
@@ -61,3 +103,4 @@
         android:visibility="visible" />
 
 </RelativeLayout>
+

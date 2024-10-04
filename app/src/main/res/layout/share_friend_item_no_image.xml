@@ -7,14 +7,22 @@
 
     <TextView
         android:id="@+id/share_friend_image"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="@dimen/item_size"
+        android:layout_height="@dimen/item_size"
         android:background="@drawable/profile_background"
         android:gravity="center"
         android:text="@string/share_user_name_first_word"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/share_gray_background"
+        style="@style/shareGrayBackground"
+        android:contentDescription="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

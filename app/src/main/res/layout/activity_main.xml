@@ -114,7 +114,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/message_textView" />
 
-
     <androidx.cardview.widget.CardView
         android:id="@+id/friend_pic_imageView"
         android:layout_width="@dimen/friend_pic_size"
@@ -156,7 +155,6 @@
         android:layout_marginHorizontal="@dimen/margin_normal"
         android:layout_marginVertical="@dimen/margin_normal"
         android:src="@drawable/main_music_info"
-        app:layout_constraintBottom_toTopOf="@id/navigationBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/friend_pic_imageView" />
@@ -228,16 +226,10 @@
         app:layout_constraintStart_toStartOf="@id/music_name_textView"
         app:layout_constraintTop_toBottomOf="@id/music_name_textView" />
 
+    <!--
     <TextView
         android:id="@+id/navigationBar"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/yellow_500"
-        android:gravity="center"
-        android:text="네비게이션바"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="344:65"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        style="@style/bottom_navigation_bar"/>
+    -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
