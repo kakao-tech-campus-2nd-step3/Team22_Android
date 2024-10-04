@@ -1,11 +1,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:padding="16dp"
     tools:ignore="ExtraText">
+
 
     <!-- 상단 안내 텍스트 -->
     <TextView
@@ -17,6 +19,9 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.5"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,13 +42,17 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_normal"
         android:hint="@string/signup_ID_hint"
-        android:inputType="none"
+
+        android:inputType="textEmailAddress"
+
         android:textColor="@color/black"
         android:textColorHint="@color/gray_200"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@id/signup_email_label"
         android:enabled="false" />
+
 
     <!-- 닉네임 입력 필드 -->
     <TextView
@@ -99,6 +108,7 @@
             android:background="@drawable/all_rounded_toggle_button"
             android:textOff="@string/category_hiphop"
             android:textOn="@string/category_hiphop" />
+
 
         <ToggleButton
             android:id="@+id/signup_togglebutton_category_rock"
@@ -185,3 +195,5 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

@@ -1,152 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:fitsSystemWindows="true"
     android:padding="@dimen/padding_normal">
 
-    <LinearLayout
+    <!-- 프로필 이미지 - CardView로 감쌈 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profile_cardview"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="75dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/profile_imageview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/share_album_image"
+            android:scaleType="centerCrop"
+            android:src="@drawable/all_profile_placeholder" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- 한줄 소개 수정 -->
+    <EditText
+        android:id="@+id/profile_intro_edit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="@string/signup_introduce_hint"
+        android:text="@string/mypage_introduce"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_cardview" />
+
+    <!-- 카테고리 설정 -->
+    <TextView
+        android:id="@+id/category_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/mypage_category_setting"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_intro_edit" />
+
+    <!-- GridLayout 추가 -->
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/category_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/padding_normal">
-
-        <!-- 타이틀 -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_large"
-            android:gravity="center"
-            android:text="@string/mypage_edit_info"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_large"
-            android:textStyle="bold" />
-
-        <!-- 프로필 정보 섹션 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_large"
-            android:gravity="start"
-            android:orientation="horizontal">
-
-            <!-- 프로필 이미지 -->
-            <ImageView
-                android:id="@+id/profile_imageview"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginEnd="@dimen/margin_normal"
-                android:scaleType="centerCrop"
-                android:src="@drawable/all_profile_placeholder" />
-
-            <!-- 텍스트 정보 -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:orientation="vertical">
-
-                <!-- 닉네임 -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/mypage_nickname"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_small" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_half"
-                    android:text="@string/mypage_name"
-                    android:textSize="@dimen/text_size_medium"
-                    android:textStyle="bold" />
-
-                <!-- 아이디 -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/mypage_ID"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_small" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_half"
-                    android:text="@string/mypage_email"
-                    android:textSize="@dimen/text_size_medium" />
-
-                <!-- 한줄 소개 -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/mypage_introduce"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_small" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="헤이 모두들 안녕 내가 누군지 아니?"
-                    android:textSize="@dimen/text_size_medium" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- 카테고리 설정 -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_normal"
-            android:text="@string/mypage_category_setting"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_medium" />
+        android:layout_marginTop="8dp"
+        app:columnCount="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/category_title">
 
         <!-- 카테고리 버튼들 -->
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_large"
-            android:alignmentMode="alignBounds"
-            android:columnCount="3"
-            android:rowCount="2"
-            android:useDefaultMargins="true">
-
-            <Button
-                style="@style/CategoryButton"
-                android:text="@string/category_hiphop" />
-
-            <Button
-                style="@style/CategoryButton"
-                android:text="@string/category_rock" />
-
-            <Button
-                style="@style/CategoryButton"
-                android:text="@string/category_pop" />
-
-            <Button
-                style="@style/CategoryButton"
-                android:text="@string/category_jpop" />
-
-            <Button
-                style="@style/CategoryButton"
-                android:text="@string/category_ballad" />
-
-            <Button
-                style="@style/CategoryButton"
-                android:text="@string/category_dance" />
-        </GridLayout>
-
-        <!-- 저장 버튼 -->
         <Button
-            android:id="@+id/save_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:background="@drawable/all_rounded_button"
-            android:elevation="8dp"
-            android:text="@string/mypage_save"
-            android:textColor="@android:color/white" />
-    </LinearLayout>
-</ScrollView>
+            android:id="@+id/button_hiphop"
+            style="@style/CategoryButton"
+            android:text="@string/category_hiphop" />
+
+        <Button
+            android:id="@+id/button_rock"
+            style="@style/CategoryButton"
+            android:text="@string/category_rock" />
+
+        <Button
+            android:id="@+id/button_pop"
+            style="@style/CategoryButton"
+            android:text="@string/category_pop" />
+
+        <Button
+            android:id="@+id/button_jpop"
+            style="@style/CategoryButton"
+            android:text="@string/category_jpop" />
+
+        <Button
+            android:id="@+id/button_ballad"
+            style="@style/CategoryButton"
+            android:text="@string/category_ballad" />
+
+        <Button
+            android:id="@+id/button_dance"
+            style="@style/CategoryButton"
+            android:text="@string/category_dance" />
+    </androidx.gridlayout.widget.GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

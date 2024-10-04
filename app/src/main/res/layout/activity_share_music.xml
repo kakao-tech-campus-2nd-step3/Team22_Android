@@ -37,42 +37,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/share_music_top_textview" />
 
-    <TextView
+    <Spinner
         android:id="@+id/share_sort_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/share_sort_share"
-        android:textColor="@color/black"
-        android:textSize="13sp"
+        android:spinnerMode="dropdown"
         app:layout_constraintStart_toStartOf="@+id/share_search_edittext"
         app:layout_constraintTop_toBottomOf="@+id/share_search_edittext" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@null"
-        android:src="@drawable/all_icon_spinner"
-        app:layout_constraintBottom_toBottomOf="@id/share_sort_spinner"
-        app:layout_constraintStart_toEndOf="@id/share_sort_spinner"
-        app:layout_constraintTop_toTopOf="@id/share_sort_spinner" />
-
-    <!--    <Spinner-->
-    <!--        android:id="@+id/share_select_sort_spinner"-->
-    <!--        android:layout_width="200dp"-->
-    <!--        android:layout_height="20dp"-->
-    <!--        android:layout_marginStart="5dp"-->
-    <!--        android:layout_marginTop="5dp"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/share_search_edittext"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/share_search_edittext" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/share_music_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/share_search_edittext"
         app:layout_constraintTop_toBottomOf="@+id/share_sort_spinner"
         tools:itemCount="8"
