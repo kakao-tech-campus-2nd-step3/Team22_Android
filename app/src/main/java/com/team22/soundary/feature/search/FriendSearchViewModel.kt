@@ -29,6 +29,24 @@ class FriendSearchViewModel : ViewModel() {
         _pendingFriends.value = friendRepository.getPendingFriends()
     }
 
+    // 친구 수락 메서드 추가
+    fun acceptFriend(friend: FriendEntity) {
+        friendRepository.updateFriendStatus(friend.id, "accepted")
+        loadFriends()
+    }
+
+    // 친구 거절 메서드 추가
+    fun declineFriend(friend: FriendEntity) {
+        friendRepository.removeFriend(friend.id)
+        loadFriends()
+    }
+
+    // 친구 삭제 메서드 추가
+    fun deleteFriend(friend: FriendEntity) {
+        friendRepository.removeFriend(friend.id)
+        loadFriends()
+    }
+
     fun filterFriends(query: String) {
         val filteredNewFriends = friendRepository.getNewFriends().filter {
             it.name.contains(query, ignoreCase = true)

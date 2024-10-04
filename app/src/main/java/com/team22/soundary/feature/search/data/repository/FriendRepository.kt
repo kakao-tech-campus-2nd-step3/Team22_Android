@@ -4,7 +4,7 @@ import com.team22.soundary.feature.search.data.model.FriendEntity
 
 class FriendRepository {
 
-    private val allFriends = listOf(
+    private val allFriends = mutableListOf(
         FriendEntity(
             id = extractIdFromEmail("gogoKim@example.com"),
             name = "김고고",
@@ -78,5 +78,15 @@ class FriendRepository {
     // 친구 ID로 프로필 정보 가져오기
     fun getFriendById(friendId: String): FriendEntity? {
         return allFriends.find { it.id == friendId }
+    }
+    // 친구의 상태를 업데이트하는 메서드 수정
+    fun updateFriendStatus(friendId: String, newStatus: String) {
+        val friend = allFriends.find { it.id == friendId }
+        friend?.status = newStatus
+    }
+
+    // 친구를 리스트에서 제거하는 메서드 수정 -> mutableListof로 변경해야함 했음 !!
+    fun removeFriend(friendId: String) {
+        allFriends.removeAll { it.id == friendId }
     }
 }
