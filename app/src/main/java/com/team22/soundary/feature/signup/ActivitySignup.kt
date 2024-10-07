@@ -30,21 +30,7 @@ class ActivitySignup : AppCompatActivity() {
             binding.signupTogglebuttonCategoryRnb
         )
 
-        // 카테고리 선택 처리 (배경색 변화를 제거)
-        for (button in categoryButtons) {
-            button.setOnClickListener {
-                if (button.isChecked) {
-                    if (selectedCategories.size < 3) {
-                        selectedCategories.add(button)
-                    } else {
-                        button.isChecked = false
-                        Toast.makeText(this, "최대 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show()
-                    }
-                } else {
-                    selectedCategories.remove(button)
-                }
-            }
-        }
+        setupCategoryButtons(categoryButtons)
 
         // 계속 가입하기 버튼 클릭 시 처리
         binding.signupButtonContinue.setOnClickListener {
@@ -59,11 +45,31 @@ class ActivitySignup : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
     }
+
     private fun setEmailId(email: String) {
-        // 이메일의 앞 부분만 추출하여 설정 (예시로 '@' 앞부분)
         val emailId = email.substringBefore("@")
         binding.signupEdittextEmail.setText(emailId)
-        binding.signupEdittextEmail.isEnabled = false // 입력 불가하게 설정
+        binding.signupEdittextEmail.isEnabled = false
+    }
+
+    private fun setupCategoryButtons(categoryButtons: List<ToggleButton>) {
+        // 카테고리 선택 처리
+        for (button in categoryButtons) {
+            button.setOnClickListener {
+                if (button.isChecked) {
+                    if (selectedCategories.size < 3) {
+                        selectedCategories.add(button)
+                    } else {
+                        button.isChecked = false
+                        Toast.makeText(this, "최대 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    selectedCategories.remove(button)
+                }
+            }
+        }
     }
 }
+
