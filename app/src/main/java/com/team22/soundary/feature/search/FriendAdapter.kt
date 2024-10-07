@@ -31,11 +31,11 @@ class FriendAdapter(
         return when (viewType) {
             VIEW_TYPE_NEW -> {
                 val binding = FriendItemNewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                NewFriendViewHolder(binding)
+                NewFriendViewHolder(binding, onItemClick, onAcceptClick, onDeclineClick)
             }
             VIEW_TYPE_BASIC -> {
                 val binding = FriendItemBasicBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                BasicFriendViewHolder(binding)
+                BasicFriendViewHolder(binding, onItemClick, onDeleteClick)
             }
             else -> throw IllegalArgumentException("Invalid view type")
         }
@@ -48,68 +48,92 @@ class FriendAdapter(
             is BasicFriendViewHolder -> holder.bind(friend)
         }
     }
+}
 
-    inner class BasicFriendViewHolder(
-        private val binding: FriendItemBasicBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
+class BasicFriendViewHolder(
+    private val binding: FriendItemBasicBinding,
+    private val onItemClick: (FriendEntity) -> Unit,
+    private val onDeleteClick: ((FriendEntity) -> Unit)?
+) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(friend: FriendEntity) {
-            binding.userNameTextview.text = friend.name
-            binding.profileInitialTextview.text = friend.name.first().toString()
+    private var currentFriend: FriendEntity? = null
 
-            // favoriteGenres의 첫 번째 항목을 가져와서 표시
-            val firstGenre = friend.favoriteGenres.firstOrNull() ?: "장르 없음"
-            binding.favoriteGenreTextview.text = firstGenre
-
-            // '@' + id로 사용자 아이디 표시
-            binding.userIdTextview.text = "@${friend.id}"
-
-
-            binding.friendDeleteButton.setOnClickListener {
+    init {
+        // init 블록 안에서 setOnclickListener 호출
+        binding.friendDeleteButton.setOnClickListener {
+            currentFriend?.let { friend ->
                 onDeleteClick?.invoke(friend)
             }
+        }
 
-            binding.root.setOnClickListener {
+        binding.root.setOnClickListener {
+            currentFriend?.let { friend ->
                 onItemClick(friend)
             }
         }
     }
 
-    inner class NewFriendViewHolder(
-        private val binding: FriendItemNewBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(friend: FriendEntity) {
+        currentFriend = friend
+        binding.userNameTextview.text = friend.name
+        binding.profileInitialTextview.text = friend.name.first().toString()
 
-        fun bind(friend: FriendEntity) {
-            binding.userNameTextview.text = friend.name
-            binding.profileInitialTextview.text = friend.name.first().toString()
+        val firstGenre = friend.favoriteGenres.firstOrNull() ?: "장르 없음"
+        binding.favoriteGenreTextview.text = firstGenre
 
-            // favoriteGenres의 첫 번째 항목을 가져와서 표시
-            val firstGenre = friend.favoriteGenres.firstOrNull() ?: "장르 없음"
-            binding.favoriteGenreTextview.text = firstGenre
+        binding.userIdTextview.text = "@${friend.id}"
+    }
+}
 
-            // '@' + id로 사용자 아이디 표시
-            binding.userIdTextview.text = "@${friend.id}"
+class NewFriendViewHolder(
+    private val binding: FriendItemNewBinding,
+    private val onItemClick: (FriendEntity) -> Unit,
+    private val onAcceptClick: ((FriendEntity) -> Unit)?,
+    private val onDeclineClick: ((FriendEntity) -> Unit)?
+) : RecyclerView.ViewHolder(binding.root) {
 
-            binding.friendAcceptButton.setOnClickListener {
+    private var currentFriend: FriendEntity? = null
+
+    init {
+        // init 블록 안에서 setOnclickListener 호출
+        binding.friendAcceptButton.setOnClickListener {
+            currentFriend?.let { friend ->
                 onAcceptClick?.invoke(friend)
             }
-            binding.friendDeclineButton.setOnClickListener {
+        }
+
+        binding.friendDeclineButton.setOnClickListener {
+            currentFriend?.let { friend ->
                 onDeclineClick?.invoke(friend)
             }
+        }
 
-            binding.root.setOnClickListener {
+        binding.root.setOnClickListener {
+            currentFriend?.let { friend ->
                 onItemClick(friend)
             }
         }
     }
 
-    class FriendDiffCallback : DiffUtil.ItemCallback<FriendEntity>() {
-        override fun areItemsTheSame(oldItem: FriendEntity, newItem: FriendEntity): Boolean {
-            return oldItem.id == newItem.id
-        }
+    fun bind(friend: FriendEntity) {
+        currentFriend = friend
+        binding.userNameTextview.text = friend.name
+        binding.profileInitialTextview.text = friend.name.first().toString()
 
-        override fun areContentsTheSame(oldItem: FriendEntity, newItem: FriendEntity): Boolean {
-            return oldItem == newItem
-        }
+        val firstGenre = friend.favoriteGenres.firstOrNull() ?: "장르 없음"
+        binding.favoriteGenreTextview.text = firstGenre
+
+        binding.userIdTextview.text = "@${friend.id}"
+    }
+}
+
+
+class FriendDiffCallback : DiffUtil.ItemCallback<FriendEntity>() {
+    override fun areItemsTheSame(oldItem: FriendEntity, newItem: FriendEntity): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: FriendEntity, newItem: FriendEntity): Boolean {
+        return oldItem == newItem
     }
 }

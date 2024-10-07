@@ -17,7 +17,7 @@ class PendingFriendAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PendingFriendViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.friend_item_pending, parent, false)
-        return PendingFriendViewHolder(view)
+        return PendingFriendViewHolder(view, onItemClick)
     }
 
     override fun onBindViewHolder(holder: PendingFriendViewHolder, position: Int) {
@@ -25,17 +25,26 @@ class PendingFriendAdapter(
         holder.bind(friend)
     }
 
-    inner class PendingFriendViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class PendingFriendViewHolder(itemView: View, private val onItemClick: (FriendEntity) -> Unit)
+        : RecyclerView.ViewHolder(itemView) {
+
         private val profileInitialTextView: TextView = itemView.findViewById(R.id.profile_initial_textview)
         private val userNameTextView: TextView = itemView.findViewById(R.id.user_name_textview)
+        private var currentFriend: FriendEntity? = null
+
+        init {
+            // init 블록에서 setOnClickListener 호출
+            itemView.setOnClickListener {
+                currentFriend?.let { friend ->
+                    onItemClick(friend)
+                }
+            }
+        }
 
         fun bind(friend: FriendEntity) {
+            currentFriend = friend
             profileInitialTextView.text = friend.name.first().toString()
             userNameTextView.text = friend.name
-
-            itemView.setOnClickListener {
-                onItemClick(friend)
-            }
         }
     }
 
