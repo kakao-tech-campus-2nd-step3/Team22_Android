@@ -3,8 +3,6 @@ package com.team22.soundary.feature.main
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -27,7 +25,6 @@ import java.io.IOException
 class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
-    private lateinit var handler: Handler
     private val player: MediaPlayer = MediaPlayer()
     private var shouldPreparePlayer: Boolean = true
     private var pausedPosition: Int = 0
@@ -37,7 +34,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        handler = Handler(Looper.getMainLooper())
 
         setContentView(binding.root)
         observeUiState()
@@ -133,17 +129,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateMusicState() {
-        handler.post(
-            object : Runnable {
-                override fun run() {
-                    if (player.isPlaying) {
-                        updateProgressBar()
-                        updateText()
-                        handler.postDelayed(this, PROGRESS_UPDATE_DELAY.toLong())
-                    }
+        lifecycleScope.launch {
+            while(true){
+                if (player.isPlaying){
+                    updateProgressBar()
+                    updateText()
                 }
+                delay(PROGRESS_UPDATE_DELAY.toLong())
             }
-        )
+        }
     }
 
     private fun updateProgressBar() {
