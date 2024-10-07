@@ -1,9 +1,9 @@
 package com.team22.soundary.feature.main
 
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.team22.soundary.R
 import com.team22.soundary.feature.main.domain.GetShareUseCase
 import com.team22.soundary.feature.main.domain.Share
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -79,7 +79,7 @@ class MainViewModel @Inject constructor(
                 songUri = targetShare.song.preview,
                 isLastSong = shareIndex == groupedShares[targetShare.friend.name]?.size?.minus(1),
                 isFirstSong = shareIndex == 0,
-                isLikeSong = targetShare.isLike,
+                likeBackground = if(targetShare.isLike) R.drawable.main_like_background_pressed else R.drawable.main_like_background,
                 songImage = targetShare.song.coverImage
             )
         }

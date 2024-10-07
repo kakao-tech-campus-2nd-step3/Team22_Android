@@ -199,7 +199,7 @@ class MainActivity : AppCompatActivity() {
                 binding.messageTextView.text = uiState.message
                 binding.nextImageView.isGone = uiState.isLastSong
                 binding.prevImageView.isGone = uiState.isFirstSong
-                binding.likeButton.setImageResource(if (uiState.isLikeSong) R.drawable.main_like_background_pressed else R.drawable.main_like_background)
+                binding.likeButton.setImageResource(uiState.likeBackground)
                 uiState.friendImage?.let {
                     Glide.with(this@MainActivity)
                         .load(it)

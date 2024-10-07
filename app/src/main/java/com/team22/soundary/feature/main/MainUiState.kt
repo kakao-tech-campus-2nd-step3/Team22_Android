@@ -1,7 +1,7 @@
 package com.team22.soundary.feature.main
 
-import android.graphics.Bitmap
 import android.net.Uri
+import com.team22.soundary.R
 
 data class MainUiState(
     val friendNameList: List<String> = emptyList(),
@@ -14,5 +14,5 @@ data class MainUiState(
     val musicName: String = "",
     val singer: String = "",
     val message: String = "",
-    val isLikeSong: Boolean = false
+    val likeBackground: Int = R.drawable.main_like_background
 )
