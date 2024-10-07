@@ -1,16 +1,20 @@
 package com.team22.soundary.feature.main
 
-import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.view.isGone
 import androidx.lifecycle.lifecycleScope
+import androidx.media3.common.MediaItem
+import androidx.media3.common.Player
+import androidx.media3.common.Player.STATE_ENDED
+import androidx.media3.common.Player.STATE_READY
+import androidx.media3.exoplayer.ExoPlayer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
@@ -18,18 +22,20 @@ import com.google.android.material.snackbar.Snackbar
 import com.team22.soundary.R
 import com.team22.soundary.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.IOException
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
-    private val player: MediaPlayer = MediaPlayer()
+    private lateinit var player: ExoPlayer
     private var shouldPreparePlayer: Boolean = true
-    private var pausedPosition: Int = 0
-    private val MediaPlayer.isPaused: Boolean
-        get() = !player.isPlaying && player.currentPosition != 0
+    private var pausedPosition: Long = 0
+    private val ExoPlayer.isPaused: Boolean
+        get() = !player.isPlaying && player.currentPosition != 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +44,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         observeUiState()
         setupUI()
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        player.release()
     }
 
     private fun setupUI() {
@@ -80,38 +92,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setMediaPlayer() {
-        player.setOnSeekCompleteListener {
-            it.start()
-            updateMusicState()
-        }
-
-        player.setOnCompletionListener {
-            binding.mainProgressBar.progress = 0
-            pausedPosition = 0
-        }
-
-        player.setOnPreparedListener {
-            binding.mainProgressBar.max = player.duration / PROGRESS_UPDATE_DELAY
-            it.start()
-            updateMusicState()
-            shouldPreparePlayer = false
-        }
-
-        binding.currentImageView.setOnClickListener {
-            if (shouldPreparePlayer) {
-                prepareMediaPlayer()
-            } else {
-                if (player.isPaused) {
-                    player.seekTo(pausedPosition)
-                } else {
-                    player.pause()
-                    pausedPosition = player.currentPosition
-                }
-            }
-        }
-    }
-
     private fun resetText() {
         binding.messageTextView.visibility = View.INVISIBLE
         binding.messageTailImageView.visibility = View.INVISIBLE
@@ -122,16 +102,54 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun resetMediaPlayer() {
-        player.reset()
+        player.removeMediaItem(0)
         pausedPosition = 0
         binding.mainProgressBar.progress = 0
         shouldPreparePlayer = true
     }
 
+    private fun setMediaPlayer() {
+        player = ExoPlayer.Builder(this).build()
+        setPlayerListener()
+
+        binding.currentImageView.setOnClickListener {
+            if (player.isPlaying) {
+                player.pause()
+                pausedPosition = player.currentPosition
+            } else {
+                if (shouldPreparePlayer) preparePlayer()
+                if (player.isPaused) player.seekTo(pausedPosition)
+                player.play()
+                updateMusicState()
+            }
+        }
+    }
+
+    private fun setPlayerListener(){
+        player.addListener(object : Player.Listener {
+            override fun onPlaybackStateChanged(playbackState: Int) {
+                super.onPlaybackStateChanged(playbackState)
+                when (playbackState) {
+                    STATE_READY -> {
+                        binding.mainProgressBar.max =
+                            player.duration.toInt() / PROGRESS_UPDATE_DELAY
+                        shouldPreparePlayer = false
+                    }
+
+                    STATE_ENDED -> {
+                        binding.mainProgressBar.progress = 0
+                        pausedPosition = 0L
+                    }
+
+                }
+            }
+        })
+    }
+
     private fun updateMusicState() {
         lifecycleScope.launch {
-            while(true){
-                if (player.isPlaying){
+            while (true) {
+                if (player.isPlaying) {
                     updateProgressBar()
                     updateText()
                 }
@@ -142,23 +160,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateProgressBar() {
         val progressValue = player.currentPosition / PROGRESS_UPDATE_DELAY
-        binding.mainProgressBar.progress = progressValue
+        binding.mainProgressBar.progress = progressValue.toInt()
     }
 
     private fun updateText() {
         val currentSecond = player.currentPosition / 1000
-        checkMessageVisibility(currentSecond)
-        controlInstructionText(currentSecond)
+        updateMessageVisibility(currentSecond)
+        updateInstructionText(currentSecond)
     }
 
-    private fun checkMessageVisibility(currentSecond: Int) {
+    private fun updateMessageVisibility(currentSecond: Long) {
         if (currentSecond >= MESSAGE_THRESHOLD) {
             binding.messageTextView.visibility = View.VISIBLE
             binding.messageTailImageView.visibility = View.VISIBLE
         }
     }
 
-    private fun controlInstructionText(currentSecond: Int) {
+    private fun updateInstructionText(currentSecond: Long) {
         val messageTimeLeft = MESSAGE_THRESHOLD - currentSecond
 
         binding.instructionTextView.text =
@@ -168,15 +186,15 @@ class MainActivity : AppCompatActivity() {
             ) else getString(R.string.main_enough_listen)
     }
 
-    private fun prepareMediaPlayer() {
+    private fun preparePlayer() {
         try {
             val uri = viewModel.getSongUri()
             if (uri != Uri.EMPTY) {
-                player.setDataSource(
-                    this,
-                    uri
+                player.setMediaItem(
+                    MediaItem.fromUri(uri)
                 )
-                player.prepareAsync()
+                player.prepare()
+                shouldPreparePlayer = false
             }
         } catch (e: Exception) {
             when (e) {
@@ -213,11 +231,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        player.release()
     }
 
     companion object {

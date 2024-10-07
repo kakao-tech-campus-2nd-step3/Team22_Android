@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.gridlayout)
     implementation(libs.hilt.android)
+    implementation(libs.androidx.media3.exoplayer)
     kapt(libs.hilt.compiler)
     implementation(libs.glide)
     implementation(libs.retrofit)
