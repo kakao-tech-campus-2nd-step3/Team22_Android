@@ -28,7 +28,11 @@ class ShareViewModel : ViewModel() {
         _comment.value = updatedText
     }
 
-    fun init() { // 나중에 백엔드에서 가져오도록 수정해야하는 친구 정보
+    init {
+        init()
+    }
+
+    private fun init() { // 나중에 백엔드에서 가져오도록 수정해야하는 친구 정보
         val initList = mutableListOf<FriendItemEntity>()
         for (i in 0..10) {
             initList.add(FriendItemEntity("" + i, "쿠키즈", null, false))

@@ -19,8 +19,6 @@ class ShareFriendActivity : AppCompatActivity() {
         binding = ActivityShareFriendBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel.init()
-
         setBackButton()
         setMusicInfoText()
         setRecyclerView()

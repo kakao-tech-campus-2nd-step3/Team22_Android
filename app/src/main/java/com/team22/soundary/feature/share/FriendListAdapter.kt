@@ -36,7 +36,7 @@ class FriendListAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         when (viewType) {
-            0 -> {
+            NO_IMAGE -> {
                 val binding = ShareFriendItemNoImageBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
@@ -45,7 +45,7 @@ class FriendListAdapter :
                 return ViewHolderNoImage(binding)
             }
 
-            1 -> {
+            WITH_IMAGE -> {
                 val binding = ShareFriendItemWithImageBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,

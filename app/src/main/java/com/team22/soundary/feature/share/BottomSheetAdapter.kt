@@ -10,7 +10,6 @@ import com.team22.soundary.R
 import com.team22.soundary.databinding.ShareFriendItemNoImageBinding
 import com.team22.soundary.databinding.ShareFriendItemWithImageBinding
 import com.team22.soundary.feature.share.data.FriendItemEntity
-import kotlinx.coroutines.flow.StateFlow
 
 class BottomSheetAdapter(
     private val listener: FriendItemClickListener
@@ -59,7 +58,7 @@ class BottomSheetAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         when (viewType) {
-            0 -> {
+            NO_IMAGE -> {
                 val binding = ShareFriendItemNoImageBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
@@ -68,7 +67,7 @@ class BottomSheetAdapter(
                 return ViewHolderNoImage(binding, listener)
             }
 
-            1 -> {
+            WITH_IMAGE -> {
                 val binding = ShareFriendItemWithImageBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
@@ -90,10 +89,15 @@ class BottomSheetAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return if (getItem(position).image == null) {
-            FriendListAdapter.NO_IMAGE
+            NO_IMAGE
         } else {
-            FriendListAdapter.WITH_IMAGE
+            WITH_IMAGE
         }
+    }
+
+    companion object {
+        const val NO_IMAGE = 0
+        const val WITH_IMAGE = 1
     }
 }
 
