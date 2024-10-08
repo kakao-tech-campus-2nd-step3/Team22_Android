@@ -30,7 +30,8 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".feature.signup.ActivitySignIntro"
+
+            android:name=".feature.main.MainActivity"
 
             android:exported="true">
             <intent-filter>
@@ -40,6 +41,7 @@
         </activity>
 
         <activity
+
             android:name=".feature.signup.ActivitySignup"
             android:exported="false" />
 
@@ -47,16 +49,31 @@
             android:name=".feature.signup.ActivitySignup2"
             android:exported="false" />
 
+
+        <!-- Widget Provider 설정 -->
+        <receiver
+            android:name=".feature.profile.MyWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+        </receiver>
+
         <activity
             android:name=".feature.search.FriendSearchActivity"
-            android:exported="false" />
+            android:exported="false">
+        </activity>
         <activity
             android:name=".feature.share.ShareFriendActivity"
-            android:exported="false" />
+            android:exported="false">
+        </activity>
         <activity
             android:name=".feature.share.ShareMusicActivity"
-            android:exported="false" />
-
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>
