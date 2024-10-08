@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 체크되었을 때 색상 (검은색) -->
+    <item android:state_checked="true" android:color="@color/black"/>
+    <!-- 기본 상태 색상 (회색) -->
+    <item android:color="@color/gray_200"/>
+</selector>
