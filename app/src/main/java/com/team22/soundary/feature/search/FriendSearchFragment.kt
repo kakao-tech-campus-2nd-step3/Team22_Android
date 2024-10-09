@@ -4,32 +4,41 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.View
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.team22.soundary.databinding.ActivityFriendSearchBinding
+import com.team22.soundary.databinding.FragmentFriendSearchBinding
 
-class FriendSearchActivity : AppCompatActivity() {
+class FriendSearchFragment : Fragment() {
 
     private lateinit var newFriendsAdapter: FriendAdapter
     private lateinit var myFriendsAdapter: FriendAdapter
     private lateinit var pendingFriendsAdapter: PendingFriendAdapter
-    private lateinit var binding: ActivityFriendSearchBinding
+    private var _binding: FragmentFriendSearchBinding? = null
+    private val binding get() = _binding!!
 
     private val friendSearchViewModel: FriendSearchViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-        binding = ActivityFriendSearchBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentFriendSearchBinding.inflate(inflater,container,false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         // 새로운 친구 어댑터 초기화 (수락/거절 콜백 포함)
         newFriendsAdapter = FriendAdapter(
             onItemClick = { friend ->
                 // 친구 프로필 화면으로 이동
-                val intent = Intent(this, FriendProfileActivity::class.java)
+                val intent = Intent(requireContext(), FriendProfileFragment::class.java)
                 intent.putExtra("FRIEND_ID", friend.id)
                 startActivity(intent)
             },
@@ -45,7 +54,7 @@ class FriendSearchActivity : AppCompatActivity() {
         myFriendsAdapter = FriendAdapter(
             onItemClick = { friend ->
                 // 친구 프로필 화면으로 이동
-                val intent = Intent(this, FriendProfileActivity::class.java)
+                val intent = Intent(requireContext(), FriendProfileFragment::class.java)
                 intent.putExtra("FRIEND_ID", friend.id)
                 startActivity(intent)
             },
@@ -57,20 +66,20 @@ class FriendSearchActivity : AppCompatActivity() {
         // 대기 중인 친구 어댑터 초기화
         pendingFriendsAdapter = PendingFriendAdapter { friend ->
             // 친구 프로필 화면으로 이동
-            val intent = Intent(this, FriendProfileActivity::class.java)
+            val intent = Intent(requireContext(), FriendProfileFragment::class.java)
             intent.putExtra("FRIEND_ID", friend.id)
             startActivity(intent)
         }
 
         // RecyclerView 설정
-        binding.newFriendsRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.newFriendsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.newFriendsRecyclerView.adapter = newFriendsAdapter
 
-        binding.myFriendsRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.myFriendsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.myFriendsRecyclerView.adapter = myFriendsAdapter
 
         binding.pendingFriendsRecyclerView.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.pendingFriendsRecyclerView.adapter = pendingFriendsAdapter
 
         // 대기 중인 친구 섹션 토글 기능
@@ -107,17 +116,22 @@ class FriendSearchActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     private fun observeViewModel() {
-        friendSearchViewModel.newFriends.observe(this) { newFriends ->
+        friendSearchViewModel.newFriends.observe(requireActivity()) { newFriends ->
             newFriendsAdapter.submitList(newFriends)
         }
 
-        friendSearchViewModel.myFriends.observe(this) { myFriends ->
+        friendSearchViewModel.myFriends.observe(requireActivity()) { myFriends ->
             myFriendsAdapter.submitList(myFriends)
             updateFriendsCount(myFriends.size)
         }
 
-        friendSearchViewModel.pendingFriends.observe(this) { pendingFriends ->
+        friendSearchViewModel.pendingFriends.observe(requireActivity()) { pendingFriends ->
             pendingFriendsAdapter.submitList(pendingFriends)
         }
     }

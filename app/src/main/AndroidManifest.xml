@@ -61,15 +61,6 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info" />
         </receiver>
-
-        <activity
-            android:name=".feature.search.FriendSearchActivity"
-            android:exported="false">
-        </activity>
-        <activity
-            android:name=".feature.share.ShareFriendActivity"
-            android:exported="false">
-        </activity>
     </application>
 
 </manifest>

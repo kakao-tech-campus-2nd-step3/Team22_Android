@@ -2,11 +2,14 @@ package com.team22.soundary.feature.share
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team22.soundary.R
+import com.team22.soundary.databinding.FragmentMainBinding
 import com.team22.soundary.databinding.FragmentShareMusicBinding
 import com.team22.soundary.feature.share.data.MusicItemEntity
 
@@ -14,10 +17,18 @@ class ShareMusicFragment : Fragment() {
     private var _binding: FragmentShareMusicBinding? = null
     private val binding get() = _binding!!
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        _binding = FragmentShareMusicBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        _binding = FragmentShareMusicBinding.bind(view)
 
         setSpinner()
         setRecyclerView()
