@@ -3,18 +3,13 @@ package com.team22.soundary.feature.profile
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Path
-import android.graphics.RectF
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
-
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.team22.soundary.R
 import com.team22.soundary.databinding.WidgetMainBinding
+
 
 class ActivityWidget : AppCompatActivity() {
 
@@ -22,17 +17,19 @@ class ActivityWidget : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         // ViewBinding 초기화
         binding = WidgetMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // 닉네임 설정
         val nickname = "쿠키즈"
-        binding.widgetTextview.text = nickname.first().toString()
+        binding.textCircleBackground.text = nickname.first().toString()
 
         // 이미지 설정
-        binding.widgetImageview.setImageResource(R.drawable.widget_image)
+        val originalBitmap =
+            BitmapFactory.decodeResource(this.getResources(), R.drawable.widget_image)
+        val circularBitmap: Bitmap = ImageUtil().getCircularBitmap(originalBitmap)
+        binding.profileFrame.setImageBitmap(circularBitmap)
 
         // 알림 여부에 따른 점 표시
         val hasNotification = true

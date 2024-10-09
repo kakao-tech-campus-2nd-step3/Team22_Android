@@ -4,6 +4,9 @@ import android.annotation.SuppressLint
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.util.Log
 import android.view.View
 import android.widget.RemoteViews
 import com.team22.soundary.R
@@ -19,9 +22,13 @@ class MyWidgetProvider : AppWidgetProvider() {
         for (appWidgetId in appWidgetIds) {
             val views = RemoteViews(context.packageName, R.layout.widget_main)
             val nickname = "쿠키즈"
-            views.setTextViewText(R.id.widget_textview, nickname.first().toString())
+            views.setTextViewText(R.id.text_circle_background, nickname.first().toString())
 
-            views.setImageViewResource(R.id.widget_imageview, R.drawable.widget_image)
+            val originalBitmap =
+                BitmapFactory.decodeResource(context.resources, R.drawable.widget_image)
+            val circularBitmap: Bitmap = ImageUtil().getCircularBitmap(originalBitmap)
+
+            views.setImageViewBitmap(R.id.profile_frame,circularBitmap)
 
             val hasNotification = true // 알림이 있다고 가정
             if (hasNotification) {

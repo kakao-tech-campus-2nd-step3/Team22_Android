@@ -70,10 +70,6 @@
             android:name=".feature.share.ShareFriendActivity"
             android:exported="false">
         </activity>
-        <activity
-            android:name=".feature.share.ShareMusicActivity"
-            android:exported="false">
-        </activity>
     </application>
 
 </manifest>
