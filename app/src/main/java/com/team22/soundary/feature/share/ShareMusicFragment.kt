@@ -2,20 +2,33 @@ package com.team22.soundary.feature.share
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team22.soundary.R
-import com.team22.soundary.databinding.ActivityShareMusicBinding
+import com.team22.soundary.databinding.FragmentMainBinding
+import com.team22.soundary.databinding.FragmentShareMusicBinding
 import com.team22.soundary.feature.share.data.MusicItemEntity
 
-class ShareMusicActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityShareMusicBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityShareMusicBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+class ShareMusicFragment : Fragment() {
+    private var _binding: FragmentShareMusicBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        _binding = FragmentShareMusicBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         setSpinner()
         setRecyclerView()
@@ -23,7 +36,7 @@ class ShareMusicActivity : AppCompatActivity() {
 
     private fun setSpinner() {
         binding.shareSortSpinner.adapter = ArrayAdapter(
-            this,
+            requireContext(),
             R.layout.share_spinner_item,
             resources.getStringArray(R.array.share_sort_array)
         )
@@ -38,7 +51,7 @@ class ShareMusicActivity : AppCompatActivity() {
 
         val musicListAdapter = MusicListAdapter(musicList, object : MusicItemClickListener {
             override fun onClick(v: View, selectItem: MusicItemEntity) {
-                val intent = Intent(this@ShareMusicActivity, ShareFriendActivity::class.java)
+                val intent = Intent(requireContext(), ShareFriendActivity::class.java)
                 intent.putExtra(ShareFriendActivity.KEY_MUSIC, selectItem.music)
                 intent.putExtra(ShareFriendActivity.KEY_SINGER, selectItem.singer)
                 startActivity(intent)
@@ -46,6 +59,11 @@ class ShareMusicActivity : AppCompatActivity() {
         })
         binding.shareMusicRecyclerview.adapter = musicListAdapter
         binding.shareMusicRecyclerview.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET"/>
+  
     <!-- Android 11 이상-->
     <uses-permission
         android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
@@ -27,15 +28,39 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Soundary"
         tools:targetApi="31">
+
         <activity
-            android:name=".feature.search.FriendSearchActivity"
+
+            android:name=".feature.main.MainActivity"
+
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+
+            android:name=".feature.signup.ActivitySignup"
+            android:exported="false" />
+
+        <activity
+            android:name=".feature.signup.ActivitySignup2"
+            android:exported="false" />
+
+
+        <!-- Widget Provider 설정 -->
+        <receiver
+            android:name=".feature.profile.MyWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+        </receiver>
     </application>
 
 </manifest>

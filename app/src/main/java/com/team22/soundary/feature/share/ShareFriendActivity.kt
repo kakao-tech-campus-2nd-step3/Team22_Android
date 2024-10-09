@@ -1,13 +1,18 @@
 package com.team22.soundary.feature.share
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team22.soundary.databinding.ActivityShareFriendBinding
-import com.team22.soundary.feature.share.data.FriendItemEntity
+import kotlinx.coroutines.launch
 
 class ShareFriendActivity : AppCompatActivity() {
     private lateinit var binding: ActivityShareFriendBinding
+
+    private lateinit var adapter: FriendListAdapter
+    private val viewModel: ShareViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +22,9 @@ class ShareFriendActivity : AppCompatActivity() {
         setBackButton()
         setMusicInfoText()
         setRecyclerView()
+        setComment()
         setAddFriendButton()
+        setSendButton()
     }
 
     private fun setBackButton() {
@@ -34,21 +41,41 @@ class ShareFriendActivity : AppCompatActivity() {
     }
 
     private fun setRecyclerView() {
-        // recyclerView 임시 데이터 생성
-        val friendList = mutableListOf<FriendItemEntity>()
-        for (i in 0..8) {
-            friendList.add(FriendItemEntity(""+i, "쿠키즈", false))
-        }
-
-        binding.shareFriendRecyclerview.adapter = FriendListAdapter(friendList)
+        adapter = FriendListAdapter()
+        binding.shareFriendRecyclerview.adapter = adapter
         binding.shareFriendRecyclerview.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        lifecycleScope.launch {
+            viewModel.selectList.collect {
+                adapter.submitList(it)
+                binding.shareSendButton.text = viewModel.getButtonText()
+            }
+        }
+    }
+
+    private fun setComment() {
+        lifecycleScope.launch {
+            viewModel.comment.collect {
+                binding.shareCommentEdittext.setText(it)
+            }
+        }
     }
 
     private fun setAddFriendButton() {
         binding.shareAddFriend.setOnClickListener {
+            viewModel.setComment(binding.shareCommentEdittext.text.toString())
             val modal = ShareBottomSheet()
             modal.show(supportFragmentManager, ShareBottomSheet.TAG)
+        }
+    }
+
+    private fun setSendButton() {
+        binding.shareSendButton.text = viewModel.getButtonText()
+        binding.shareSendButton.setOnClickListener {
+            viewModel.setComment(binding.shareCommentEdittext.text.toString())
+            // viewModel의 데이터들 백으로 넘겨주고
+            // 메인으로 인텐트 넘겨주기
         }
     }
 

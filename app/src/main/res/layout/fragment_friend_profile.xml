@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".feature.search.FriendProfileFragment">
 
     <ImageView
         android:id="@+id/back_icon"
@@ -25,7 +26,7 @@
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@id/back_icon"
         app:layout_constraintTop_toTopOf="@id/back_icon"
-        android:layout_marginStart="125dp" />
+        android:layout_marginStart="100dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -93,49 +94,59 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/status_message_textview" />
 
+    <!-- 선호 카테고리 TextView들 -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/category_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginStart="20dp"
         app:layout_constraintTop_toBottomOf="@id/favorite_category_label"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/margin_normal"
-        android:layout_marginStart="20dp">
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <Button
-            android:id="@+id/genre_hiphop_button"
+        <TextView
+            android:id="@+id/genreTextView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/genre_hiphop"
+            android:text="Genre 1"
             android:textColor="@color/gray_200"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:background="@color/yellow_500"
+            android:padding="@dimen/margin_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/genre_rock_button"
+        <TextView
+            android:id="@+id/genreTextView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/genre_rock"
+            android:text="Genre 2"
             android:textColor="@color/gray_200"
-            app:layout_constraintStart_toEndOf="@id/genre_hiphop_button"
+            android:background="@color/yellow_500"
+            android:padding="@dimen/margin_normal"
+            app:layout_constraintStart_toEndOf="@id/genreTextView1"
             android:layout_marginStart="8dp" />
 
-        <Button
-            android:id="@+id/genre_pop_button"
+        <TextView
+            android:id="@+id/genreTextView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/genre_pop"
+            android:text="Genre 3"
             android:textColor="@color/gray_200"
-            app:layout_constraintStart_toEndOf="@id/genre_rock_button"
+            android:background="@color/yellow_500"
+            android:padding="@dimen/margin_normal"
+            app:layout_constraintStart_toEndOf="@id/genreTextView2"
             android:layout_marginStart="8dp" />
 
-        <Button
-            android:id="@+id/genre_jpop_button"
+        <TextView
+            android:id="@+id/genreTextView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/genre_Jpop"
+            android:text="Genre 4"
             android:textColor="@color/gray_200"
-            app:layout_constraintStart_toEndOf="@id/genre_pop_button"
+            android:background="@color/yellow_500"
+            android:padding="@dimen/margin_normal"
+            app:layout_constraintStart_toEndOf="@id/genreTextView3"
             android:layout_marginStart="8dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

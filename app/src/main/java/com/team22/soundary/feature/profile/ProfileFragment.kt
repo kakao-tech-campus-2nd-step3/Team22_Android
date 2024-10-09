@@ -8,20 +8,16 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import com.team22.soundary.R
-import com.team22.soundary.databinding.ActivityMypageBinding
-import com.team22.soundary.feature.extensions.checkAndRequestPermissions
+import androidx.fragment.app.Fragment
+import com.team22.soundary.databinding.FragmentMypageBinding
 
-class ProfileActivity : AppCompatActivity() {
-
-    companion object{
-        private val PERMISSION_REQUEST_CODE = 100
-    }
-    private lateinit var binding: ActivityMypageBinding
+class ProfileFragment : Fragment() {
+    private var _binding: FragmentMypageBinding? = null
+    private val binding get() = _binding!!
 
     //registerForActivityResult 쓰기
     private val galleryLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -31,13 +27,22 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentMypageBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        //viewBinding 초기화
-        binding = ActivityMypageBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initProfileImageView()
     }
 
@@ -50,9 +55,10 @@ class ProfileActivity : AppCompatActivity() {
                 arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
             }
 
-            if (checkAndRequestPermissions(permissions, PERMISSION_REQUEST_CODE)) {
-                openGallery()
-            }
+            //TODO : Fragment에는 존재하지 않는 메서드. 수정 부탁드립니다
+//            if (checkAndRequestPermissions(permissions, PERMISSION_REQUEST_CODE)) {
+//                openGallery()
+//            }
         }
     }
 
@@ -78,5 +84,8 @@ class ProfileActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+    companion object{
+        private val PERMISSION_REQUEST_CODE = 100
     }
 }

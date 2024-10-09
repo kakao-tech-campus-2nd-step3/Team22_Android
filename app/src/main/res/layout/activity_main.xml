@@ -1,235 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".feature.main.MainActivity">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/background_upper_imageView"
-        android:layout_width="800dp"
-        android:layout_height="400dp"
-        android:src="@drawable/main_background"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/background_lower_imageView"
-        android:layout_width="800dp"
-        android:layout_height="400dp"
-        android:src="@drawable/main_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent" />
-
-    <Spinner
-        android:id="@+id/sort_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_normal"
-        android:dropDownWidth="match_parent"
-        android:gravity="center"
-        android:paddingHorizontal="10dp"
-        android:popupBackground="@drawable/main_sort_background"
-        android:popupElevation="5dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toTopOf="@id/main_progressBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ProgressBar
-        android:id="@+id/main_progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:progress="50"
-        android:progressTint="@color/yellow_500"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sort_spinner" />
-
-    <ImageView
-        android:id="@+id/current_imageView"
-        android:layout_width="@dimen/music_cover_size"
-        android:layout_height="@dimen/music_cover_size"
-        android:background="@drawable/ic_launcher_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
-
-    <ImageView
-        android:id="@+id/next_imageView"
-        android:layout_width="@dimen/music_cover_size"
-        android:layout_height="@dimen/music_cover_size"
-        android:layout_marginTop="110dp"
-        android:background="@drawable/main_music_cover"
-        android:rotation="20"
-        app:layout_constraintBottom_toBottomOf="@id/current_imageView"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/current_imageView" />
-
-    <ImageView
-        android:id="@+id/prev_imageView"
-        android:layout_width="@dimen/music_cover_size"
-        android:layout_height="@dimen/music_cover_size"
-        android:layout_marginTop="110dp"
-        android:background="@drawable/main_music_cover"
-        android:rotation="-20"
-        app:layout_constraintBottom_toBottomOf="@id/current_imageView"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/current_imageView" />
-
-    <TextView
-        android:id="@+id/message_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="@dimen/margin_half"
-        android:background="@drawable/main_message_bubble"
-        android:paddingHorizontal="@dimen/message_padding_horizontal"
-        android:paddingVertical="@dimen/padding_half"
-        android:text="이거듣고 눈물흘림"
-        android:textSize="@dimen/message_text_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        />
-
-    <ImageView
-        android:id="@+id/message_tail_imageView"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:src="@drawable/main_message_bubble_tail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/message_textView" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/friend_pic_imageView"
-        android:layout_width="@dimen/friend_pic_size"
-        android:layout_height="@dimen/friend_pic_size"
-        android:layout_marginTop="@dimen/margin_half"
-        android:layout_marginBottom="@dimen/margin_half"
-        app:cardCornerRadius="100dp"
-        app:cardElevation="0dp"
-        android:foreground="@drawable/ic_launcher_background"
-        app:layout_constraintEnd_toStartOf="@id/friend_name_textView"
-        app:layout_constraintTop_toBottomOf="@+id/message_textView"/>
-
-    <TextView
-        android:id="@+id/friend_name_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="10dp"
-        android:text="춘식이"
-        app:layout_constraintBottom_toBottomOf="@id/friend_pic_imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/friend_pic_imageView" />
-
-    <TextView
-        android:id="@+id/day_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clipToOutline="true"
-        android:text="3일"
-        android:textColor="@color/gray_500"
-        app:layout_constraintBottom_toBottomOf="@id/friend_pic_imageView"
-        app:layout_constraintStart_toEndOf="@+id/friend_name_textView"
-        app:layout_constraintTop_toTopOf="@id/friend_pic_imageView" />
-
-    <ImageView
-        android:id="@+id/control_imageView"
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/margin_normal"
-        android:layout_marginVertical="@dimen/margin_normal"
-        android:src="@drawable/main_music_info"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/nav"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/friend_pic_imageView" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <ImageButton
-        android:id="@+id/like_button"
-        android:layout_width="wrap_content"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@null"
-        android:src="@drawable/main_like_background"
-        app:layout_constraintBottom_toBottomOf="@id/control_imageView"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:elevation="12dp"
+
+        app:menu="@menu/all_menus"
+        app:itemTextColor="@color/black"
+        app:itemIconTint="@color/black"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/control_imageView"
-        app:layout_constraintVertical_bias="0.55" />
-
-    <ImageButton
-        android:id="@+id/emotion_imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/icons_margin"
-        android:background="@drawable/main_circle_shape"
-        android:padding="@dimen/icons_padding"
-        android:src="@drawable/main_share_icon"
-        app:layout_constraintBottom_toBottomOf="@id/like_button"
-        app:layout_constraintEnd_toStartOf="@id/like_button"
-        app:layout_constraintTop_toTopOf="@id/like_button" />
-
-    <ImageButton
-        android:id="@+id/share_imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/icons_margin"
-        android:background="@drawable/main_circle_shape"
-        android:padding="@dimen/icons_padding"
-        android:src="@drawable/main_share_icon"
-        app:layout_constraintBottom_toBottomOf="@id/like_button"
-        app:layout_constraintStart_toEndOf="@id/like_button"
-        app:layout_constraintTop_toTopOf="@id/like_button" />
-
-    <TextView
-        android:id="@+id/instruction_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_normal"
-        android:text="@string/main_not_enough_listen"
-        android:textColor="@color/gray_500"
-        app:layout_constraintBottom_toBottomOf="@id/control_imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-    <TextView
-        android:id="@+id/music_name_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="스토커"
-        android:textSize="@dimen/song_text_size"
-        app:layout_constraintStart_toStartOf="@id/control_imageView"
-        app:layout_constraintTop_toTopOf="@id/control_imageView" />
-
-    <TextView
-        android:id="@+id/singer_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="10cm"
-        app:layout_constraintStart_toStartOf="@id/music_name_textView"
-        app:layout_constraintTop_toBottomOf="@id/music_name_textView" />
-
-    <!--
-    <TextView
-        android:id="@+id/navigationBar"
-        style="@style/bottom_navigation_bar"/>
-    -->
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

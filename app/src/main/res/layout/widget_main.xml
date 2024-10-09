@@ -1,78 +1,47 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"> <!-- 배경 투명화 -->
+    android:background="@android:color/transparent">
 
-    <!-- 원형 이미지 (프로필 이미지) -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/profile_cardview"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+    <ImageView
+        android:id="@+id/profile_frame"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:elevation="4dp"
-        app:cardCornerRadius="50dp"
-        app:cardElevation="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="@drawable/widget_lp_background"
+        android:scaleType="centerCrop"
+        android:src="@drawable/widget_image"
+        android:clipToOutline="true"/>
 
-        <ImageView
-            android:id="@+id/widget_imageview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/widget_image" />
-    </androidx.cardview.widget.CardView>
-
-    <!-- 프로필 이미지 위에 덧대는 흰색 원 - view로 처리 -->
-    <View
-        android:id="@+id/white_circle_view"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="@dimen/margin_normal"
-        android:layout_marginBottom="@dimen/margin_normal"
-        android:background="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@id/profile_cardview"
-        app:layout_constraintEnd_toEndOf="@id/profile_cardview"
-        app:layout_constraintTop_toTopOf="@id/profile_cardview"
-        app:layout_constraintStart_toStartOf="@id/profile_cardview"
-        android:elevation="5dp"
-        android:visibility="visible" />
-
-    <!-- 닉네임 첫 글자 레이블 (원형 배경) -->
-    <androidx.cardview.widget.CardView
+    <TextView
         android:id="@+id/text_circle_background"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:elevation="4dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="8dp"
-        app:layout_constraintBottom_toBottomOf="@id/profile_cardview"
-        app:layout_constraintEnd_toEndOf="@id/profile_cardview">
-
-        <TextView
-            android:id="@+id/widget_textview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="쿠"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_medium" />
-    </androidx.cardview.widget.CardView>
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignEnd="@id/profile_frame"
+        android:elevation="8dp"
+        android:background="@drawable/widget_nick"
+        android:gravity="center"
+        android:text="쿠"
+        android:layout_marginTop="85dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        />
 
     <!-- 알림용 빨간 점 (동그랗게 표시) -->
-    <View
+    <ImageView
         android:id="@+id/widget_notification_dot"
         android:layout_width="10dp"
         android:layout_height="10dp"
+        android:layout_alignEnd="@id/profile_frame"
+        android:layout_alignTop="@id/profile_frame"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
-        android:background="@drawable/widget_notice"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="@id/profile_cardview"
-        app:layout_constraintTop_toTopOf="@id/profile_cardview" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:background="@drawable/all_rounded_button"
+        android:backgroundTint="@color/red"
+        android:visibility="visible" />
+
+</RelativeLayout>

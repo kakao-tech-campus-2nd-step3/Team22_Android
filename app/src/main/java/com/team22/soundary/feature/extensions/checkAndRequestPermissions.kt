@@ -25,3 +25,4 @@ fun AppCompatActivity.checkAndRequestPermissions(permissions: Array<String>, req
         true
     }
 }
+

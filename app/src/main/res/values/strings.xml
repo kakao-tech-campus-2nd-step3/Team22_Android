@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Soundary</string>
-    <string name="main_not_enough_listen">5초 더 들어 친구의 메시지를 확인해보세요.</string>
+    <string name="main_not_enough_listen">%1$d초 더 들어 친구의 메시지를 확인해보세요.</string>
+    <string name="main_enough_listen">추천이 마음에 드신다면 좋아요를 눌러주세요</string>
 
     <!-- 공유 페이지 - 노래 선택 -->
     <string name="share_search_music_hint">검색할 노래를 입력해 주세요.</string>
@@ -88,5 +89,7 @@
     <string name="genre_Jpop">JPOP</string>
 
     <string name="add_friend">친구 추가</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
 
