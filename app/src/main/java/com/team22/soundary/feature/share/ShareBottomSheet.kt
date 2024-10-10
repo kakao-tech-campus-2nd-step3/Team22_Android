@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.RadioButton
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -24,6 +25,8 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
     private lateinit var adapter: BottomSheetAdapter
     private val viewModel: ShareViewModel by activityViewModels()
 
+    private var lastCheckedRadioButtonId: Int? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -33,6 +36,7 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
         setComment()
         setRecyclerView(view)
         setSelectAllButton()
+        setCategoryRadioButton()
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -79,6 +83,24 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
                 viewModel.setItemVisibilityAll(false)
             }
             binding.bottomSheetSendButton.text = viewModel.getButtonText()
+        }
+    }
+    
+    private fun setCategoryRadioButton() {
+        binding.categoryRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+            if(checkedId != -1) {
+                val selectedRadioButton = group.findViewById<RadioButton>(checkedId)
+                selectedRadioButton.setOnClickListener {
+                    if (lastCheckedRadioButtonId == checkedId) { // 이미 선택된 RadioButton을 다시 클릭한 경우
+                        binding.categoryRadioGroup.clearCheck()
+                        lastCheckedRadioButtonId = null
+                        Log.d("uin", "전체선택해제")
+                    } else {
+                        lastCheckedRadioButtonId = checkedId
+                        Log.d("uin", "" + checkedId + "선택")
+                    }
+                }
+            }
         }
     }
 
