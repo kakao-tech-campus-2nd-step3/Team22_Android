@@ -72,11 +72,10 @@ class MainFragment : Fragment() {
     }
 
     private fun setShareButton(){
-        //TODO : MainActivity로 BottomSheet 생성 위임하기
-//        binding.shareImageButton.setOnClickListener {
-//            val modal = ShareBottomSheet()
-//            modal.show(supportFragmentManager, ShareBottomSheet.TAG)
-//        }
+        binding.shareImageButton.setOnClickListener {
+            val modal = ShareBottomSheet()
+            modal.show(parentFragmentManager, ShareBottomSheet.TAG)
+        }
     }
 
     private fun setSongClickListener() {
