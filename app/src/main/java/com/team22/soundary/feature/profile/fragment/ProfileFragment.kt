@@ -1,4 +1,4 @@
-package com.team22.soundary.feature.main.profile
+package com.team22.soundary.feature.profile.fragment
 
 import android.Manifest
 import android.app.Activity

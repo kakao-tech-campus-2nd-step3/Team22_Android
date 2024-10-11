@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.team22.soundary.R
 import com.team22.soundary.databinding.ActivityMainBinding
-import com.team22.soundary.feature.main.profile.ProfileFragment
+import com.team22.soundary.feature.profile.fragment.ProfileFragment
 import com.team22.soundary.feature.search.FriendSearchFragment
 import com.team22.soundary.feature.share.ShareMusicFragment
 import dagger.hilt.android.AndroidEntryPoint
