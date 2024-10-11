@@ -2,19 +2,15 @@ package com.team22.soundary.feature.share
 
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.team22.soundary.R
 import com.team22.soundary.databinding.BottomSheetBinding
-import com.team22.soundary.feature.share.data.FriendItemEntity
-import kotlinx.coroutines.flow.collect
+import com.team22.soundary.feature.share.domain.Friend
 import kotlinx.coroutines.launch
 
 class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
@@ -54,7 +50,7 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
 
     private fun setRecyclerView(view: View) {
         adapter = BottomSheetAdapter(object : FriendItemClickListener {
-            override fun onClick(v: View, selectItem: FriendItemEntity) {
+            override fun onClick(v: View, selectItem: Friend) {
                 viewModel.setItemVisibility(selectItem)
                 binding.shareSelectAllButton.isChecked = viewModel.isSelectedAll()
                 binding.bottomSheetSendButton.text = viewModel.getButtonText()

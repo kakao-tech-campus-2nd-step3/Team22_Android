@@ -1,26 +1,28 @@
 package com.team22.soundary.feature.share
 
 import androidx.lifecycle.ViewModel
-import com.team22.soundary.feature.share.data.FriendItemEntity
+import com.team22.soundary.feature.share.domain.Friend
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
+@HiltViewModel
 class ShareViewModel : ViewModel() {
-    private val _friendList = MutableStateFlow<List<FriendItemEntity>>(emptyList())
-    val friendList: StateFlow<List<FriendItemEntity>> = _friendList.asStateFlow()
+    private val _friendList = MutableStateFlow<List<Friend>>(emptyList())
+    val friendList: StateFlow<List<Friend>> = _friendList.asStateFlow()
 
-    private val _selectList = MutableStateFlow<List<FriendItemEntity>>(emptyList())
-    val selectList: StateFlow<List<FriendItemEntity>> = _selectList.asStateFlow()
+    private val _selectList = MutableStateFlow<List<Friend>>(emptyList())
+    val selectList: StateFlow<List<Friend>> = _selectList.asStateFlow()
 
     private val _comment = MutableStateFlow("")
     val comment: StateFlow<String> = _comment.asStateFlow()
 
-    private fun setFriendItemList(updatedList: List<FriendItemEntity>) {
+    private fun setFriendItemList(updatedList: List<Friend>) {
         _friendList.value = updatedList
     }
 
-    private fun setSelectItemList(updatedList: List<FriendItemEntity>) {
+    private fun setSelectItemList(updatedList: List<Friend>) {
         _selectList.value = updatedList
     }
 
@@ -33,17 +35,17 @@ class ShareViewModel : ViewModel() {
     }
 
     private fun init() { // 나중에 백엔드에서 가져오도록 수정해야하는 친구 정보
-        val initList = mutableListOf<FriendItemEntity>()
+        val initList = mutableListOf<Friend>()
         for (i in 0..10) {
-            initList.add(FriendItemEntity("" + i, "쿠키즈", null, false))
+            initList.add(Friend("" + i, "쿠키즈", null, false))
         }
         for (i in 11..19) {
-            initList.add(FriendItemEntity("" + i, "쿠키즈", "imageSrc", false))
+            initList.add(Friend("" + i, "쿠키즈", "imageSrc", false))
         }
         setFriendItemList(initList)
     }
 
-    fun setItemVisibility(selectItem: FriendItemEntity) {
+    fun setItemVisibility(selectItem: Friend) {
         val updatedList = _friendList.value.map {
             if (it.id == selectItem.id) {
                 it.copy(isSelected = !it.isSelected)
@@ -68,7 +70,7 @@ class ShareViewModel : ViewModel() {
     }
 
     fun updateSelectItemList() {
-        val selectList = mutableListOf<FriendItemEntity>()
+        val selectList = mutableListOf<Friend>()
         for (item in _friendList.value) {
             if (item.isSelected) {
                 selectList.add(item)

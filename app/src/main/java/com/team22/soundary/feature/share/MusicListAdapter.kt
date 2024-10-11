@@ -6,17 +6,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.team22.soundary.databinding.ShareMusicItemBinding
-import com.team22.soundary.feature.share.data.MusicItemEntity
+import com.team22.soundary.feature.share.domain.Music
 
 class MusicListAdapter(
-    private var musicItemList: List<MusicItemEntity>,
     private val listener: MusicItemClickListener
-) : ListAdapter<MusicItemEntity, MusicListAdapter.ViewHolder>(MusicItemDiffCallback()) {
+) : ListAdapter<Music, MusicListAdapter.ViewHolder>(MusicItemDiffCallback()) {
     class ViewHolder(
         private val binding: ShareMusicItemBinding,
         private val listener: MusicItemClickListener
     ) : RecyclerView.ViewHolder(binding.root) {
-        lateinit var item: MusicItemEntity
+        lateinit var item: Music
 
         init {
             binding.root.setOnClickListener {
@@ -24,10 +23,10 @@ class MusicListAdapter(
             }
         }
 
-        fun bind(musicItem: MusicItemEntity) {
-            binding.shareMusicTextview.text = musicItem.music
-            binding.shareSingerTextview.text = musicItem.singer
-            binding.shareSortTextview.text = musicItem.sortValue
+        fun bind(musicItem: Music) {
+            binding.shareMusicTextview.text = musicItem.title
+            binding.shareSingerTextview.text = musicItem.artists.joinToString(", ")
+            //binding.shareSortTextview.text = musicItem.sortValue
             item = musicItem
         }
     }
@@ -42,14 +41,10 @@ class MusicListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(musicItemList[position])
-    }
-
-    override fun getItemCount(): Int {
-        return musicItemList.size
+        holder.bind(getItem(position))
     }
 }
 
 interface MusicItemClickListener {
-    fun onClick(v: View, selectItem: MusicItemEntity)
+    fun onClick(v: View, selectItem: Music)
 }
