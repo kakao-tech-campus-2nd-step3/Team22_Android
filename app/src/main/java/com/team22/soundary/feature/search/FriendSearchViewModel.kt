@@ -3,13 +3,16 @@ package com.team22.soundary.feature.search
 import androidx.lifecycle.ViewModel
 import com.team22.soundary.feature.search.data.model.FriendEntity
 import com.team22.soundary.feature.search.data.repository.FriendRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import javax.inject.Inject
 
-class FriendSearchViewModel : ViewModel() {
-
-    private val friendRepository = FriendRepository.getInstance()
+@HiltViewModel
+class FriendSearchViewModel @Inject constructor(
+    private val friendRepository: FriendRepository
+) : ViewModel() {
 
     private val _newFriends = MutableStateFlow<List<FriendEntity>>(emptyList())
     val newFriends: StateFlow<List<FriendEntity>> get() = _newFriends.asStateFlow()

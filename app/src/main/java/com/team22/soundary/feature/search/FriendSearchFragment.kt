@@ -1,6 +1,5 @@
 package com.team22.soundary.feature.search
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -13,9 +12,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team22.soundary.R
 import com.team22.soundary.databinding.FragmentFriendSearchBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class FriendSearchFragment : Fragment() {
 
     private lateinit var newFriendsAdapter: FriendAdapter

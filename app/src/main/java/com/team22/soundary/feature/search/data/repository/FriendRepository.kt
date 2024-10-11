@@ -1,19 +1,14 @@
 package com.team22.soundary.feature.search.data.repository
 
 import com.team22.soundary.feature.search.data.model.FriendEntity
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class FriendRepository {
+@Singleton
+class FriendRepository @Inject constructor() {
 
-    companion object {
-        private var instance: FriendRepository? = null
-
-        fun getInstance(): FriendRepository {
-            if (instance == null) {
-                instance = FriendRepository()
-            }
-            return instance!!
-        }
-    }
 
     private val allFriends = mutableListOf(
         FriendEntity(
@@ -117,6 +112,10 @@ class FriendRepository {
             false
         }
     }
+
+    // 데이터 변경 알림을 위한 SharedFlow
+    private val _dataChanged = MutableSharedFlow<Unit>()
+    val dataChanged = _dataChanged.asSharedFlow()
 
     // 친구의 상세 정보를 가져오는 메서드 (예시로 간단히 구현)
     private fun fetchFriendDetails(friendId: String): FriendEntity? {

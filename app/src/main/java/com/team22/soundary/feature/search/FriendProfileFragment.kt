@@ -9,9 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.team22.soundary.databinding.FragmentFriendProfileBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class FriendProfileFragment : Fragment() {
     private var _binding: FragmentFriendProfileBinding? = null
     private val binding get() = _binding!!
