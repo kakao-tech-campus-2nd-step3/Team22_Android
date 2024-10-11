@@ -12,7 +12,9 @@ import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.core.view.isGone
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
@@ -24,6 +26,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.team22.soundary.R
 import com.team22.soundary.databinding.ActivityMainBinding
 import com.team22.soundary.databinding.FragmentMainBinding
+import com.team22.soundary.feature.profile.ImageUtil
 import com.team22.soundary.feature.share.ShareBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
@@ -181,12 +184,14 @@ class MainFragment : Fragment() {
 
     private fun updateMusicState() {
         lifecycleScope.launch {
-            while (true) {
-                if (player.isPlaying) {
-                    updateProgressBar()
-                    updateText()
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                while (true) {
+                    if (player.isPlaying) {
+                        updateProgressBar()
+                        updateText()
+                    }
+                    delay(PROGRESS_UPDATE_DELAY.toLong())
                 }
-                delay(PROGRESS_UPDATE_DELAY.toLong())
             }
         }
     }
@@ -243,24 +248,27 @@ class MainFragment : Fragment() {
 
     private fun observeUiState() {
         lifecycleScope.launch {
-            viewModel.uiState.collect { uiState ->
-                binding.friendNameTextView.text = uiState.friendName
-                binding.musicNameTextView.text = uiState.musicName
-                binding.singerTextView.text = uiState.singer
-                binding.messageTextView.text = uiState.message
-                binding.nextImageView.isGone = uiState.isLastSong
-                binding.prevImageView.isGone = uiState.isFirstSong
-                binding.likeButton.setImageResource(uiState.likeBackground)
-                uiState.friendImage?.let {
-                    Glide.with(requireContext())
-                        .load(it)
-                        .into(binding.friendPicImageView)
-                }
-                uiState.songImage?.let {
-                    Glide.with(requireContext())
-                        .load(it)
-                        .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
-                        .into(binding.currentImageView)
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { uiState ->
+                    binding.friendNameTextView.text = uiState.friendName
+                    binding.musicNameTextView.text = uiState.musicName
+                    binding.singerTextView.text = uiState.singer
+                    binding.messageTextView.text = uiState.message
+                    binding.nextImageView.isGone = uiState.isLastSong
+                    binding.prevImageView.isGone = uiState.isFirstSong
+                    binding.likeButton.setImageResource(uiState.likeBackground)
+                    uiState.friendImage?.let {
+                        Glide.with(requireContext())
+                            .load(it)
+                            .circleCrop()
+                            .into(binding.friendPicImageView)
+                    }
+                    uiState.songImage?.let {
+                        Glide.with(requireContext())
+                            .load(it)
+                            .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
+                            .into(binding.currentImageView)
+                    }
                 }
             }
         }
