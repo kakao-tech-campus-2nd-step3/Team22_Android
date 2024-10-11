@@ -4,6 +4,17 @@ import com.team22.soundary.feature.search.data.model.FriendEntity
 
 class FriendRepository {
 
+    companion object {
+        private var instance: FriendRepository? = null
+
+        fun getInstance(): FriendRepository {
+            if (instance == null) {
+                instance = FriendRepository()
+            }
+            return instance!!
+        }
+    }
+
     private val allFriends = mutableListOf(
         FriendEntity(
             id = extractIdFromEmail("gogoKim@example.com"),
@@ -88,5 +99,34 @@ class FriendRepository {
     // 친구를 리스트에서 제거하는 메서드 수정 -> mutableListof로 변경해야함 했음 !!
     fun removeFriend(friendId: String) {
         allFriends.removeAll { it.id == friendId }
+    }
+    // 친구를 추가하는 메서드 추가
+    fun addFriend(friendId: String): Boolean {
+        // 이미 친구인지 확인
+        val existingFriend = allFriends.find { it.id == friendId }
+        return if (existingFriend == null) {
+            // 새로운 친구 정보 생성
+            val newFriend = fetchFriendDetails(friendId)
+            newFriend?.let {
+                it.status = "accepted" // 친구 추가 시 상태를 'accepted'로 설정
+                allFriends.add(it)
+                true // 성공적으로 추가됨
+            } ?: false // 친구 정보 가져오기 실패
+        } else {
+            // 이미 존재하는 경우
+            false
+        }
+    }
+
+    // 친구의 상세 정보를 가져오는 메서드 (예시로 간단히 구현)
+    private fun fetchFriendDetails(friendId: String): FriendEntity? {
+        return FriendEntity(
+            id = friendId,
+            name = "새 친구",
+            email = "$friendId@example.com",
+            statusMessage = "안녕하세요!",
+            favoriteGenres = listOf("Pop", "Rock"),
+            status = "accepted"
+        )
     }
 }

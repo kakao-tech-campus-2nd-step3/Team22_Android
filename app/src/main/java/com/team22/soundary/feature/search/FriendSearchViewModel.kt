@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.asStateFlow
 
 class FriendSearchViewModel : ViewModel() {
 
-    private val friendRepository = FriendRepository()
+    private val friendRepository = FriendRepository.getInstance()
 
     private val _newFriends = MutableStateFlow<List<FriendEntity>>(emptyList())
     val newFriends: StateFlow<List<FriendEntity>> get() = _newFriends.asStateFlow()
