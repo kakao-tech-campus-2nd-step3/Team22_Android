@@ -9,7 +9,6 @@ import javax.inject.Singleton
 @Singleton
 class FriendRepository @Inject constructor() {
 
-
     private val allFriends = mutableListOf(
         FriendEntity(
             id = extractIdFromEmail("gogoKim@example.com"),
