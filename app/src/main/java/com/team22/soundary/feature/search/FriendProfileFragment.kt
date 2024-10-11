@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.team22.soundary.databinding.FragmentFriendProfileBinding
-import com.team22.soundary.databinding.FragmentMainBinding
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class FriendProfileFragment : Fragment() {
     private var _binding: FragmentFriendProfileBinding? = null
@@ -30,12 +30,16 @@ class FriendProfileFragment : Fragment() {
 
         val friendId = arguments?.getString("FRIEND_ID") ?: return
         viewModel.loadFriendProfile(friendId)
-
-        viewModel.friendProfile.observe(viewLifecycleOwner) { profile ->
-            binding.userNameTextview.text = profile.name
-            binding.userEmailTextview.text = profile.email
-            binding.statusMessageTextview.text = profile.statusMessage
-            updateFavoriteGenres(profile.favoriteGenres)
+        
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.friendProfile.collectLatest { profile ->
+                profile?.let {
+                    binding.userNameTextview.text = it.name
+                    binding.userEmailTextview.text = it.email
+                    binding.statusMessageTextview.text = it.statusMessage
+                    updateFavoriteGenres(it.favoriteGenres)
+                }
+            }
         }
 
         binding.backIcon.setOnClickListener {
@@ -46,7 +50,6 @@ class FriendProfileFragment : Fragment() {
             // 친구 추가 로직 처리
         }
     }
-
 
     private fun updateFavoriteGenres(genres: List<String>) {
         val genreTextViews = listOf(
