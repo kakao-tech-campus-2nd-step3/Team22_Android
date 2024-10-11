@@ -27,26 +27,26 @@ class FriendProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO: Fragment 내에서 Intent처리 수정 부탁드립니다
 
-//        val friendId = intent.getStringExtra("FRIEND_ID") ?: return
-//        viewModel.loadFriendProfile(friendId)
-//
-//        viewModel.friendProfile.observe(requireActivity()) { profile ->
-//            binding.userNameTextview.text = profile.name
-//            binding.userEmailTextview.text = profile.email
-//            binding.statusMessageTextview.text = profile.statusMessage
-//            updateFavoriteGenres(profile.favoriteGenres)
-//        }
-//
-//        binding.backIcon.setOnClickListener {
-//            finish()
-//        }
-//
-//        binding.addFriendButton.setOnClickListener {
-//            // 친구 추가 로직 처리
-//        }
+        val friendId = arguments?.getString("FRIEND_ID") ?: return
+        viewModel.loadFriendProfile(friendId)
+
+        viewModel.friendProfile.observe(viewLifecycleOwner) { profile ->
+            binding.userNameTextview.text = profile.name
+            binding.userEmailTextview.text = profile.email
+            binding.statusMessageTextview.text = profile.statusMessage
+            updateFavoriteGenres(profile.favoriteGenres)
+        }
+
+        binding.backIcon.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
+        binding.addFriendButton.setOnClickListener {
+            // 친구 추가 로직 처리
+        }
     }
+
 
     private fun updateFavoriteGenres(genres: List<String>) {
         val genreTextViews = listOf(
