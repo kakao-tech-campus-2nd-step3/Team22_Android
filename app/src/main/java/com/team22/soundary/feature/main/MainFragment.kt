@@ -30,6 +30,7 @@ import com.team22.soundary.feature.profile.ImageUtil
 import com.team22.soundary.feature.share.ShareBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.io.IOException
 
@@ -249,7 +250,7 @@ class MainFragment : Fragment() {
     private fun observeUiState() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect { uiState ->
+                viewModel.uiState.collectLatest { uiState ->
                     binding.friendNameTextView.text = uiState.friendName
                     binding.musicNameTextView.text = uiState.musicName
                     binding.singerTextView.text = uiState.singer
