@@ -23,7 +23,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiService {
-        return retrofit.create(ApiService::class.java)
+    fun provideApiService(retrofit: Retrofit): ProfileApiService {
+        return retrofit.create(ProfileApiService::class.java)
     }
 }
