@@ -2,11 +2,13 @@ package com.team22.soundary.feature.share
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.team22.soundary.feature.share.domain.Category
 import com.team22.soundary.feature.share.domain.Friend
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
@@ -15,19 +17,14 @@ class ShareViewModel @Inject constructor(
     private val _friendList = MutableStateFlow<List<Friend>>(emptyList())
     val friendList: StateFlow<List<Friend>> = _friendList.asStateFlow()
 
+    private val _filteredFriendList = MutableStateFlow<List<Friend>>(emptyList())
+    val filteredFriendList: StateFlow<List<Friend>> = _filteredFriendList.asStateFlow()
+
     private val _selectList = MutableStateFlow<List<Friend>>(emptyList())
     val selectList: StateFlow<List<Friend>> = _selectList.asStateFlow()
 
     private val _comment = MutableStateFlow("")
     val comment: StateFlow<String> = _comment.asStateFlow()
-
-//    private fun setFriendItemList(updatedList: List<Friend>) {
-//        _friendList.value = updatedList
-//    }
-//
-//    private fun setSelectItemList(updatedList: List<Friend>) {
-//        _selectList.value = updatedList
-//    }
 
     private val _category = MutableStateFlow<Category?>(null)
 
@@ -55,7 +52,7 @@ class ShareViewModel @Inject constructor(
         getFilteredFriendList(_category.value)
     }
 
-    fun setItemSelected(selectItem: FriendItemEntity) {
+    fun setItemSelected(selectItem: Friend) {
         _friendList.update { list ->
             list.map {
                 if (it.id == selectItem.id) {
