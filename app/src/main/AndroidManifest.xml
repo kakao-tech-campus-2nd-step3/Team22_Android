@@ -49,6 +49,11 @@
             android:name=".feature.signup.ActivitySignup2"
             android:exported="false" />
 
+        <activity
+            android:name=".feature.share.ShareFriendActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+
 
         <!-- Widget Provider 설정 -->
         <receiver
