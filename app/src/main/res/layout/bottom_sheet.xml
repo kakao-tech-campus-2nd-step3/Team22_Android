@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
-        android:id="@+id/category_list"
+        android:id="@+id/category_radio_group"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginVertical="5dp"
@@ -40,26 +40,32 @@
         app:layout_constraintTop_toBottomOf="@id/share_search_edittext">
 
         <RadioButton
+            android:id="@+id/category_rnb"
             style="@style/bottomSheetCategory"
             android:text="@string/category_rnb" />
 
         <RadioButton
+            android:id="@+id/category_hiphop"
             style="@style/bottomSheetCategory"
             android:text="@string/category_hiphop" />
 
         <RadioButton
+            android:id="@+id/category_pop"
             style="@style/bottomSheetCategory"
             android:text="@string/category_pop" />
 
         <RadioButton
+            android:id="@+id/category_rock"
             style="@style/bottomSheetCategory"
             android:text="@string/category_rock" />
 
         <RadioButton
+            android:id="@+id/category_jpop"
             style="@style/bottomSheetCategory"
             android:text="@string/category_jpop" />
 
         <RadioButton
+            android:id="@+id/category_dance"
             style="@style/bottomSheetCategory"
             android:text="@string/category_dance" />
 
@@ -74,7 +80,7 @@
         app:layout_constraintBottom_toTopOf="@id/share_comment_edittext"
         app:layout_constraintEnd_toEndOf="@id/share_search_edittext"
         app:layout_constraintStart_toStartOf="@id/share_search_edittext"
-        app:layout_constraintTop_toBottomOf="@id/category_list"
+        app:layout_constraintTop_toBottomOf="@id/category_radio_group"
         app:spanCount="4"
         tools:itemCount="11"
         tools:listitem="@layout/share_friend_item_no_image" />
