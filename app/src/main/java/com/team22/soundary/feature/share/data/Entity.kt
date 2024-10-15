@@ -1,5 +1,7 @@
 package com.team22.soundary.feature.share.data
 
+import com.google.gson.annotations.SerializedName
+
 data class ErrorResponse(
     val code: String,
     val message: String
@@ -11,10 +13,13 @@ data class SearchTrackResponse(
 
 data class TrackResponseDto(
     val platform: String,
-    val platform_track_id: String,
+    @SerializedName("platform_track_id")
+    val platformTrackId: String,
     val title: String,
     val artists: List<String>,
     val duration: Int,
-    val album_cover_url: String?,
-    val preview_mp3_url: String
+    @SerializedName("album_cover_url")
+    val albumCoverUrl: String?,
+    @SerializedName("preview_mp3_url")
+    val previewMp3Url: String
 )

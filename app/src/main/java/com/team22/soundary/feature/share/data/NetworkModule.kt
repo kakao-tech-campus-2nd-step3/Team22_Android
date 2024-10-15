@@ -10,7 +10,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class NetworkModule {
+object NetworkModule {
     @Singleton
     @Provides
     fun provideShareApiService(): ShareApiService = Retrofit.Builder()
@@ -18,5 +18,4 @@ class NetworkModule {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(ShareApiService::class.java)
-
 }

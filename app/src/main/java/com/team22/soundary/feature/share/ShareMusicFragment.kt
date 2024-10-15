@@ -2,6 +2,7 @@ package com.team22.soundary.feature.share
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +14,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team22.soundary.R
 import com.team22.soundary.databinding.FragmentShareMusicBinding
+import com.team22.soundary.feature.main.MainViewModel
 import com.team22.soundary.feature.share.domain.Music
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class ShareMusicFragment : Fragment() {
     private var _binding: FragmentShareMusicBinding? = null
     private val binding get() = _binding!!

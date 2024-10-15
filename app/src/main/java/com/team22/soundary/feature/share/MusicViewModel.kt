@@ -1,7 +1,10 @@
 package com.team22.soundary.feature.share
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.team22.soundary.feature.share.data.MusicRepositoryImpl
+import com.team22.soundary.feature.share.domain.Friend
 import com.team22.soundary.feature.share.domain.Music
 import com.team22.soundary.feature.share.domain.MusicRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,14 +16,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MusicViewModel @Inject constructor(
-    private val musicRepository: MusicRepository
+    private val repository: MusicRepository
 ) : ViewModel() {
-    private val _musicList = MutableStateFlow<List<Music>?>(emptyList())
-    val musicList: StateFlow<List<Music>?> = _musicList.asStateFlow()
+    private val _musicList = MutableStateFlow<List<Music>>(emptyList())
+    val musicList: StateFlow<List<Music>> = _musicList.asStateFlow()
 
     init {
         viewModelScope.launch {
-            musicRepository.getMusicList().collect {
+            repository.getMusicList().collect {
                 _musicList.value = it
             }
         }

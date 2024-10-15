@@ -1,5 +1,6 @@
 package com.team22.soundary.feature.share
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +27,7 @@ class MusicListAdapter(
         fun bind(musicItem: Music) {
             binding.shareMusicTextview.text = musicItem.title
             binding.shareSingerTextview.text = musicItem.artists.joinToString(", ")
-            //binding.shareSortTextview.text = musicItem.sortValue
+            binding.shareSortTextview.text = "musicItem.sortValue"
             item = musicItem
         }
     }

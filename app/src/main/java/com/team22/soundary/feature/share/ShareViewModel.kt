@@ -1,14 +1,18 @@
 package com.team22.soundary.feature.share
 
 import androidx.lifecycle.ViewModel
+import com.team22.soundary.feature.main.domain.GetShareUseCase
 import com.team22.soundary.feature.share.domain.Friend
+import com.team22.soundary.feature.share.domain.MusicRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import javax.inject.Inject
 
 @HiltViewModel
-class ShareViewModel : ViewModel() {
+class ShareViewModel @Inject constructor(
+): ViewModel() {
     private val _friendList = MutableStateFlow<List<Friend>>(emptyList())
     val friendList: StateFlow<List<Friend>> = _friendList.asStateFlow()
 
