@@ -1,4 +1,4 @@
-package com.team22.soundary.feature.profile
+package com.team22.soundary.feature.profile.util
 
 import android.content.Context
 import android.graphics.Bitmap

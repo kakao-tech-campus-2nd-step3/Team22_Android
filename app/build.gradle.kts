@@ -60,6 +60,7 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
+    implementation ("com.google.dagger:hilt-android:2.44")
    
 
     testImplementation(libs.junit)
