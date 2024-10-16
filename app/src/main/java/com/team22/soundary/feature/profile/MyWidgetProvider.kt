@@ -6,10 +6,10 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.util.Log
 import android.view.View
 import android.widget.RemoteViews
 import com.team22.soundary.R
+import com.team22.soundary.feature.profile.util.ImageUtil
 
 class MyWidgetProvider : AppWidgetProvider() {
 
