@@ -1,6 +1,5 @@
 package com.team22.soundary.feature.share
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,16 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.team22.soundary.R
 import com.team22.soundary.databinding.ShareFriendItemNoImageBinding
 import com.team22.soundary.databinding.ShareFriendItemWithImageBinding
-import com.team22.soundary.feature.share.data.FriendItemEntity
+import com.team22.soundary.feature.share.domain.Friend
 
 class BottomSheetAdapter(
     private val listener: FriendItemClickListener
-) : ListAdapter<FriendItemEntity, RecyclerView.ViewHolder>(FriendItemDiffCallback()) {
+) : ListAdapter<Friend, RecyclerView.ViewHolder>(FriendItemDiffCallback()) {
     class ViewHolderNoImage(
         private val binding: ShareFriendItemNoImageBinding,
         private val listener: FriendItemClickListener
     ) : RecyclerView.ViewHolder(binding.root) {
-        lateinit var item: FriendItemEntity
+        lateinit var item: Friend
 
         init {
             binding.root.setOnClickListener {
@@ -26,7 +25,7 @@ class BottomSheetAdapter(
             }
         }
 
-        fun bind(friendItem: FriendItemEntity) {
+        fun bind(friendItem: Friend) {
             binding.shareFriendImage.text = friendItem.name[0].toString()
             binding.shareFriendTextview.text = friendItem.name
             binding.shareGrayBackground.visibility =
@@ -39,7 +38,7 @@ class BottomSheetAdapter(
         private val binding: ShareFriendItemWithImageBinding,
         private val listener: FriendItemClickListener
     ) : RecyclerView.ViewHolder(binding.root) {
-        lateinit var item: FriendItemEntity
+        lateinit var item: Friend
 
         init {
             binding.root.setOnClickListener {
@@ -47,7 +46,7 @@ class BottomSheetAdapter(
             }
         }
 
-        fun bind(friendItem: FriendItemEntity) {
+        fun bind(friendItem: Friend) {
             binding.shareFriendImage.setImageResource(R.drawable.stalker)
             binding.shareFriendTextview.text = friendItem.name
             binding.shareGrayBackground.visibility =
@@ -102,5 +101,5 @@ class BottomSheetAdapter(
 }
 
 interface FriendItemClickListener {
-    fun onClick(v: View, selectItem: FriendItemEntity)
+    fun onClick(v: View, selectItem: Friend)
 }

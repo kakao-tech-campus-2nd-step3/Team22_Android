@@ -8,15 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.team22.soundary.R
 import com.team22.soundary.databinding.ShareFriendItemNoImageBinding
 import com.team22.soundary.databinding.ShareFriendItemWithImageBinding
-import com.team22.soundary.feature.share.data.FriendItemEntity
+import com.team22.soundary.feature.share.domain.Friend
 
 class FriendListAdapter :
-    ListAdapter<FriendItemEntity, RecyclerView.ViewHolder>(FriendItemDiffCallback()) {
+    ListAdapter<Friend, RecyclerView.ViewHolder>(FriendItemDiffCallback()) {
     class ViewHolderNoImage(
         private val binding: ShareFriendItemNoImageBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(friendItem: FriendItemEntity) {
+        fun bind(friendItem: Friend) {
             binding.shareFriendImage.text = friendItem.name[0].toString()
             binding.shareFriendTextview.text = friendItem.name
             binding.shareGrayBackground.visibility = View.INVISIBLE
@@ -27,7 +27,7 @@ class FriendListAdapter :
         private val binding: ShareFriendItemWithImageBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(friendItem: FriendItemEntity) {
+        fun bind(friendItem: Friend) {
             binding.shareFriendImage.setImageResource(R.drawable.stalker)
             binding.shareFriendTextview.text = friendItem.name
             binding.shareGrayBackground.visibility = View.INVISIBLE

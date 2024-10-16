@@ -1,8 +1,8 @@
-package com.team22.soundary.feature.share.data
+package com.team22.soundary.feature.share.domain
 
 
-data class FriendItemEntity(
-    val id: String,
+data class Friend(
+    val id : String,
     val name: String,
     val image: String?,
     val category: List<Category>,

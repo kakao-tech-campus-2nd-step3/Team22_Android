@@ -2,7 +2,6 @@ package com.team22.soundary.feature.share
 
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.RadioButton
 import androidx.fragment.app.activityViewModels
@@ -12,8 +11,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.team22.soundary.R
 import com.team22.soundary.databinding.BottomSheetBinding
-import com.team22.soundary.feature.share.data.Category
-import com.team22.soundary.feature.share.data.FriendItemEntity
+import com.team22.soundary.feature.share.domain.Friend
+import com.team22.soundary.feature.share.domain.Category
 import kotlinx.coroutines.launch
 
 class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
@@ -56,7 +55,7 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
 
     private fun setRecyclerView(view: View) {
         adapter = BottomSheetAdapter(object : FriendItemClickListener {
-            override fun onClick(v: View, selectItem: FriendItemEntity) {
+            override fun onClick(v: View, selectItem: Friend) {
                 viewModel.setItemSelected(selectItem)
                 binding.shareSelectAllButton.isChecked = viewModel.isSelectedAll()
                 binding.bottomSheetSendButton.text = viewModel.getButtonText()
@@ -75,11 +74,7 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
     private fun setSelectAllButton() {
         binding.shareSelectAllButton.isChecked = viewModel.isSelectedAll()
         binding.shareSelectAllButton.setOnClickListener {
-            if (binding.shareSelectAllButton.isChecked) {
-                viewModel.setItemSelectedAll(true)
-            } else {
-                viewModel.setItemSelectedAll(false)
-            }
+            viewModel.setItemSelectedAll(binding.shareSelectAllButton.isChecked)
             binding.bottomSheetSendButton.text = viewModel.getButtonText()
         }
     }

@@ -1,14 +1,14 @@
 package com.team22.soundary.feature.share
 
 import androidx.recyclerview.widget.DiffUtil
-import com.team22.soundary.feature.share.data.MusicItemEntity
+import com.team22.soundary.feature.share.domain.Music
 
-class MusicItemDiffCallback : DiffUtil.ItemCallback<MusicItemEntity>() {
-    override fun areItemsTheSame(oldItem: MusicItemEntity, newItem: MusicItemEntity): Boolean {
-        return oldItem.id == newItem.id
+class MusicItemDiffCallback : DiffUtil.ItemCallback<Music>() {
+    override fun areItemsTheSame(oldItem: Music, newItem: Music): Boolean {
+        return oldItem.platformTrackId == newItem.platformTrackId
     }
 
-    override fun areContentsTheSame(oldItem: MusicItemEntity, newItem: MusicItemEntity): Boolean {
+    override fun areContentsTheSame(oldItem: Music, newItem: Music): Boolean {
         return oldItem == newItem
     }
 }

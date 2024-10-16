@@ -2,27 +2,32 @@ package com.team22.soundary.feature.share
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.team22.soundary.feature.share.data.Category
-import com.team22.soundary.feature.share.data.FriendItemEntity
+import com.team22.soundary.feature.share.domain.Category
+import com.team22.soundary.feature.share.domain.Friend
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
-class ShareViewModel : ViewModel() {
-    private val _friendList = MutableStateFlow<List<FriendItemEntity>>(emptyList())
-    //val friendList: StateFlow<List<FriendItemEntity>> = _friendList.asStateFlow()
+@HiltViewModel
+class ShareViewModel @Inject constructor(
+): ViewModel() {
+    private val _friendList = MutableStateFlow<List<Friend>>(emptyList())
+    val friendList: StateFlow<List<Friend>> = _friendList.asStateFlow()
 
-    private val _filteredFriendList = MutableStateFlow<List<FriendItemEntity>>(emptyList())
-    val filteredFriendList: StateFlow<List<FriendItemEntity>> = _filteredFriendList.asStateFlow()
+    private val _filteredFriendList = MutableStateFlow<List<Friend>>(emptyList())
+    val filteredFriendList: StateFlow<List<Friend>> = _filteredFriendList.asStateFlow()
 
-    private val _selectList = MutableStateFlow<List<FriendItemEntity>>(emptyList())
-    val selectList: StateFlow<List<FriendItemEntity>> = _selectList.asStateFlow()
+    private val _selectList = MutableStateFlow<List<Friend>>(emptyList())
+    val selectList: StateFlow<List<Friend>> = _selectList.asStateFlow()
 
     private val _comment = MutableStateFlow("")
     val comment: StateFlow<String> = _comment.asStateFlow()
 
     private val _category = MutableStateFlow<Category?>(null)
+
 
     fun setComment(updatedText: String) {
         _comment.value = updatedText
@@ -33,21 +38,21 @@ class ShareViewModel : ViewModel() {
     }
 
     private fun init() { // 나중에 백엔드에서 가져오도록 수정해야하는 친구 정보
-        val initList = mutableListOf<FriendItemEntity>()
+        val initList = mutableListOf<Friend>()
         for (i in 0..5) {
-            initList.add(FriendItemEntity("" + i, "댄스", null, listOf(Category.dance), false))
+            initList.add(Friend("" + i, "댄스", null, listOf(Category.dance), false))
         }
         for (i in 6..10) {
-            initList.add(FriendItemEntity("" + i, "힙합", null, listOf(Category.hiphop), false))
+            initList.add(Friend("" + i, "힙합", null, listOf(Category.hiphop), false))
         }
         for (i in 11..19) {
-            initList.add(FriendItemEntity("" + i, "쿠키즈", "imageSrc", listOf(Category.RnB), false))
+            initList.add(Friend("" + i, "쿠키즈", "imageSrc", listOf(Category.RnB), false))
         }
         _friendList.value = initList
         getFilteredFriendList(_category.value)
     }
 
-    fun setItemSelected(selectItem: FriendItemEntity) {
+    fun setItemSelected(selectItem: Friend) {
         _friendList.update { list ->
             list.map {
                 if (it.id == selectItem.id) {
