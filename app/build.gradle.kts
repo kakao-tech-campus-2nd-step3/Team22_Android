@@ -1,8 +1,10 @@
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-kapt")
     alias(libs.plugins.hilt)
+    kotlin("plugin.serialization") version "2.0.20"
 }
 
 android {
@@ -19,13 +21,15 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
     buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
+
         }
     }
     compileOptions {
@@ -40,6 +44,10 @@ android {
 
         enable = true
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
@@ -50,7 +58,6 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-    implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.gridlayout)
@@ -60,8 +67,9 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
-    implementation ("com.google.dagger:hilt-android:2.44")
-   
+    implementation(libs.kakao.sdk)
+    implementation(libs.kotlinx.serialization)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
