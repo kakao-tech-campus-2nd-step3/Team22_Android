@@ -50,8 +50,8 @@ class ShareFriendActivity : AppCompatActivity() {
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         lifecycleScope.launch {
-            viewModel.selectList.collect {
-                adapter.submitList(it)
+            viewModel.selectedFriendIds.collect {
+                adapter.submitList(viewModel.getSelectedFriends())
                 binding.shareSendButton.text = viewModel.getButtonText()
             }
         }

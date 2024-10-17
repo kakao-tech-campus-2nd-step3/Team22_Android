@@ -1,97 +1,96 @@
 package com.team22.soundary.feature.share
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.team22.soundary.R
+import com.team22.soundary.core.model.User
 import com.team22.soundary.databinding.ShareFriendItemNoImageBinding
 import com.team22.soundary.databinding.ShareFriendItemWithImageBinding
-import com.team22.soundary.feature.share.domain.Friend
 
 class BottomSheetAdapter(
     private val listener: FriendItemClickListener
-) : ListAdapter<Friend, RecyclerView.ViewHolder>(FriendItemDiffCallback()) {
-    class ViewHolderNoImage(
-        private val binding: ShareFriendItemNoImageBinding,
-        private val listener: FriendItemClickListener
-    ) : RecyclerView.ViewHolder(binding.root) {
-        lateinit var item: Friend
+) : ListAdapter<User, RecyclerView.ViewHolder>(FriendItemDiffCallback()) {
 
-        init {
-            binding.root.setOnClickListener {
+    private var selectedIds: Set<String> = emptySet()
+
+    abstract class BaseViewHolder(
+        view: View,
+        private val listener: FriendItemClickListener
+    ) : RecyclerView.ViewHolder(view) {
+        abstract fun bind(userItem: User, isSelected: Boolean)
+
+        protected fun setClickListener(item: User) {
+            itemView.setOnClickListener {
                 listener.onClick(it, item)
             }
         }
+    }
 
-        fun bind(friendItem: Friend) {
-            binding.shareFriendImage.text = friendItem.name[0].toString()
-            binding.shareFriendTextview.text = friendItem.name
-            binding.shareGrayBackground.visibility =
-                if (friendItem.isSelected) View.VISIBLE else View.INVISIBLE
-            item = friendItem
+    class ViewHolderNoImage(
+        private val binding: ShareFriendItemNoImageBinding,
+        listener: FriendItemClickListener
+    ) : BaseViewHolder(binding.root, listener) {
+        override fun bind(userItem: User, isSelected: Boolean) {
+            binding.shareFriendImage.text = userItem.name[0].toString()
+            binding.shareFriendTextview.text = userItem.name
+            binding.shareGrayBackground.visibility = if (isSelected) View.VISIBLE else View.INVISIBLE
+            setClickListener(userItem)
         }
     }
 
     class ViewHolderWithImage(
         private val binding: ShareFriendItemWithImageBinding,
-        private val listener: FriendItemClickListener
-    ) : RecyclerView.ViewHolder(binding.root) {
-        lateinit var item: Friend
-
-        init {
-            binding.root.setOnClickListener {
-                listener.onClick(it, item)
-            }
-        }
-
-        fun bind(friendItem: Friend) {
+        listener: FriendItemClickListener
+    ) : BaseViewHolder(binding.root, listener) {
+        override fun bind(userItem: User, isSelected: Boolean) {
             binding.shareFriendImage.setImageResource(R.drawable.stalker)
-            binding.shareFriendTextview.text = friendItem.name
-            binding.shareGrayBackground.visibility =
-                if (friendItem.isSelected) View.VISIBLE else View.INVISIBLE
-            item = friendItem
+            binding.shareFriendTextview.text = userItem.name
+            binding.shareGrayBackground.visibility = if (isSelected) View.VISIBLE else View.INVISIBLE
+            setClickListener(userItem)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        when (viewType) {
+        return when (viewType) {
             NO_IMAGE -> {
                 val binding = ShareFriendItemNoImageBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
                 )
-                return ViewHolderNoImage(binding, listener)
+                ViewHolderNoImage(binding, listener)
             }
-
             WITH_IMAGE -> {
                 val binding = ShareFriendItemWithImageBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
                 )
-                return ViewHolderWithImage(binding, listener)
+                ViewHolderWithImage(binding, listener)
             }
-
-            else -> throw IllegalArgumentException()
+            else -> throw IllegalArgumentException("Invalid view type")
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val item = getItem(position)
         when (holder) {
-            is ViewHolderNoImage -> holder.bind(getItem(position))
-            is ViewHolderWithImage -> holder.bind(getItem(position))
+            is BaseViewHolder -> holder.bind(item, selectedIds.contains(item.id))
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (getItem(position).image == null) {
-            NO_IMAGE
-        } else {
-            WITH_IMAGE
-        }
+        return if (getItem(position).image == Uri.EMPTY) NO_IMAGE else WITH_IMAGE
+    }
+
+
+    fun setSelectedIds(ids: Set<String>) {
+        selectedIds = ids
+        notifyDataSetChanged()
     }
 
     companion object {
@@ -101,5 +100,5 @@ class BottomSheetAdapter(
 }
 
 interface FriendItemClickListener {
-    fun onClick(v: View, selectItem: Friend)
+    fun onClick(v: View, selectItem: User)
 }
