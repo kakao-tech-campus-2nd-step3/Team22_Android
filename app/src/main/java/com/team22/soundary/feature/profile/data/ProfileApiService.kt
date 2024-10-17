@@ -6,3 +6,5 @@ interface ProfileApiService {
     @GET("profile")
     suspend fun getProfile(): ProfileResponse // profile 받기
 }
+
+class ProfileResponse()
