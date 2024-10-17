@@ -33,7 +33,7 @@ data class SentShareDto(
     @SerialName("id") val id: String?,
     @SerialName("track") val track: TrackDto?,
     @SerialName("comment") val comment: String?,
-    @SerializedName("shared_at") val sharedAt: String?
+    @SerialName("shared_at") val sharedAt: String?
 )
 
 @Serializable
