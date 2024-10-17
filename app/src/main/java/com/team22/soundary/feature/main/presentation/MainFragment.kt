@@ -1,4 +1,4 @@
-package com.team22.soundary.feature.main
+package com.team22.soundary.feature.main.presentation
 
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.net.Uri
@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.activity.viewModels
 import androidx.core.view.isGone
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -24,9 +23,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.snackbar.Snackbar
 import com.team22.soundary.R
-import com.team22.soundary.databinding.ActivityMainBinding
 import com.team22.soundary.databinding.FragmentMainBinding
-import com.team22.soundary.feature.profile.ImageUtil
 import com.team22.soundary.feature.share.ShareBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay

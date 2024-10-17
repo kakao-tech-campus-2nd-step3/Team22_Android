@@ -10,8 +10,8 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.team22.soundary.databinding.ActivitySignup2Binding
-import com.team22.soundary.feature.extensions.checkAndRequestPermissions
-import com.team22.soundary.feature.main.MainActivity  // MainActivity를 import
+import com.team22.soundary.extensions.checkAndRequestPermissions
+import com.team22.soundary.MainActivity  // MainActivity를 import
 
 class ActivitySignup2 : AppCompatActivity() {
 

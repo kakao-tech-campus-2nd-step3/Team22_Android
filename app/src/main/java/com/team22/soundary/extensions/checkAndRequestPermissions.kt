@@ -1,4 +1,4 @@
-package com.team22.soundary.feature.extensions
+package com.team22.soundary.extensions
 
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat

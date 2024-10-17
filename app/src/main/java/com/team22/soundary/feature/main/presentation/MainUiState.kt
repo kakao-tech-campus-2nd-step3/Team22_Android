@@ -1,4 +1,4 @@
-package com.team22.soundary.feature.main
+package com.team22.soundary.feature.main.presentation
 
 import android.net.Uri
 import com.team22.soundary.R
