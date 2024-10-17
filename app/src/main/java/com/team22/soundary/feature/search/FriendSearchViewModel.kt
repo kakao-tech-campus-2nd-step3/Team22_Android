@@ -1,23 +1,27 @@
 package com.team22.soundary.feature.search
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.team22.soundary.feature.search.data.model.FriendEntity
+import com.team22.soundary.core.model.User
 import com.team22.soundary.feature.search.data.repository.FriendRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import javax.inject.Inject
 
-class FriendSearchViewModel : ViewModel() {
+@HiltViewModel
+class FriendSearchViewModel @Inject constructor(
+    private val friendRepository: FriendRepository
+) : ViewModel() {
 
-    private val friendRepository = FriendRepository()
+    private val _newFriends = MutableStateFlow<List<User>>(emptyList())
+    val newFriends: StateFlow<List<User>> get() = _newFriends.asStateFlow()
 
-    private val _newFriends = MutableLiveData<List<FriendEntity>>()
-    val newFriends: LiveData<List<FriendEntity>> get() = _newFriends
+    private val _myFriends = MutableStateFlow<List<User>>(emptyList())
+    val myFriends: StateFlow<List<User>> get() = _myFriends.asStateFlow()
 
-    private val _myFriends = MutableLiveData<List<FriendEntity>>()
-    val myFriends: LiveData<List<FriendEntity>> get() = _myFriends
-
-    private val _pendingFriends = MutableLiveData<List<FriendEntity>>()
-    val pendingFriends: LiveData<List<FriendEntity>> get() = _pendingFriends
+    private val _pendingFriends = MutableStateFlow<List<User>>(emptyList())
+    val pendingFriends: StateFlow<List<User>> get() = _pendingFriends.asStateFlow()
 
     init {
         loadFriends()
@@ -30,19 +34,19 @@ class FriendSearchViewModel : ViewModel() {
     }
 
     // 친구 수락 메서드 추가
-    fun acceptFriend(friend: FriendEntity) {
+    fun acceptFriend(friend: User) {
         friendRepository.updateFriendStatus(friend.id, "accepted")
         loadFriends()
     }
 
     // 친구 거절 메서드 추가
-    fun declineFriend(friend: FriendEntity) {
+    fun declineFriend(friend: User) {
         friendRepository.removeFriend(friend.id)
         loadFriends()
     }
 
     // 친구 삭제 메서드 추가
-    fun deleteFriend(friend: FriendEntity) {
+    fun deleteFriend(friend: User) {
         friendRepository.removeFriend(friend.id)
         loadFriends()
     }

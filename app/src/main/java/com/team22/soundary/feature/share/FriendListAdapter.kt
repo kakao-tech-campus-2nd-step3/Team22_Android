@@ -6,19 +6,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.team22.soundary.R
+import com.team22.soundary.core.model.User
 import com.team22.soundary.databinding.ShareFriendItemNoImageBinding
 import com.team22.soundary.databinding.ShareFriendItemWithImageBinding
-import com.team22.soundary.feature.share.data.FriendItemEntity
 
 class FriendListAdapter :
-    ListAdapter<FriendItemEntity, RecyclerView.ViewHolder>(FriendItemDiffCallback()) {
+    ListAdapter<User, RecyclerView.ViewHolder>(FriendItemDiffCallback()) {
     class ViewHolderNoImage(
         private val binding: ShareFriendItemNoImageBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(friendItem: FriendItemEntity) {
-            binding.shareFriendImage.text = friendItem.name[0].toString()
-            binding.shareFriendTextview.text = friendItem.name
+        fun bind(userItem: User) {
+            binding.shareFriendImage.text = userItem.name[0].toString()
+            binding.shareFriendTextview.text = userItem.name
             binding.shareGrayBackground.visibility = View.INVISIBLE
         }
     }
@@ -27,9 +27,9 @@ class FriendListAdapter :
         private val binding: ShareFriendItemWithImageBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(friendItem: FriendItemEntity) {
+        fun bind(userItem: User) {
             binding.shareFriendImage.setImageResource(R.drawable.stalker)
-            binding.shareFriendTextview.text = friendItem.name
+            binding.shareFriendTextview.text = userItem.name
             binding.shareGrayBackground.visibility = View.INVISIBLE
         }
     }
@@ -72,6 +72,7 @@ class FriendListAdapter :
             WITH_IMAGE
         }
     }
+
 
     companion object {
         const val NO_IMAGE = 0

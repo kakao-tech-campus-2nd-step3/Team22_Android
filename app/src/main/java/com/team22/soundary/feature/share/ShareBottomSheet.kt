@@ -2,19 +2,18 @@ package com.team22.soundary.feature.share
 
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.core.widget.addTextChangedListener
+import android.widget.RadioButton
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.team22.soundary.R
+import com.team22.soundary.core.model.Category
+import com.team22.soundary.core.model.User
 import com.team22.soundary.databinding.BottomSheetBinding
-import com.team22.soundary.feature.share.data.FriendItemEntity
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
@@ -23,6 +22,8 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
 
     private lateinit var adapter: BottomSheetAdapter
     private val viewModel: ShareViewModel by activityViewModels()
+
+    private var lastCheckedRadioButtonId: Int? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,17 +34,19 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
         setComment()
         setRecyclerView(view)
         setSelectAllButton()
+        setCategoryRadioButton()
+        observeSelectedFriends()
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return BottomSheetDialog(requireActivity(), R.style.bottomSheetBackground)
     }
 
-    private fun setSendButton() {  // 메인버전이랑 공유버전이랑 나눠야
-        binding.bottomSheetSendButton.text = viewModel.getButtonText()
+    private fun setSendButton() {
+        updateSendButtonText()
         binding.bottomSheetSendButton.setOnClickListener {
-            viewModel.updateSelectItemList()
             viewModel.setComment(binding.shareCommentEdittext.text.toString())
+            viewModel.getFilteredFriendList(null)
             dismiss()
         }
     }
@@ -54,32 +57,65 @@ class ShareBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet) {
 
     private fun setRecyclerView(view: View) {
         adapter = BottomSheetAdapter(object : FriendItemClickListener {
-            override fun onClick(v: View, selectItem: FriendItemEntity) {
-                viewModel.setItemVisibility(selectItem)
-                binding.shareSelectAllButton.isChecked = viewModel.isSelectedAll()
-                binding.bottomSheetSendButton.text = viewModel.getButtonText()
+            override fun onClick(v: View, selectItem: User) {
+                viewModel.toggleFriendSelection(selectItem.id)
             }
         })
         binding.selectFriendRecyclerview.adapter = adapter
         binding.selectFriendRecyclerview.layoutManager = GridLayoutManager(view.context, 4)
 
         lifecycleScope.launch {
-            viewModel.friendList.collect {
-                adapter.submitList(it)
+            viewModel.filteredUserList.collect { friends ->
+                adapter.submitList(friends)
             }
         }
     }
 
     private fun setSelectAllButton() {
-        binding.shareSelectAllButton.isChecked = viewModel.isSelectedAll()
         binding.shareSelectAllButton.setOnClickListener {
-            if (binding.shareSelectAllButton.isChecked) {
-                viewModel.setItemVisibilityAll(true)
-            } else {
-                viewModel.setItemVisibilityAll(false)
-            }
-            binding.bottomSheetSendButton.text = viewModel.getButtonText()
+            viewModel.setAllFriendsSelected(binding.shareSelectAllButton.isChecked)
         }
+    }
+
+    private fun setCategoryRadioButton() {
+        binding.categoryRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+            if (checkedId != -1) {
+                val selectedRadioButton = group.findViewById<RadioButton>(checkedId)
+                selectedRadioButton.setOnClickListener {
+                    if (lastCheckedRadioButtonId == checkedId) {
+                        binding.categoryRadioGroup.clearCheck()
+                        lastCheckedRadioButtonId = null
+                        viewModel.getFilteredFriendList(null)
+                    } else {
+                        lastCheckedRadioButtonId = checkedId
+                        val category = when (checkedId) {
+                            R.id.category_rnb -> Category.RnB
+                            R.id.category_hiphop -> Category.Hiphop
+                            R.id.category_pop -> Category.Pop
+                            R.id.category_rock -> Category.Rock
+                            R.id.category_jpop -> Category.Jpop
+                            R.id.category_dance -> Category.Dance
+                            else -> null
+                        }
+                        viewModel.getFilteredFriendList(category)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun observeSelectedFriends() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.selectedFriendIds.collectLatest { selectedIds ->
+                updateSendButtonText()
+                binding.shareSelectAllButton.isChecked = viewModel.isAllFriendsSelected()
+                adapter.setSelectedIds(selectedIds)
+            }
+        }
+    }
+
+    private fun updateSendButtonText() {
+        binding.bottomSheetSendButton.text = viewModel.getButtonText()
     }
 
     companion object {

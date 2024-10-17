@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.main.MainActivity">
+    tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/background_upper_imageView"
@@ -116,24 +116,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/message_textView" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/friend_pic_cardView"
+    <ImageView
+        android:id="@+id/friend_pic_imageView"
         android:layout_width="@dimen/friend_pic_size"
         android:layout_height="@dimen/friend_pic_size"
         android:layout_marginTop="@dimen/margin_half"
         android:layout_marginBottom="@dimen/margin_half"
-        app:cardCornerRadius="100dp"
-        app:cardElevation="0dp"
         app:layout_constraintEnd_toStartOf="@id/friend_name_textView"
-        app:layout_constraintTop_toBottomOf="@+id/message_textView">
-
-        <ImageView
-            android:id="@+id/friend_pic_imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="center"
-            android:src="@drawable/ic_launcher_background"/>
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@+id/message_textView"
+        android:scaleType="center"
+        android:src="@drawable/ic_launcher_background"/>
 
     <TextView
         android:id="@+id/friend_name_textView"
@@ -141,10 +133,10 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="10dp"
         tools:text="춘식이"
-        app:layout_constraintBottom_toBottomOf="@id/friend_pic_cardView"
+        app:layout_constraintBottom_toBottomOf="@id/friend_pic_imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/friend_pic_cardView" />
+        app:layout_constraintTop_toTopOf="@id/friend_pic_imageView" />
 
     <TextView
         android:id="@+id/day_textView"
@@ -153,9 +145,9 @@
         android:clipToOutline="true"
         android:text="3일"
         android:textColor="@color/gray_500"
-        app:layout_constraintBottom_toBottomOf="@id/friend_pic_cardView"
+        app:layout_constraintBottom_toBottomOf="@id/friend_pic_imageView"
         app:layout_constraintStart_toEndOf="@+id/friend_name_textView"
-        app:layout_constraintTop_toTopOf="@id/friend_pic_cardView" />
+        app:layout_constraintTop_toTopOf="@id/friend_pic_imageView" />
 
     <ImageView
         android:id="@+id/control_imageView"
@@ -166,7 +158,7 @@
         android:src="@drawable/main_music_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/friend_pic_cardView"
+        app:layout_constraintTop_toBottomOf="@+id/friend_pic_imageView"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <ImageButton

@@ -1,13 +1,16 @@
 package com.team22.soundary.feature.share
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team22.soundary.databinding.ActivityShareFriendBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class ShareFriendActivity : AppCompatActivity() {
     private lateinit var binding: ActivityShareFriendBinding
 
@@ -47,8 +50,8 @@ class ShareFriendActivity : AppCompatActivity() {
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         lifecycleScope.launch {
-            viewModel.selectList.collect {
-                adapter.submitList(it)
+            viewModel.selectedFriendIds.collect {
+                adapter.submitList(viewModel.getSelectedFriends())
                 binding.shareSendButton.text = viewModel.getButtonText()
             }
         }

@@ -7,15 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team22.soundary.R
-import com.team22.soundary.databinding.FragmentMainBinding
+import com.team22.soundary.core.model.Song
 import com.team22.soundary.databinding.FragmentShareMusicBinding
-import com.team22.soundary.feature.share.data.MusicItemEntity
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class ShareMusicFragment : Fragment() {
     private var _binding: FragmentShareMusicBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var adapter: MusicListAdapter
+    private val viewModel: MusicViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,23 +50,23 @@ class ShareMusicFragment : Fragment() {
     }
 
     private fun setRecyclerView() {
-        // recyclerView 임시 데이터 생성
-        val musicList = mutableListOf<MusicItemEntity>()
-        for (i in 1..20) {
-            musicList.add(MusicItemEntity(i, "노래" + i, "가수", "100명이 공유함"))
-        }
-
-        val musicListAdapter = MusicListAdapter(musicList, object : MusicItemClickListener {
-            override fun onClick(v: View, selectItem: MusicItemEntity) {
+        adapter = MusicListAdapter(object : MusicItemClickListener {
+            override fun onClick(v: View, selectItem: Song) {
                 val intent = Intent(requireContext(), ShareFriendActivity::class.java)
-                intent.putExtra(ShareFriendActivity.KEY_MUSIC, selectItem.music)
-                intent.putExtra(ShareFriendActivity.KEY_SINGER, selectItem.singer)
+                intent.putExtra(ShareFriendActivity.KEY_MUSIC, selectItem.title)
+                intent.putExtra(ShareFriendActivity.KEY_SINGER, selectItem.artist[0]) // 추후 수정
                 startActivity(intent)
             }
         })
-        binding.shareMusicRecyclerview.adapter = musicListAdapter
+        binding.shareMusicRecyclerview.adapter = adapter
         binding.shareMusicRecyclerview.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+
+        lifecycleScope.launch {
+            viewModel.songList.collect {
+                adapter.submitList(it)
+            }
+        }
     }
 
     override fun onDestroyView() {
