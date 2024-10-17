@@ -5,16 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.team22.soundary.core.model.User
 import com.team22.soundary.databinding.FriendItemBasicBinding
 import com.team22.soundary.databinding.FriendItemNewBinding
-import com.team22.soundary.feature.search.data.model.FriendEntity
 
 class FriendAdapter(
-    private val onItemClick: (FriendEntity) -> Unit,
-    private val onAcceptClick: ((FriendEntity) -> Unit)? = null,
-    private val onDeclineClick: ((FriendEntity) -> Unit)? = null,
-    private val onDeleteClick: ((FriendEntity) -> Unit)? = null
-) : ListAdapter<FriendEntity, RecyclerView.ViewHolder>(FriendDiffCallback()) {
+    private val onItemClick: (User) -> Unit,
+    private val onAcceptClick: ((User) -> Unit)? = null,
+    private val onDeclineClick: ((User) -> Unit)? = null,
+    private val onDeleteClick: ((User) -> Unit)? = null
+) : ListAdapter<User, RecyclerView.ViewHolder>(FriendDiffCallback()) {
 
     private val VIEW_TYPE_NEW = 1
     private val VIEW_TYPE_BASIC = 2
@@ -52,11 +52,11 @@ class FriendAdapter(
 
 class BasicFriendViewHolder(
     private val binding: FriendItemBasicBinding,
-    private val onItemClick: (FriendEntity) -> Unit,
-    private val onDeleteClick: ((FriendEntity) -> Unit)?
+    private val onItemClick: (User) -> Unit,
+    private val onDeleteClick: ((User) -> Unit)?
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    private var currentFriend: FriendEntity? = null
+    private var currentFriend: User? = null
 
     init {
         // init 블록 안에서 setOnclickListener 호출
@@ -73,13 +73,13 @@ class BasicFriendViewHolder(
         }
     }
 
-    fun bind(friend: FriendEntity) {
+    fun bind(friend: User) {
         currentFriend = friend
         binding.userNameTextview.text = friend.name
         binding.profileInitialTextview.text = friend.name.first().toString()
 
-        val firstGenre = friend.favoriteGenres.firstOrNull() ?: "장르 없음"
-        binding.favoriteGenreTextview.text = firstGenre
+        val firstGenre = friend.category.firstOrNull() ?: "장르 없음"
+        binding.favoriteGenreTextview.text = firstGenre.toString()
 
         binding.userIdTextview.text = "@${friend.id}"
     }
@@ -87,12 +87,12 @@ class BasicFriendViewHolder(
 
 class NewFriendViewHolder(
     private val binding: FriendItemNewBinding,
-    private val onItemClick: (FriendEntity) -> Unit,
-    private val onAcceptClick: ((FriendEntity) -> Unit)?,
-    private val onDeclineClick: ((FriendEntity) -> Unit)?
+    private val onItemClick: (User) -> Unit,
+    private val onAcceptClick: ((User) -> Unit)?,
+    private val onDeclineClick: ((User) -> Unit)?
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    private var currentFriend: FriendEntity? = null
+    private var currentFriend: User? = null
 
     init {
         // init 블록 안에서 setOnclickListener 호출
@@ -115,25 +115,25 @@ class NewFriendViewHolder(
         }
     }
 
-    fun bind(friend: FriendEntity) {
+    fun bind(friend: User) {
         currentFriend = friend
         binding.userNameTextview.text = friend.name
         binding.profileInitialTextview.text = friend.name.first().toString()
 
-        val firstGenre = friend.favoriteGenres.firstOrNull() ?: "장르 없음"
-        binding.favoriteGenreTextview.text = firstGenre
+        val firstGenre = friend.category.firstOrNull() ?: "장르 없음"
+        binding.favoriteGenreTextview.text = firstGenre.toString()
 
         binding.userIdTextview.text = "@${friend.id}"
     }
 }
 
 
-class FriendDiffCallback : DiffUtil.ItemCallback<FriendEntity>() {
-    override fun areItemsTheSame(oldItem: FriendEntity, newItem: FriendEntity): Boolean {
+class FriendDiffCallback : DiffUtil.ItemCallback<User>() {
+    override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: FriendEntity, newItem: FriendEntity): Boolean {
+    override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
         return oldItem == newItem
     }
 }

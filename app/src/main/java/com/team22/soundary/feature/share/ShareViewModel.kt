@@ -1,9 +1,9 @@
 package com.team22.soundary.feature.share
 
-import android.util.Log
+import android.net.Uri
 import androidx.lifecycle.ViewModel
-import com.team22.soundary.feature.share.domain.Category
-import com.team22.soundary.feature.share.domain.Friend
+import com.team22.soundary.core.model.Category
+import com.team22.soundary.core.model.User
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,88 +13,80 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ShareViewModel @Inject constructor(
-): ViewModel() {
-    private val _friendList = MutableStateFlow<List<Friend>>(emptyList())
-    val friendList: StateFlow<List<Friend>> = _friendList.asStateFlow()
+) : ViewModel() {
+    private val _userList = MutableStateFlow<List<User>>(emptyList())
+    val userList: StateFlow<List<User>> = _userList.asStateFlow()
 
-    private val _filteredFriendList = MutableStateFlow<List<Friend>>(emptyList())
-    val filteredFriendList: StateFlow<List<Friend>> = _filteredFriendList.asStateFlow()
+    private val _filteredUserList = MutableStateFlow<List<User>>(emptyList())
+    val filteredUserList: StateFlow<List<User>> = _filteredUserList.asStateFlow()
 
-    private val _selectList = MutableStateFlow<List<Friend>>(emptyList())
-    val selectList: StateFlow<List<Friend>> = _selectList.asStateFlow()
+    private val _selectedFriendIds = MutableStateFlow<Set<String>>(emptySet())
+    val selectedFriendIds: StateFlow<Set<String>> = _selectedFriendIds.asStateFlow()
 
     private val _comment = MutableStateFlow("")
     val comment: StateFlow<String> = _comment.asStateFlow()
 
     private val _category = MutableStateFlow<Category?>(null)
 
+    init {
+        initFriendList()
+    }
 
     fun setComment(updatedText: String) {
         _comment.value = updatedText
     }
 
-    init {
-        init()
-    }
-
-    private fun init() { // 나중에 백엔드에서 가져오도록 수정해야하는 친구 정보
-        val initList = mutableListOf<Friend>()
+    private fun initFriendList() {
+        val initList = mutableListOf<User>()
         for (i in 0..5) {
-            initList.add(Friend("" + i, "댄스", null, listOf(Category.dance), false))
+            initList.add(User(id="$i", name="댄스", image= Uri.EMPTY, category = listOf(Category.Dance)))
         }
         for (i in 6..10) {
-            initList.add(Friend("" + i, "힙합", null, listOf(Category.hiphop), false))
+            initList.add(User(id="$i", name="힙합", image= Uri.EMPTY, category = listOf(Category.Hiphop)))
         }
         for (i in 11..19) {
-            initList.add(Friend("" + i, "쿠키즈", "imageSrc", listOf(Category.RnB), false))
+            initList.add(User(id="$i", name="쿠키즈", image= Uri.EMPTY, category = listOf(Category.RnB)))
         }
-        _friendList.value = initList
+        _userList.value = initList
         getFilteredFriendList(_category.value)
     }
 
-    fun setItemSelected(selectItem: Friend) {
-        _friendList.update { list ->
-            list.map {
-                if (it.id == selectItem.id) {
-                    it.copy(isSelected = !it.isSelected)
-                } else {
-                    it
-                }
+    fun toggleFriendSelection(friendId: String) {
+        _selectedFriendIds.update { currentSelectedIds ->
+            if (currentSelectedIds.contains(friendId)) {
+                currentSelectedIds - friendId
+            } else {
+                currentSelectedIds + friendId
             }
         }
-        getFilteredFriendList(_category.value)
-        updateSelectItemList()
     }
 
-    fun setItemSelectedAll(visibility: Boolean) {
-        _friendList.update { list ->
-            list.map {
-                it.copy(isSelected = visibility)
-            }
+    fun setAllFriendsSelected(selected: Boolean) {
+        if (selected) {
+            _selectedFriendIds.value = _filteredUserList.value.map { it.id }.toSet()
+        } else {
+            _selectedFriendIds.value = emptySet()
         }
-        getFilteredFriendList(_category.value)
-        updateSelectItemList()
-    }
-
-    private fun updateSelectItemList() {
-        _selectList.value = _friendList.value.filter { it.isSelected }
     }
 
     fun getFilteredFriendList(category: Category?) {
         _category.value = category
-        if (_category.value == null) {
-            _filteredFriendList.value = _friendList.value
+        _filteredUserList.value = if (category == null) {
+            _userList.value
         } else {
-            _filteredFriendList.value =
-                _friendList.value.filter { it.category.contains(_category.value) }
+            _userList.value.filter { it.category.contains(category) }
         }
     }
 
-    fun isSelectedAll(): Boolean {
-        return _selectList.value.size == _friendList.value.size
+    fun isAllFriendsSelected(): Boolean {
+        return _selectedFriendIds.value.size == _filteredUserList.value.size
     }
 
     fun getButtonText(): String {
-        return "" + _selectList.value.size + "명에게 보내기"
+        return "${_selectedFriendIds.value.size}명에게 보내기"
+    }
+
+    fun getSelectedFriends(): List<User> {
+        return _userList.value.filter { _selectedFriendIds.value.contains(it.id) }
     }
 }

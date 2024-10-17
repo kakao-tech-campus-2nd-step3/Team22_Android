@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.team22.soundary.core.model.Category
 import com.team22.soundary.databinding.FragmentFriendProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -42,7 +43,7 @@ class FriendProfileFragment : Fragment() {
                     binding.userNameTextview.text = it.name
                     binding.userEmailTextview.text = it.email
                     binding.statusMessageTextview.text = it.statusMessage
-                    updateFavoriteGenres(it.favoriteGenres)
+                    updateFavoriteGenres(it.category)
 
                     // 친구 상태에 따라 버튼 업데이트
                     when (it.status) {
@@ -89,7 +90,7 @@ class FriendProfileFragment : Fragment() {
         }
     }
 
-    private fun updateFavoriteGenres(genres: List<String>) {
+    private fun updateFavoriteGenres(genres: List<Category>) {
         val genreTextViews = listOf(
             binding.genreTextView1,
             binding.genreTextView2,
@@ -99,7 +100,7 @@ class FriendProfileFragment : Fragment() {
 
         for (i in genreTextViews.indices) {
             if (i < genres.size) {
-                genreTextViews[i].text = genres[i]
+                genreTextViews[i].text = genres[i].toString()
                 genreTextViews[i].visibility = View.VISIBLE
             } else {
                 genreTextViews[i].visibility = View.GONE

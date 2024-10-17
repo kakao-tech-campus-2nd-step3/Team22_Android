@@ -1,22 +1,21 @@
 package com.team22.soundary.feature.share
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.team22.soundary.core.model.Song
 import com.team22.soundary.databinding.ShareMusicItemBinding
-import com.team22.soundary.feature.share.domain.Music
 
 class MusicListAdapter(
     private val listener: MusicItemClickListener
-) : ListAdapter<Music, MusicListAdapter.ViewHolder>(MusicItemDiffCallback()) {
+) : ListAdapter<Song, MusicListAdapter.ViewHolder>(MusicItemDiffCallback()) {
     class ViewHolder(
         private val binding: ShareMusicItemBinding,
         private val listener: MusicItemClickListener
     ) : RecyclerView.ViewHolder(binding.root) {
-        lateinit var item: Music
+        lateinit var item: Song
 
         init {
             binding.root.setOnClickListener {
@@ -24,11 +23,11 @@ class MusicListAdapter(
             }
         }
 
-        fun bind(musicItem: Music) {
-            binding.shareMusicTextview.text = musicItem.title
-            binding.shareSingerTextview.text = musicItem.artists.joinToString(", ")
+        fun bind(songItem: Song) {
+            binding.shareMusicTextview.text = songItem.title
+            binding.shareSingerTextview.text = songItem.artist.joinToString(", ")
             binding.shareSortTextview.text = "musicItem.sortValue"
-            item = musicItem
+            item = songItem
         }
     }
 
@@ -47,5 +46,5 @@ class MusicListAdapter(
 }
 
 interface MusicItemClickListener {
-    fun onClick(v: View, selectItem: Music)
+    fun onClick(v: View, selectItem: Song)
 }

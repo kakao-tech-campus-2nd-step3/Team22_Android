@@ -11,8 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team22.soundary.R
+import com.team22.soundary.core.model.Song
 import com.team22.soundary.databinding.FragmentShareMusicBinding
-import com.team22.soundary.feature.share.domain.Music
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -51,10 +51,10 @@ class ShareMusicFragment : Fragment() {
 
     private fun setRecyclerView() {
         adapter = MusicListAdapter(object : MusicItemClickListener {
-            override fun onClick(v: View, selectItem: Music) {
+            override fun onClick(v: View, selectItem: Song) {
                 val intent = Intent(requireContext(), ShareFriendActivity::class.java)
                 intent.putExtra(ShareFriendActivity.KEY_MUSIC, selectItem.title)
-                intent.putExtra(ShareFriendActivity.KEY_SINGER, selectItem.artists[0]) // 추후 수정
+                intent.putExtra(ShareFriendActivity.KEY_SINGER, selectItem.artist[0]) // 추후 수정
                 startActivity(intent)
             }
         })
@@ -63,7 +63,7 @@ class ShareMusicFragment : Fragment() {
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
         lifecycleScope.launch {
-            viewModel.musicList.collect {
+            viewModel.songList.collect {
                 adapter.submitList(it)
             }
         }
