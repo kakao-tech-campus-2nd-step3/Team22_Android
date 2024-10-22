@@ -1,9 +1,9 @@
 package com.team22.soundary.feature.share.data
 
 import android.net.Uri
-import com.team22.soundary.core.dto.TrackDto
-import com.team22.soundary.core.dto.TrackListDto
-import com.team22.soundary.core.model.Song
+import com.team22.soundary.core.data.dto.TrackDto
+import com.team22.soundary.core.data.dto.TrackListDto
+import com.team22.soundary.core.domain.model.Song
 import com.team22.soundary.feature.share.domain.MusicRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -17,11 +17,11 @@ class MusicRepositoryImpl @Inject constructor(
     lateinit var musicList: TrackListDto
 
     private var musicListTemp: List<TrackDto> = mutableListOf(
-        TrackDto("SPOTIFY", "1", "제목", listOf("가수"), 1, null, "mp3"),
-        TrackDto("SPOTIFY", "2", "제목", listOf("가수"), 1, null, "mp3"),
-        TrackDto("SPOTIFY", "3", "제목", listOf("가수1", "가수2"), 1, null, "mp3"),
-        TrackDto("SPOTIFY", "4", "제목", listOf("가수"), 1, null, "mp3"),
-        TrackDto("SPOTIFY", "5", "제목", listOf("가수"), 1, null, "mp3")
+        TrackDto("1", "제목", listOf("가수"),  null, "mp3",1),
+        TrackDto( "2", "제목", listOf("가수"), null, "mp3",1),
+        TrackDto("3", "제목", listOf("가수1", "가수2"),  null, "mp3",1),
+        TrackDto("4", "제목", listOf("가수"), null, "mp3",1),
+        TrackDto("5", "제목", listOf("가수"), null, "mp3",1)
     )
 
     suspend fun searchMusicItem(query: String) {

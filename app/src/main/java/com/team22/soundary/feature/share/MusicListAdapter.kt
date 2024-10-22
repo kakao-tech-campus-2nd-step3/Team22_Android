@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.team22.soundary.core.model.Song
+import com.team22.soundary.core.domain.model.Song
 import com.team22.soundary.databinding.ShareMusicItemBinding
 
 class MusicListAdapter(

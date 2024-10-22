@@ -1,7 +1,7 @@
 package com.team22.soundary.feature.share
 
 import androidx.recyclerview.widget.DiffUtil
-import com.team22.soundary.core.model.Song
+import com.team22.soundary.core.domain.model.Song
 
 class MusicItemDiffCallback : DiffUtil.ItemCallback<Song>() {
     override fun areItemsTheSame(oldItem: Song, newItem: Song): Boolean {

@@ -1,7 +1,7 @@
 package com.team22.soundary.feature.share
 
 import androidx.recyclerview.widget.DiffUtil
-import com.team22.soundary.core.model.User
+import com.team22.soundary.core.domain.model.User
 
 class FriendItemDiffCallback : DiffUtil.ItemCallback<User>() {
     override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {

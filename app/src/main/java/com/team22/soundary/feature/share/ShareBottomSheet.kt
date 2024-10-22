@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.team22.soundary.R
-import com.team22.soundary.core.model.Category
-import com.team22.soundary.core.model.User
+import com.team22.soundary.core.domain.model.Category
+import com.team22.soundary.core.domain.model.User
 import com.team22.soundary.databinding.BottomSheetBinding
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

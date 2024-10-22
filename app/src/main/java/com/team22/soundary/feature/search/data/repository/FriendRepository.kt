@@ -1,7 +1,7 @@
 package com.team22.soundary.feature.search.data.repository
 
-import com.team22.soundary.core.model.Category
-import com.team22.soundary.core.model.User
+import com.team22.soundary.core.domain.model.Category
+import com.team22.soundary.core.domain.model.User
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import javax.inject.Inject

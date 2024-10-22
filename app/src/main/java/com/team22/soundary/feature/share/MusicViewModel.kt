@@ -2,7 +2,7 @@ package com.team22.soundary.feature.share
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.team22.soundary.core.model.Song
+import com.team22.soundary.core.domain.model.Song
 import com.team22.soundary.feature.share.domain.MusicRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

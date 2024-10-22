@@ -1,7 +1,7 @@
 package com.team22.soundary.feature.search
 
 import androidx.lifecycle.ViewModel
-import com.team22.soundary.core.model.User
+import com.team22.soundary.core.domain.model.User
 import com.team22.soundary.feature.search.data.repository.FriendRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

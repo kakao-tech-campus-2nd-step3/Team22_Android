@@ -1,4 +1,4 @@
-package com.team22.soundary.core.model
+package com.team22.soundary.core.domain.model
 
 data class Share(
     val song: Song = Song(),

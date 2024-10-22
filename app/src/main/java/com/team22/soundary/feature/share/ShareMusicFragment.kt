@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team22.soundary.R
-import com.team22.soundary.core.model.Song
+import com.team22.soundary.core.domain.model.Song
 import com.team22.soundary.databinding.FragmentShareMusicBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

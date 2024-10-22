@@ -1,6 +1,6 @@
 package com.team22.soundary.feature.share.data
 
-import com.team22.soundary.core.dto.TrackListDto
+import com.team22.soundary.core.data.dto.TrackListDto
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

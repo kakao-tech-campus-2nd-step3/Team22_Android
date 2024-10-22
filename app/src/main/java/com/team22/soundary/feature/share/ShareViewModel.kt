@@ -2,8 +2,8 @@ package com.team22.soundary.feature.share
 
 import android.net.Uri
 import androidx.lifecycle.ViewModel
-import com.team22.soundary.core.model.Category
-import com.team22.soundary.core.model.User
+import com.team22.soundary.core.domain.model.Category
+import com.team22.soundary.core.domain.model.User
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

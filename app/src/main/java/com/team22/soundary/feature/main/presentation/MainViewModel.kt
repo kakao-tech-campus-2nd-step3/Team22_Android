@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.team22.soundary.R
-import com.team22.soundary.core.model.Share
+import com.team22.soundary.core.domain.model.Share
 import com.team22.soundary.feature.main.domain.GetShareUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
