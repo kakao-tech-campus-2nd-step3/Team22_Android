@@ -1,22 +1,32 @@
-package com.team22.soundary.core.dto
+package com.team22.soundary.core.data.dto
 
 import android.net.Uri
-import com.google.gson.annotations.SerializedName
-import com.team22.soundary.core.model.Share
-import com.team22.soundary.core.model.Song
-import com.team22.soundary.core.model.User
+import com.team22.soundary.core.domain.model.Share
+import com.team22.soundary.core.domain.model.Song
+import com.team22.soundary.core.domain.model.Token
+import com.team22.soundary.core.domain.model.User
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Serializable
+data class UserInfoDto(
+    @SerialName("displayId") val id : String?,
+    @SerialName("nickname") val name : String?,
+    @SerialName("description") val description : String?,
+    @SerialName("profileImageUrl") val profile : String?,
+    @SerialName("roles") val roles : List<String>?
+)
 
 @Serializable
 data class ReceivedShareListDto(
-    @SerialName("shared_musics") val shareList: List<ReceivedShareDto>
+    @SerialName("shared_musics") val shareList: List<ReceivedShareDto>?
 )
 
 @Serializable
 data class SentShareListDto(
-    @SerialName("shared_musics") val shareList: List<SentShareDto>
+    @SerialName("total") val total: Int?,
+    @SerialName("total_pages") val totalPage : Int?,
+    @SerialName("shared_musics") val shareList: List<SentShareDto>?
 )
 
 @Serializable
@@ -46,24 +56,29 @@ data class FromUserResponse(
 
 @Serializable
 data class TrackListDto(
-    @SerialName("tracks") val trackList : List<TrackDto>
+    @SerialName("tracks") val trackList : List<TrackDto>?
 )
 
 @Serializable
 data class TrackDto(
-    @SerialName("platform_track_id") val platformTrackId: String?,
-    @SerialName("platform") val platform: String?,
+    @SerialName("track_id") val platformTrackId: String?,
     @SerialName("title") val title: String?,
-    @SerialName("artist") val artist: List<String>?,
-    @SerialName("duration") val duration: Int?,
+    @SerialName("artists") val artist: List<String>?,
     @SerialName("album_cover_url") val albumCoverUrl: String?,
-    @SerialName("preview_mp_url") val previewMp3Url: String?
+    @SerialName("refreshToken") val refreshToken: String?,
+    @SerialName("expiresIn") val expiresIn : Int?
 )
 
 @Serializable
 data class ErrorResponse(
-    @SerialName("code") val code: String,
-    @SerialName("message") val message: String
+    @SerialName("code") val code: String?,
+    @SerialName("message") val message: String?
+)
+
+@Serializable
+data class LoginRequestDto(
+    @SerialName("platform") val platform: String = "KAKAO",
+    @SerialName("token") val token: String
 )
 
 fun SentShareDto.toVO(): Share {
@@ -97,6 +112,16 @@ fun FromUserResponse.toVO(): User =
     User(
         name = this.displayName ?: "",
         image = Uri.parse(this.profileImageUrl ?: "")
+    )
+
+fun UserInfoDto.toVO(): User =
+    User(
+        id = this.id ?: "",
+        name = this.name ?: "",
+        image = Uri.parse(this.profile),
+        statusMessage = this.description ?: ""
+    )
+
     )
 
 
