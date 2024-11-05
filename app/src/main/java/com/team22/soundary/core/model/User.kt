@@ -2,7 +2,7 @@ package com.team22.soundary.core.model
 
 import android.net.Uri
 
-data class User(
+data class lsUser(
     val id: String = "",
     val name: String = "",
     val email: String = "",
