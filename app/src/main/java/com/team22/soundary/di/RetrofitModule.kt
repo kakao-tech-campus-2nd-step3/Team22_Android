@@ -1,5 +1,6 @@
 package com.team22.soundary.di
 
+import com.team22.soundary.BuildConfig.BASE_URL
 import com.team22.soundary.core.auth.TokenInterceptor
 import com.team22.soundary.core.domain.TokenRepository
 import com.team22.soundary.util.DateAsStringSerializer

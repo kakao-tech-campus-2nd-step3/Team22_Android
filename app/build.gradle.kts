@@ -16,6 +16,7 @@ if (localPropertiesFile.exists()) {
     localProperties.load(FileInputStream(localPropertiesFile))
 }
 val kakaoNativeKey: String = localProperties.getProperty("NATIVE_KEY") ?: ""
+val baseUrl : String = localProperties.getProperty("BASE_URL") ?: ""
 
 android {
     namespace = "com.team22.soundary"
@@ -31,8 +32,10 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "NATIVE_KEY", "\"$kakaoNativeKey\"")
+        buildConfigField ("String", "BASE_URL", "\"${baseUrl}\"")
 
         manifestPlaceholders["NATIVE_KEY"] = kakaoNativeKey
+        manifestPlaceholders["BASE_URL"] = baseUrl
     }
 
 
