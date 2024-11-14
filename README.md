@@ -44,7 +44,7 @@
 > 5초 이상 재생 시 공유한 사용자의 메시지 확인 가능 기능
 ![KakaoTalk_Photo_2024-11-12-13-42-47 002](https://github.com/user-attachments/assets/f9c8ed8b-ee3a-4d49-a03f-976ef8586ff0)
 ![KakaoTalk_Photo_2024-11-12-13-42-47 001](https://github.com/user-attachments/assets/fa11705c-b7bd-4d7e-9bdf-e6c60427506b)
-![메시지음악공유]
+![KakaoTalk_Photo_2024-11-14-17-28-42](https://github.com/user-attachments/assets/29007369-3a36-4a0c-afe9-fc270fda5eaf)
 - 공유한 음악의 하이라이트를 들으며 사용자가 '나'에게 보내는 메세지를 확인할 수 있도록 한다.
 - 일반적인 SNS앱에서 텍스트로 주고받는 것보다 음악을 들으며 해당 음악의 분위기와 음악을 통한 기억을 바탕으로 다른 SNS앱과 차별점을 두었다.
 
