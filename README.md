@@ -33,36 +33,55 @@
 2. 목적
 - 폐쇄적 관계의 음악 공유로 현대인들의 소통적 피로감을 덜고, 위젯을 통해 프로세스를 단순화 시켜 즉각적인 주고받음이 가능하도록 하자. 
 
-3. 주요 기능 
+3. 주요 기능
 > 위젯을 통한 즉각적인 의사소통
-![위젯](https://github.com/user-attachments/assets/2c1f46bb-987c-4e45-b941-cad925f917cb)
-![KakaoTalk_Photo_2024-11-14-17-12-01](https://github.com/user-attachments/assets/35c3ea19-8dbd-4a84-982b-192f67b07c00)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2c1f46bb-987c-4e45-b941-cad925f917cb" width="30%">
+  <img src="https://github.com/user-attachments/assets/35c3ea19-8dbd-4a84-982b-192f67b07c00" width="30%">
+</p>
+
 - 음악을 공유받았을 때 단순히 알림을 확인하는 것이 아닌, 변경된 위젯의 앨범 커버를 통해 어떤 음악을 공유받았는지 알 수 있다.
-- 또한, 앨범 커버가 바로 바뀜으로써, 빠른 시간 안에 변화하는 콘텐츠에 익숙한 사용자들에게 지루함이 아닌, 즐거움을 줄 수 있다. 
-- 해당 위젯의 앨범 커버를 눌렀을 때 바로 앱에 접속이 가능하도록 프로세스를 단순화 시켰다. 
+- 또한, 앨범 커버가 바로 바뀜으로써, 빠른 시간 안에 변화하는 콘텐츠에 익숙한 사용자들에게 지루함이 아닌, 즐거움을 줄 수 있다.
+- 해당 위젯의 앨범 커버를 눌렀을 때 바로 앱에 접속이 가능하도록 프로세스를 단순화 시켰다.
+
 
 > 5초 이상 재생 시 공유한 사용자의 메시지 확인 가능 기능
-![KakaoTalk_Photo_2024-11-12-13-42-47 002](https://github.com/user-attachments/assets/f9c8ed8b-ee3a-4d49-a03f-976ef8586ff0)
-![KakaoTalk_Photo_2024-11-12-13-42-47 001](https://github.com/user-attachments/assets/fa11705c-b7bd-4d7e-9bdf-e6c60427506b)
-![KakaoTalk_Photo_2024-11-14-17-28-42](https://github.com/user-attachments/assets/29007369-3a36-4a0c-afe9-fc270fda5eaf)
-- 공유한 음악의 하이라이트를 들으며 사용자가 '나'에게 보내는 메세지를 확인할 수 있도록 한다.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f9c8ed8b-ee3a-4d49-a03f-976ef8586ff0" width="30%">
+  <img src="https://github.com/user-attachments/assets/fa11705c-b7bd-4d7e-9bdf-e6c60427506b" width="30%">
+  <img src="https://github.com/user-attachments/assets/29007369-3a36-4a0c-afe9-fc270fda5eaf" width="30%">
+</p>
+
+- 공유한 음악의 하이라이트를 들으며 사용자가 '나'에게 보내는 메시지를 확인할 수 있도록 한다.
 - 일반적인 SNS앱에서 텍스트로 주고받는 것보다 음악을 들으며 해당 음악의 분위기와 음악을 통한 기억을 바탕으로 다른 SNS앱과 차별점을 두었다.
 
+
 > 바텀 시트를 이용한 공유 서비스
-![KakaoTalk_Photo_2024-11-12-13-42-48 003](https://github.com/user-attachments/assets/9ad4f3ed-a02b-4a42-a6b9-99efaea3464e)
-![KakaoTalk_Photo_2024-11-12-13-42-48 004](https://github.com/user-attachments/assets/b0ee2e4d-ed1e-4591-92f6-7f789e4d32e2)
-![KakaoTalk_Photo_2024-11-12-13-42-48 005](https://github.com/user-attachments/assets/8149a5de-12ec-4262-8e87-86ec3ac4a66d)
-- 한 화면에서 앨범 정보를 확인하며 공유할 수 있도록 프로세스를 단순화시켜 사용자가 편리하게 사용할 수 있도록 했다. 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9ad4f3ed-a02b-4a42-a6b9-99efaea3464e" width="30%">
+  <img src="https://github.com/user-attachments/assets/b0ee2e4d-ed1e-4591-92f6-7f789e4d32e2" width="30%">
+  <img src="https://github.com/user-attachments/assets/8149a5de-12ec-4262-8e87-86ec3ac4a66d" width="30%">
+</p>
+
+- 한 화면에서 앨범 정보를 확인하며 공유할 수 있도록 프로세스를 단순화시켜 사용자가 편리하게 사용할 수 있도록 했다.
+
 
 > 20명으로 한정된 친구 목록
-![KakaoTalk_Photo_2024-11-12-13-42-48 006](https://github.com/user-attachments/assets/44e51b97-5351-4e9e-ba6e-0bdf54e698d3)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/44e51b97-5351-4e9e-ba6e-0bdf54e698d3" width="30%">
+</p>
+
 - 폐쇄적인 SNS앱이므로 정말 친한 지인들끼리만 음악을 공유할 수 있도록 하였다.
-- 다수보다 소수로 커뮤니티를 만들어 피곤함없이 정말 재미와 휴식을 위해 소통할 수 있도록 하였다. 
+- 다수보다 소수로 커뮤니티를 만들어 피곤함 없이 정말 재미와 휴식을 위해 소통할 수 있도록 하였다.
+
 
 > 라벨을 통한 취향 공유
-![KakaoTalk_Photo_2024-11-12-13-42-48 006](https://github.com/user-attachments/assets/e45a335f-e023-4398-b6c3-0d6f03f7757d)
-![KakaoTalk_Photo_2024-11-12-13-42-48 009](https://github.com/user-attachments/assets/12634116-6d8d-4cf6-8dac-cf1018afdd21)
-![KakaoTalk_Photo_2024-11-12-13-42-48 011](https://github.com/user-attachments/assets/1fd61f5d-2c39-4b8c-9fe2-cea28965be16)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e45a335f-e023-4398-b6c3-0d6f03f7757d" width="30%">
+  <img src="https://github.com/user-attachments/assets/12634116-6d8d-4cf6-8dac-cf1018afdd21" width="30%">
+  <img src="https://github.com/user-attachments/assets/1fd61f5d-2c39-4b8c-9fe2-cea28965be16" width="30%">
+</p>
+
 - 회원가입 시 본인의 취향인 음악 카테고리를 필수로 선택하여 지인들끼리도 서로의 음악을 공유하는 부가적인 기능을 발휘할 수 있다.
 
 
@@ -70,13 +89,31 @@
 
 
 ### 개발자
-> Android
-@akuby21
-@anyooin
-@nJiyeon
-@YJY1220
+> **Android**  
+<p align="left">
+  <a href="https://github.com/akuby21">
+    <img src="https://github.com/akuby21.png" width="200" height="200" alt="akuby21"/>
+  </a>
+  <a href="https://github.com/anyooin">
+    <img src="https://github.com/anyooin.png" width="200" height="200" alt="anyooin"/>
+  </a>
+  <a href="https://github.com/nJiyeon">
+    <img src="https://github.com/nJiyeon.png" width="200" height="200" alt="nJiyeon"/>
+  </a>
+  <a href="https://github.com/YJY1220">
+    <img src="https://github.com/YJY1220.png" width="200" height="200" alt="YJY1220"/>
+  </a>
+</p>
 
->BE
-@BGMSound
-@Youngini
-@doyooon
+> **BE**  
+<p align="left">
+  <a href="https://github.com/BGMSound">
+    <img src="https://github.com/BGMSound.png" width="200" height="200" alt="BGMSound"/>
+  </a>
+  <a href="https://github.com/Youngini">
+    <img src="https://github.com/Youngini.png" width="200" height="200" alt="Youngini"/>
+  </a>
+  <a href="https://github.com/doyooon">
+    <img src="https://github.com/doyooon.png" width="200" height="200" alt="doyooon"/>
+  </a>
+</p>
