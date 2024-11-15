@@ -69,7 +69,7 @@ class FriendApiServiceTest {
         assertEquals(200, response.code())
         val friends = response.body()?.friends?.get(0)?.toVO()
         assertEquals("1", friends?.id)
-        //assertEquals("alice1234", friends?.displayId)
+        assertEquals("alice1234", friends?.displayId)
         assertEquals("Alice", friends?.name)
         assertEquals("https://example.com/alice.jpg", friends?.imageId)
         assertEquals(listOf("pop"), friends?.label)
